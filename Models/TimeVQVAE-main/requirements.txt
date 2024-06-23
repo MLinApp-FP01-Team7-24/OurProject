@@ -1,0 +1,14 @@
+einops
+matplotlib
+numpy<2.0
+pandas
+pytorch_lightning==1.9.0
+PyYAML
+Requests
+scikit_learn
+scipy
+wget # I added this because supervised_fcn downloads an older version
+supervised_fcn
+x_transformers==1.7.15
+wandb
+PyWavelets
