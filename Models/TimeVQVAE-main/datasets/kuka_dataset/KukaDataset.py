@@ -12,72 +12,92 @@ from .dataset_utils import wavelet_spectrogram
 class KukaDataset(Dataset):
     ds_config = None
     
-    def __init__(self, data_path = "", verbose=True, test=False, columns_to_keep=None, 
+    def __init__(self, data_path = "", verbose=True, test=False, columns_to_keep=None, keep_faulty=True, risk_encoder=None,
                  wlist=None, config: dict = None):
         self.test = test
+        self.keep_faulty = keep_faulty
+        self.risk_encoder = risk_encoder
         KukaDataset.ds_config = config
         #load df in memory
         if wlist is not None: 
             self.kuka_df = wlist
         else: 
             #read the whole list of ts
-            kuka_ts = [pd.read_csv(filepath_csv, sep=";") for filepath_csv in data_path]
+            kuka_ts = [pd.read_csv(os.path.join(data_path, fpath), sep=";") for fpath in os.listdir(data_path)
+                       if fpath.endswith('_0.1s.csv')]
             self.kuka_df = [] #for each ts
             for el in kuka_ts:
                 el['time'] = pd.to_datetime(el['time'])
-                el.sort_values(by=['time']) # sort by time             
-                [self.kuka_df.append(el.iloc[start:start + config['trainer_params']['input_length']])
-                                     for start in range(len(el) - config['trainer_params']['input_length'] + 1)]
-        # add column for risk
-        self.kuka_df['risk_level'] = 'Low'
-        # add risky intervals
+                el.sort_values(by=['time'], inplace=True) # sort by time             
+                for start in range(len(el) - config['trainer_params']['input_length'] + 1):
+                    window_df = el.iloc[start:start + config['trainer_params']['input_length']]
+                    self.kuka_df.append(window_df)
         
-        try:
-            df = pd.read_csv('20220811_collisions_timestamp.xlsx')
-            anomalies = []
-            df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S')
-            timezone_offset = -2
-            df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True) + pd.Timedelta(hours=timezone_offset)
+        if verbose: print('files were read...')
+        self.kuka_df = self.kuka_df[:15000] #temporarely cutting it to test faster
 
-            # Separare le righe di inizio e fine
-            starts = df[df['Inizio/fine'] == 'i'].reset_index(drop=True)
-            ends = df[df['Inizio/fine'] == 'f'].reset_index(drop=True)
+        # add column for risk
+        for window in self.kuka_df:
+            window.loc[:, 'risk_level'] = 'Low'
+        if verbose: print('risk_level column added...')
+        #print(self.kuka_df.head())
+        # add risky intervals
+        if self.keep_faulty:
+            try:
+                print('start adding high risk')
+                df = pd.read_excel(os.path.join(data_path,'20220811_collisions_timestamp.xlsx'))
+                print('found the excel and loaded it...')
+                anomalies = []
+                df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S')
+                timezone_offset = -2
+                df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True) + pd.Timedelta(hours=timezone_offset)
 
-            # Assumiamo che ogni 'i' ha un corrispondente 'f' nella stessa sequenza
-            for i, (start, end) in enumerate(zip(starts['Timestamp'], ends['Timestamp'])):
-                duration = (end - start).total_seconds() * 1000  # Durata in millisecondi
-                anomalies.append({
-                    'ID': i + 1,
-                    'Timestamp-Start': start.strftime('%Y-%m-%d %H:%M:%S'),
-                    'Timestamp-End': end.strftime('%Y-%m-%d %H:%M:%S'),
-                    'Duration (ms)': duration})
-             
-            mask = np.logical_or.reduce([
-                    (self.kuka_df['time'] >= anomaly['Timestamp-Start']) \
-                        & (self.kuka_df['time'] <= anomaly['Timestamp-End'])
-                    for anomaly in anomalies])   
-            self.kuka_df.loc[mask, 'risk_level'] = 'High'
-        except: pass
-        # drop time column
-        self.kuka_df = self.kuka_df.drop(columns=['time'])
+                # Separare le righe di inizio e fine
+                starts = df[df['Inizio/fine'] == 'i'].reset_index(drop=True)
+                ends = df[df['Inizio/fine'] == 'f'].reset_index(drop=True)
+
+                # Assumiamo che ogni 'i' ha un corrispondente 'f' nella stessa sequenza
+                for i, (start, end) in enumerate(zip(starts['Timestamp'], ends['Timestamp'])):
+                    duration = (end - start).total_seconds() * 1000  # Durata in millisecondi
+                    anomalies.append({
+                        'ID': i + 1,
+                        'Timestamp-Start': start.strftime('%Y-%m-%d %H:%M:%S'),
+                        'Timestamp-End': end.strftime('%Y-%m-%d %H:%M:%S'),
+                        'Duration (ms)': duration})
+
+                for window in self.kuka_df:
+                    mask = np.logical_or.reduce([
+                            (window['time'] >= anomaly['Timestamp-Start']) \
+                                & (window['time'] <= anomaly['Timestamp-End'])
+                            for anomaly in anomalies])   
+                    window.loc[mask, 'risk_level'] = 'High'
+                print('end adding high risk')
+            except Exception as e: 
+                if self.keep_faulty: raise 
+        # drop time column and extract risk_level as targets
+        self.targets = [window['risk_level'].values for window in self.kuka_df]
+        self.kuka_df = [window.drop(columns=['time', 'risk_level']) for window in self.kuka_df]
+        #print(self.kuka_df.head())
 
         #fit one hot encoder on labels
         if not self.test:
             print("--- Train Dataset ---")
-            self.risk_encoder = OneHotEncoder()
-            self.risk_encoder.fit(self.kuka_df["risk_level"].values.reshape(-1, 1))
+            if self.risk_encoder is None:
+                self.risk_encoder = OneHotEncoder()
+                self.risk_encoder.fit(self.targets.reshape(-1, 1))
             #preprocess df
             print("preprocessing ... ")
-            self.kuka_df = self.__preprocess__(verbose)
-            #save dataframe structure to apply on unseen data
             self.header_columns = []
-            self.kept_columns = self.kuka_df.columns
+            self.kuka_df = self.__preprocess__(verbose)
+            #save dataframe structure to apply on unseen data         
+            self.kept_columns = self.kuka_df[0].columns
         elif self.test:
             print("--- Test Dataset ---")
             if columns_to_keep is not None:
-                column_to_drop = [ x for x in self.kuka_df.columns if x not in columns_to_keep]
-                self.kuka_df.drop(column_to_drop, axis=1, inplace=True)
+                column_to_drop = [ x for x in self.kuka_df[0].columns if x not in columns_to_keep]
+                [window.drop(column_to_drop, axis=1, inplace=True) for window in self.kuka_df] 
             self.header_columns = []
+        if verbose: print('df len is:', len(self.kuka_df), 'window shape is:', self.kuka_df[0].shape)
 
     @property
     def X(self):
@@ -86,57 +106,28 @@ class KukaDataset(Dataset):
     @property
     def y(self):
         self.kuka_df.loc[:, "risk_level"]
-
-    def __preprocess__(self, verbose = False):
+    
+    def __preprocess__(self, verbose=False):
         """
-        Preprocess the kuka df by removing NaN columns, static columns and correlated features
+        Preprocess the kuka df by removing NaN columns, static columns, and correlated features
         """
         assert self.kuka_df is not None
-        
-        if verbose:
-            print("Dropping all NaN column")
-        self.kuka_df.dropna(axis = 1, inplace=True)
-        if verbose:
-            print("Dropping all static columns")
-        columns_to_drop = self.kuka_df.loc[:, self.kuka_df.apply(pd.Series.nunique) == 1].columns
-        columns_to_drop = [ x for x in columns_to_drop if x not in self.header_columns]
-        self.kuka_df.drop(columns_to_drop, axis=1, inplace=True)
+
+        if verbose: print("Dropping all NaN columns across all windows")
+        concatenated_df = pd.concat(self.kuka_df)
+        columns_with_nan = concatenated_df.columns[concatenated_df.isna().any()].tolist()
+        self.kuka_df = [window.drop(columns_with_nan, axis=1) for window in self.kuka_df]
+
+        if verbose:print("Dropping all static columns across all windows")
+        columns_to_drop = concatenated_df.loc[:, concatenated_df.apply(pd.Series.nunique) == 1].columns
+        columns_to_drop = [x for x in columns_to_drop if x not in self.header_columns]
+        self.kuka_df = [window.drop(columns_to_drop, axis=1) for window in self.kuka_df]
+
         return self.kuka_df
+
     
     def get_schema(self):
         return self.kept_columns
-        
-    def __group_by_chassis__(self, verbose = True):
-        assert self.kuka_df is not None
-        
-        #each chassis has now a df with its multivariate time series
-        self.df_list = []
-        groups = self.kuka_df.groupby("ChassisId_encoded")
-        for name, group_df in tqdm.tqdm(groups, desc="Group and feature extraction"):
-            if (not self.test and (len(group_df) < 5) or 
-                                  ((not self.keepfaulty) and (np.sum(group_df['risk_level'].values != 'Low') > 0))):
-                continue
-            
-            group_headings = group_df[self.header_columns]
-            group_features = group_df.drop(self.header_columns, axis = 1)
-
-            # diffs = group_features.diff(axis=1).fillna(0)
-            # diffs.columns = [x + "_diff" for x in group_features.columns]
-
-            #wavelet_df = wavelet_spectrogram(group_features, 5)
-
-            group_df = pd.concat([group_headings.reset_index(drop=True), 
-                                  group_features.reset_index(drop=True), 
-                                #   diffs.reset_index(drop=True),
-                                  #wavelet_df.reset_index(drop=True)
-                                  ], axis=1)
-
-            self.df_list.append(group_df)
-
-        if not self.test:
-            self.df_list = [x for x in self.df_list if len(x) > 10]
-        print(f"{len(self.df_list)}")
-        return self.df_list
     
     def get_n_features(self):
         assert self.kuka_df is not None
@@ -144,7 +135,7 @@ class KukaDataset(Dataset):
         return features.shape[-1]
         
     def __len__(self):
-        return len(self.df_list)
+        return len(self.kuka_df)
 
     def __getitem__(self, idx):
         """_summary_
@@ -156,25 +147,18 @@ class KukaDataset(Dataset):
             tuple: time_series, one_hot labels for each point in time series
         """
         assert idx < len(self), f"Got {idx=} when {len(self)=}"
-        # retrieve the idx-th group
-        ts = self.df_list[idx].sort_values(by=["Timesteps"], ascending=True)
-        # retrieve all usefull infromation from that df
-        chassis = ts["ChassisId_encoded"].iloc[0]
-        # generate multivariate timesereies (n_timesteps, 289) 289 atm with simple preprocess
-
-        time_series = ts.drop(self.header_columns, axis = 1).values
-
+        time_series = self.kuka_df[idx]
         # point_wise labels
         if not self.test:
             #train data with labels 
-            timestep_labels = ts["risk_level"]
-            labels = self.risk_encoder.transform(timestep_labels.values.reshape(-1, 1)).todense()
+            timestep_labels = self.targets[idx]
+            labels = self.risk_encoder.transform(np.array(timestep_labels).reshape(-1, 1)).todense()
         elif self.test:
             #test data without risk_level as key in dataframe
             labels = np.empty((len(time_series),3))
             labels.fill(np.nan)
 
-        return torch.transpose(torch.Tensor(time_series), 1, 0) , torch.transpose(torch.Tensor(labels), 1, 0)
+        return torch.transpose(torch.Tensor(time_series.values), 1, 0) , torch.transpose(torch.Tensor(labels), 1, 0)
     
     @staticmethod
     def padding_collate_fn(batch):
@@ -201,4 +185,4 @@ class KukaDataset(Dataset):
         #    labels_alligned[i, :, max_len - (window_offset - max(0,window_offset - max_len)):] = labels[i][:,max(0,window_offset - max_len):window_offset]
         #    # set 1 where meaningful values
         #    mask[i,:window_offset] = 1
-        return data, labels # data_alligned, labels_alligned, mask
+        return data, labels # data_alligned, labels_alligned
