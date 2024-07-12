@@ -13,7 +13,8 @@ class KukaDataset(Dataset):
     ds_config = None
     
     def __init__(self, data_path = "", verbose=True, test=False, columns_to_keep=None, keep_faulty=True, risk_encoder=None,
-                 wlist=None, config: dict = None):
+                 wlist=None, time_first=False, config: dict = None):
+        self.time_first=time_first
         self.test = test
         self.keep_faulty = keep_faulty
         self.risk_encoder = risk_encoder
@@ -158,6 +159,7 @@ class KukaDataset(Dataset):
             labels = np.empty((len(time_series),3))
             labels.fill(np.nan)
 
+        if self.time_first: return torch.Tensor(time_series.values) , torch.Tensor(labels)
         return torch.transpose(torch.Tensor(time_series.values), 1, 0) , torch.transpose(torch.Tensor(labels), 1, 0)
     
     @staticmethod
