@@ -56,6 +56,7 @@ def train_stage1(config: dict,
                  gpu_device_idx,
                  do_validate: bool,
                  #input_size: int
+                 accelerator='gpu'
                  ):
     """
     :param do_validate: if True, validation is conducted during training with a test dataset.
@@ -69,8 +70,8 @@ def train_stage1(config: dict,
                          enable_checkpointing=False,
                          #callbacks=[LearningRateMonitor(logging_interval='epoch')],
                          max_epochs=config['trainer_params']['max_epochs']['stage1'],
-                         devices=[gpu_device_idx,],
-                         accelerator='gpu')
+                         devices = [gpu_device_idx] if gpu_device_idx is not None else None,
+                         accelerator=accelerator)
     trainer.fit(train_exp,
                 train_dataloaders=train_data_loader,
                 val_dataloaders=test_data_loader if do_validate else None
