@@ -1,5 +1,5 @@
 dataset:
-  in_channels: 289
+  in_channels: 70
   data_scaling: True
   batch_sizes:
     stage1: 128
@@ -12,9 +12,9 @@ exp_params:
 
 trainer_params:
   max_epochs:
-    stage1: 5
+    stage1: 2
     stage2: 5 # 10000
-  input_length: 25 # Andre added this °u°
+  input_length: 100 # Andre added this °u°
 
 
 encoder:
