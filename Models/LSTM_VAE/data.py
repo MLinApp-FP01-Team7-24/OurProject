@@ -1,3 +1,8 @@
+import os
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
 def is_collision(point, collisions_interval):
     for i in range(collisions_interval.shape[1]):
         x = collisions_interval[:, i]
