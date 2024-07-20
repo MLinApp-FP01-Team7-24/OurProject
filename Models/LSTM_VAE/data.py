@@ -100,8 +100,8 @@ def get_df_action(filepaths_csv, filepaths_meta, action2int=None, delimiter=";")
 def get_records(filepath, sampling, file_numbers):
     samp = str(sampling)
     print(f"Loading records with sampling {samp}.")
-    filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{samp}s.csv") for r in file_numbers]
-    filepath_meta = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{samp}s.metadata") for r in file_numbers]
+    filepath_csv = [os.path.join(filepath, f"rec{str(r)}_20220811_rbtc_{samp}s.csv") for r in file_numbers]
+    filepath_meta = [os.path.join(filepath, f"rec{str(r)}_20220811_rbtc_{samp}s.metadata") for r in file_numbers]
     df_action, _, _, _ = get_df_action(filepath_csv, filepath_meta)
     df_action = df_action.drop(columns=['time', 'action', 'duration'])
 
