@@ -35,7 +35,7 @@ def get_df(filepaths_csv, delimiter=";"):
 def get_records(filepath, sampling, file_numbers):
     filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{sampling}s.csv") for r in file_numbers]
     df = get_df(filepath_csv)
-    df = df.drop(columns=['time', 'action', 'duration'])
+    df = df.drop(columns=['time'])
 
     return df
 
@@ -75,14 +75,14 @@ def get_train_windows(window_size, filepath='./kuka_dataset/normal', sampling=0.
 
     return train_windows
 
-def get_cal_windows(window_size, k_pa, filepath='./kuka_dataset/collision', sampling=0.1, file_numbers=[6]):
+def get_cal_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sampling=0.1, file_numbers=[6]):
     cal_records = get_records(filepath, sampling, file_numbers)
     cal_windows = get_windows(cal_records, window_size)
     cal_windows, cal_labels = get_windows_labels_pa(cal_records, window_size, collisions_interval, k_pa)
 
     return cal_windows, cal_labels
 
-def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collision', sampling=0.1, file_numbers=[1, 5]):
+def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sampling=0.1, file_numbers=[1, 5]):
     test_records = get_records(filepath, sampling, file_numbers)
     test_windows = get_windows(test_records, window_size)
     test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
