@@ -74,21 +74,29 @@ def get_windows_labels_pa(records, window_size, collisions_interval, k_pa):
     return windows, labels
 
 def get_train_windows(window_size, filepath='./kuka_dataset/normal', sampling=0.1, file_numbers=[0, 2, 3, 4]):
+    print("Reading training data...")
     train_records = get_records(filepath, sampling, file_numbers)
+    print("Getting windows for training data...")
     train_windows = get_windows(train_records, window_size)
 
     return train_windows
 
 def get_cal_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sampling=0.1, file_numbers=[6]):
+    print("Reading calibration data...")
     cal_records = get_records(filepath, sampling, file_numbers)
+    print("Reading collisions data...")
     collisions_interval = get_collisions(filepath)
+    print("Getting windows and labels for calibration data...")
     cal_windows, cal_labels = get_windows_labels_pa(cal_records, window_size, collisions_interval, k_pa)
 
     return cal_windows, cal_labels
 
 def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sampling=0.1, file_numbers=[1, 5]):
+    print("Reading test data...")
     test_records = get_records(filepath, sampling, file_numbers)
+    print("Reading collisions data...")
     collisions_interval = get_collisions(filepath)
+    print("Getting windows and labels for test data...")
     test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
 
     return test_windows, test_labels
