@@ -98,14 +98,14 @@ def get_df_action(filepaths_csv, filepaths_meta, action2int=None, delimiter=";")
     return df_action, df, df_meta, action2int
 
 def get_records(filepath, sampling, file_numbers):
-    filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{sampling}s.csv") for r in file_numbers]
-    filepath_meta = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{sampling}s.metadata") for r in file_numbers]
+    filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{str(sampling)}s.csv") for r in file_numbers]
+    filepath_meta = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{str(sampling)}s.metadata") for r in file_numbers]
     df_action, _, _, _ = get_df_action(filepath_csv, filepath_meta)
     df_action = df_action.drop(columns=['time', 'action', 'duration'])
 
     return df_action
 
-def get_collisions(filepath='./kuka_dataset/collision/'):
+def get_collisions(filepath):
     collisions = pd.read_excel(os.path.join(filepath, "20220811_collisions_timestamp.xlsx"))
     collisions_start = collisions[collisions['Inizio/fine'] == "i"].Timestamp - pd.to_timedelta(2, 'h')
     collisions_end = collisions[collisions['Inizio/fine'] == "f"].Timestamp - pd.to_timedelta(2, 'h')
@@ -135,20 +135,20 @@ def get_windows_labels_pa(records, window_size, collisions_interval, k_pa):
 
     return windows, labels
 
-def get_train_windows(filepath='./kuka_dataset/normal/', sampling=0.1, file_numbers=[0, 2, 3, 4]):
+def get_train_windows(filepath='./kuka_dataset/normal', sampling=0.1, file_numbers=[0, 2, 3, 4]):
     train_records = get_records(filepath, sampling, file_numbers)
     train_windows = get_windows(train_records, window_size)
 
     return train_windows
 
-def get_cal_windows(window_size, k_pa, filepath='./kuka_dataset/collision/', sampling=0.1, file_numbers=[6]):
+def get_cal_windows(window_size, k_pa, filepath='./kuka_dataset/collision', sampling=0.1, file_numbers=[6]):
     cal_records = get_records(filepath, sampling, file_numbers)
     cal_windows = get_windows(cal_records, window_size)
     cal_windows, cal_labels = get_windows_labels_pa(cal_records, window_size, collisions_interval, k_pa)
 
     return cal_windows, cal_labels
 
-def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collision/', sampling=0.1, file_numbers=[1, 5]):
+def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collision', sampling=0.1, file_numbers=[1, 5]):
     test_records = get_records(filepath, sampling, file_numbers)
     test_windows = get_windows(test_records, window_size)
     test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
