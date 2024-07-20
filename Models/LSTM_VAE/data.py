@@ -98,8 +98,10 @@ def get_df_action(filepaths_csv, filepaths_meta, action2int=None, delimiter=";")
     return df_action, df, df_meta, action2int
 
 def get_records(filepath, sampling, file_numbers):
-    filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{str(sampling)}s.csv") for r in file_numbers]
-    filepath_meta = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{str(sampling)}s.metadata") for r in file_numbers]
+    samp = str(sampling)
+    print(f"Loading records with sampling {samp}.")
+    filepath_csv = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{samp}s.csv") for r in file_numbers]
+    filepath_meta = [os.path.join(filepath, f"rec{r}_20220811_rbtc_{samp}s.metadata") for r in file_numbers]
     df_action, _, _, _ = get_df_action(filepath_csv, filepath_meta)
     df_action = df_action.drop(columns=['time', 'action', 'duration'])
 
@@ -135,7 +137,7 @@ def get_windows_labels_pa(records, window_size, collisions_interval, k_pa):
 
     return windows, labels
 
-def get_train_windows(filepath='./kuka_dataset/normal', sampling=0.1, file_numbers=[0, 2, 3, 4]):
+def get_train_windows(window_size, filepath='./kuka_dataset/normal', sampling=0.1, file_numbers=[0, 2, 3, 4]):
     train_records = get_records(filepath, sampling, file_numbers)
     train_windows = get_windows(train_records, window_size)
 
