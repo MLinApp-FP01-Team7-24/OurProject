@@ -23,6 +23,13 @@ def get_df(filepaths_csv, delimiter=";"):
     # Sort columns by name !!!
     df = df.sort_index(axis=1)
 
+    if pd.api.types.is_datetime64tz_dtype(df['time']):
+        # Convert timezone-aware datetime to timezone-naive datetime
+        df['time'] = df['time'].dt.tz_localize(None)
+    else:
+        # Convert the 'time' column to datetime if it's not already in datetime format
+        df['time'] = pd.to_datetime(df['time'], format="%Y-%m-%dT%H:%M:%S.%f")
+
     # Set timestamp as index
     df.index = pd.to_datetime(df.time.astype('datetime64[ms]'), format="%Y-%m-%dT%H:%M:%S.%f")
     # Drop useless columns
