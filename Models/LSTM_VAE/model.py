@@ -112,3 +112,15 @@ class LSTM_VAE(keras.Model):
 
         return {'loss': self.loss_metric.result()}
 
+def save_model(model, model_dir):
+    with open(model_dir + 'lstm_vae.json', 'w') as f:
+        f.write(model.to_json())
+    model.save_weights(model_dir + 'lstm_vae_ckpt')
+
+def load_model(model_dir):
+    lstm_vae_obj = {'Encoder': Encoder, 'Decoder': Decoder, 'Sampling': Sampling}
+    with keras.utils.custom_object_scope(lstm_vae_obj):
+        with open(model_dir + 'lstm_vae.json', 'r'):
+            model = keras.models.model_from_json(model_dir + 'lstm_vae.json')
+        model.load_weights(model_dir + 'lstem_vae_ckpt')
+    return model
