@@ -5,13 +5,14 @@ from tensorflow.keras import layers, regularizers, activations
 from tensorflow.keras import backend as K
 
 class Sampling(layers.Layer):
-    def __init__(self, name='sampling_z'):
+    def __init__(self, z_dim, name='sampling_z'):
         super(Sampling, self).__init__(name=name)
+        self.z_dim = z_dim
 
     def call(self, inputs):
         mu, logvar = inputs
         sigma = K.exp(logvar * 0.5)
-        epsilon = K.random_normal(shape=(mu.shape[0], z_dim), mean=0.0, stddev=1.0)
+        epsilon = K.random_normal(shape=(mu.shape[0], self.z_dim), mean=0.0, stddev=1.0)
         return mu + epsilon * sigma
 
     def get_config(self):
@@ -27,7 +28,7 @@ class Encoder(layers.Layer):
         self.encoder_lstm = layers.LSTM(lstm_h_dim, activation='softplus', name='encoder_lstm', stateful=True)
         self.z_mean = layers.Dense(z_dim, name='z_mean')
         self.z_logvar = layers.Dense(z_dim, name='z_log_var')
-        self.z_sample = Sampling()
+        self.z_sample = Sampling(z_dim)
 
     def call(self, inputs):
         self.encoder_inputs = inputs
