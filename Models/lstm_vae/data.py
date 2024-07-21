@@ -129,15 +129,15 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Reading collisions data...")
     collisions_interval = get_collisions(filepath_cal)
 
-    # print("Normalizing data...")
-    # min_max_scaler = MinMaxScaler()
-    # train_values = min_max_scaler.fit_transform(train_records.values)
-    # cal_values = min_max_scaler.fit_transform(cal_records.values)
-    # test_values = min_max_scaler.fit_transform(test_records.values)
+    print("Normalizing data...")
+    min_max_scaler = MinMaxScaler()
+    train_values = min_max_scaler.fit_transform(train_records.values)
+    cal_values = min_max_scaler.fit_transform(cal_records.values)
+    test_values = min_max_scaler.fit_transform(test_records.values)
 
-    # train_records = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
-    # cal_records = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
-    # test_records = pd.DataFrame(test_values, columns=test_records.columns, index=test_records.index)
+    train_records = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
+    cal_records = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
+    test_records = pd.DataFrame(test_values, columns=test_records.columns, index=test_records.index)
 
     print(np.max(train_records.values), np.min(train_records.values))
     print(np.max(cal_records.values), np.min(cal_records.values))
