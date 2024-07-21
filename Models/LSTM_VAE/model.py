@@ -1,4 +1,6 @@
 import tensorflow as tf
+import numpy as np
+import pandas as pd
 from tensorflow import keras, data
 from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras import layers, regularizers, activations
@@ -112,15 +114,26 @@ class LSTM_VAE(keras.Model):
 
         return {'loss': self.loss_metric.result()}
 
-def save_model(model, model_dir):
-    with open(model_dir + 'lstm_vae.json', 'w') as f:
-        f.write(model.to_json())
-    model.save_weights(model_dir + 'lstm_vae_ckpt')
+    def anomaly_score(self, x, batch_size=64):
+        if isinstance(x, data.Dataset):
+            dataset = x.batch(batch_size, drop_remainder=True)
+        elif isinstance(x, np.ndarray):
+            dataset = tf.convert_to_tensor(x, dtype='float32')
+            dataset = data.Dataset.from_tensor_slices(dataset)
+            dataset = dataset.batch(batch_size, drop_remainder=True)
+        elif isinstance(x, pd.DataFrame):
+            dataset = tf.convert_to_tensor(x.values, dtype='float32')
+            dataset = data.Dataset.from_tensor_slices(dataset)
+            dataset = dataset.batch(batch_size, drop_remainder=True)
+        elif isinstance(x, tf.Tensor):
+            dataset = data.Dataset.from_tensor_slices(x)
+            dataset = dataset.batch(batch_size, drop_remainder=True)
+        else:
+            raise ValueError("Input data type not supported")
 
-def load_model(model_dir):
-    lstm_vae_obj = {'Encoder': Encoder, 'Decoder': Decoder, 'Sampling': Sampling}
-    with keras.utils.custom_object_scope(lstm_vae_obj):
-        with open(model_dir + 'lstm_vae.json', 'r'):
-            model = keras.models.model_from_json(model_dir + 'lstm_vae.json')
-        model.load_weights(model_dir + 'lstem_vae_ckpt')
-    return model
+        y = self.predict(dataset)
+        anomaly_score = np.array((x[:y.shape[0]] - y) ** 2).mean(1)
+        
+        return anomaly_score
+
+
