@@ -132,8 +132,9 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Normalizing data...")
     min_max_scaler = MinMaxScaler()
     train_values = min_max_scaler.fit_transform(train_records.values)
-    cal_values = min_max_scaler.transform(cal_records.values)
-    test_values = min_max_scaler.transform(test_records.values)
+    print(min_max_scaler.data_max_, min_max_scaler.data_min_)
+    cal_values = min_max_scaler.fit_transform(cal_records.values)
+    test_values = min_max_scaler.fit_transform(test_records.values)
 
     train_records = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
     cal_records = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
