@@ -129,18 +129,16 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Reading collisions data...")
     collisions_interval = get_collisions(filepath_cal)
 
+    # print("Normalizing data...")
+    # min_max_scaler = MinMaxScaler()
+    # min_max_scaler.fit(train_records.values)
+    # train = normalize(train_records, min_max_scaler)
+    # cal = normalize(cal_records, min_max_scaler)
+    # test = normalize(test_records, min_max_scaler)
 
-
-    print("Normalizing data...")
-    min_max_scaler = MinMaxScaler()
-    min_max_scaler.fit(train_records.values)
-    train = normalize(train_records, min_max_scaler)
-    cal = normalize(cal_records, min_max_scaler)
-    test = normalize(test_records, min_max_scaler)
-
-    print(np.max(train.values), np.min(train.values))
-    print(np.max(cal.values), np.min(cal.values))
-    print(np.max(test.values), np.min(test.values))
+    # print(np.max(train.values), np.min(train.values))
+    # print(np.max(cal.values), np.min(cal.values))
+    # print(np.max(test.values), np.min(test.values))
 
     print("Getting windows for training data...")
     train_windows = get_windows(train, window_size)
