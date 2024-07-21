@@ -1,0 +1,849 @@
+2024-07-19 09:11:12,890 INFO #### Configuration Details ####
+path_to_config = /content/Time_Series_Anomaly_Detection/telemanom/config.yaml
+logger = <Logger telemanom (INFO)>
+train = True
+predict = True
+batch_size = 64
+window_size = 15
+smoothing_perc = 0.05
+error_buffer = 15
+loss_metric = mse
+optimizer = adam
+activation = leakyReLu
+validation_split = 0.2
+dropout = 0.2
+lstm_batch_size = 64
+weight_decay = 0.01
+learning_rate = 0.05
+epochs = 20
+layer_LSTM = 2
+layers = [80, 80]
+patience = 10
+min_delta = 0.0003
+l_s = 300
+n_predictions = 2
+p = 0.15
+run_id = 2024-07-18_20.57.21
+config_path = config.yaml
+sample_rate = ['0.1s']
+save_on_drive = True
+skip_graphics = False
+verbose = False
+treshold = True
+dataset_path = dataset/Kuka_v1/
+Please for more info about the model and the configuration see : data/2024-07-18_20.57.21/info_model/info_model.txt
+####End of Configuration Details ####
+
+2024-07-19 09:11:12,890 INFO Processing date: 20220811, rate: 0.1s
+2024-07-19 09:11:12,890 INFO Processing Stream # 1: sensor_id2_AccX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:15,434 INFO Loading the model for the channel sensor_id2_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccX.pt
+2024-07-19 09:11:15,675 INFO Correctly loaded the model for the channel sensor_id2_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccX.pt
+2024-07-19 09:11:17,347 INFO normalized prediction error: 0.00
+2024-07-19 09:11:18,333 INFO Metrics for the channel sensor_id2_AccX found n 30 anomalies predicted
+Precision: 23.68%
+Recall: 100.00%
+F1-score: 38.30%
+AUROC: 86.90%
+AUPRC: 18.89%
+2024-07-19 09:11:18,441 INFO Processing Stream # 2: sensor_id3_AccX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:21,427 INFO Loading the model for the channel sensor_id3_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccX.pt
+2024-07-19 09:11:21,429 INFO Correctly loaded the model for the channel sensor_id3_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccX.pt
+2024-07-19 09:11:23,277 INFO normalized prediction error: 0.42
+2024-07-19 09:11:24,286 INFO Metrics for the channel sensor_id3_AccX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:11:24,387 INFO Processing Stream # 3: sensor_id1_AccX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:27,995 INFO Loading the model for the channel sensor_id1_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccX.pt
+2024-07-19 09:11:27,998 INFO Correctly loaded the model for the channel sensor_id1_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccX.pt
+2024-07-19 09:11:29,878 INFO normalized prediction error: 0.01
+2024-07-19 09:11:31,160 INFO Metrics for the channel sensor_id1_AccX found n 7 anomalies predicted
+Precision: 16.67%
+Recall: 100.00%
+F1-score: 28.57%
+AUROC: 95.76%
+AUPRC: 8.33%
+2024-07-19 09:11:31,275 INFO Processing Stream # 4: sensor_id5_AccX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:34,018 INFO Loading the model for the channel sensor_id5_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccX.pt
+2024-07-19 09:11:34,020 INFO Correctly loaded the model for the channel sensor_id5_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccX.pt
+2024-07-19 09:11:35,608 INFO normalized prediction error: 0.08
+2024-07-19 09:11:36,802 INFO Metrics for the channel sensor_id5_AccX found n 9 anomalies predicted
+Precision: 57.14%
+Recall: 80.00%
+F1-score: 66.67%
+AUROC: 97.45%
+AUPRC: 46.18%
+2024-07-19 09:11:36,892 INFO Processing Stream # 5: sensor_id4_AccX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:41,203 INFO Loading the model for the channel sensor_id4_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccX.pt
+2024-07-19 09:11:41,208 INFO Correctly loaded the model for the channel sensor_id4_AccX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccX.pt
+2024-07-19 09:11:42,800 INFO normalized prediction error: 0.06
+2024-07-19 09:11:43,702 INFO Metrics for the channel sensor_id4_AccX found n 34 anomalies predicted
+Precision: 40.00%
+Recall: 100.00%
+F1-score: 57.14%
+AUROC: 91.67%
+AUPRC: 42.41%
+2024-07-19 09:11:43,810 INFO Processing Stream # 6: sensor_id5_AccY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:46,272 INFO Loading the model for the channel sensor_id5_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccY.pt
+2024-07-19 09:11:46,274 INFO Correctly loaded the model for the channel sensor_id5_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccY.pt
+2024-07-19 09:11:47,841 INFO normalized prediction error: 0.03
+2024-07-19 09:11:48,810 INFO Metrics for the channel sensor_id5_AccY found n 62 anomalies predicted
+Precision: 25.00%
+Recall: 76.92%
+F1-score: 37.74%
+AUROC: 83.65%
+AUPRC: 26.89%
+2024-07-19 09:11:48,907 INFO Processing Stream # 7: sensor_id3_AccY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:52,734 INFO Loading the model for the channel sensor_id3_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccY.pt
+2024-07-19 09:11:52,737 INFO Correctly loaded the model for the channel sensor_id3_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccY.pt
+2024-07-19 09:11:54,427 INFO normalized prediction error: 0.34
+2024-07-19 09:11:55,296 INFO Metrics for the channel sensor_id3_AccY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:11:55,402 INFO Processing Stream # 8: sensor_id2_AccY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:11:58,399 INFO Loading the model for the channel sensor_id2_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccY.pt
+2024-07-19 09:11:58,401 INFO Correctly loaded the model for the channel sensor_id2_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccY.pt
+2024-07-19 09:11:59,982 INFO normalized prediction error: 0.05
+2024-07-19 09:12:00,802 INFO Metrics for the channel sensor_id2_AccY found n 24 anomalies predicted
+Precision: 35.29%
+Recall: 100.00%
+F1-score: 52.17%
+AUROC: 93.75%
+AUPRC: 25.72%
+2024-07-19 09:12:00,909 INFO Processing Stream # 9: sensor_id4_AccY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:03,650 INFO Loading the model for the channel sensor_id4_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccY.pt
+2024-07-19 09:12:03,654 INFO Correctly loaded the model for the channel sensor_id4_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccY.pt
+2024-07-19 09:12:05,498 INFO normalized prediction error: 0.17
+2024-07-19 09:12:06,416 INFO Metrics for the channel sensor_id4_AccY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:12:06,508 INFO Processing Stream # 10: sensor_id5_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:09,234 INFO Loading the model for the channel sensor_id5_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccZ.pt
+2024-07-19 09:12:09,237 INFO Correctly loaded the model for the channel sensor_id5_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AccZ.pt
+2024-07-19 09:12:10,809 INFO normalized prediction error: 0.04
+2024-07-19 09:12:11,732 INFO Metrics for the channel sensor_id5_AccZ found n 63 anomalies predicted
+Precision: 33.33%
+Recall: 65.00%
+F1-score: 44.07%
+AUROC: 81.13%
+AUPRC: 35.05%
+2024-07-19 09:12:11,838 INFO Processing Stream # 11: sensor_id1_AccY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:14,571 INFO Loading the model for the channel sensor_id1_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccY.pt
+2024-07-19 09:12:14,573 INFO Correctly loaded the model for the channel sensor_id1_AccY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccY.pt
+2024-07-19 09:12:16,145 INFO normalized prediction error: 0.26
+2024-07-19 09:12:16,794 INFO Metrics for the channel sensor_id1_AccY found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:12:16,917 INFO Processing Stream # 12: sensor_id3_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:20,654 INFO Loading the model for the channel sensor_id3_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccZ.pt
+2024-07-19 09:12:20,657 INFO Correctly loaded the model for the channel sensor_id3_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AccZ.pt
+2024-07-19 09:12:22,729 INFO normalized prediction error: 0.03
+2024-07-19 09:12:24,213 INFO Metrics for the channel sensor_id3_AccZ found n 15 anomalies predicted
+Precision: 38.10%
+Recall: 100.00%
+F1-score: 55.17%
+AUROC: 90.27%
+AUPRC: 23.82%
+2024-07-19 09:12:24,319 INFO Processing Stream # 13: sensor_id2_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:26,989 INFO Loading the model for the channel sensor_id2_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccZ.pt
+2024-07-19 09:12:26,991 INFO Correctly loaded the model for the channel sensor_id2_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AccZ.pt
+2024-07-19 09:12:28,597 INFO normalized prediction error: 0.08
+2024-07-19 09:12:29,396 INFO Metrics for the channel sensor_id2_AccZ found n 23 anomalies predicted
+Precision: 42.86%
+Recall: 60.00%
+F1-score: 50.00%
+AUROC: 95.21%
+AUPRC: 44.73%
+2024-07-19 09:12:29,502 INFO Processing Stream # 14: sensor_id4_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:32,403 INFO Loading the model for the channel sensor_id4_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccZ.pt
+2024-07-19 09:12:32,406 INFO Correctly loaded the model for the channel sensor_id4_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AccZ.pt
+2024-07-19 09:12:34,318 INFO normalized prediction error: 0.00
+2024-07-19 09:12:35,409 INFO Metrics for the channel sensor_id4_AccZ found n 11 anomalies predicted
+Precision: 9.09%
+Recall: 100.00%
+F1-score: 16.67%
+AUROC: 91.53%
+AUPRC: 4.55%
+2024-07-19 09:12:35,522 INFO Processing Stream # 15: sensor_id1_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:38,088 INFO Loading the model for the channel sensor_id1_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccZ.pt
+2024-07-19 09:12:38,090 INFO Correctly loaded the model for the channel sensor_id1_AccZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AccZ.pt
+2024-07-19 09:12:39,687 INFO normalized prediction error: 0.03
+2024-07-19 09:12:40,635 INFO Metrics for the channel sensor_id1_AccZ found n 66 anomalies predicted
+Precision: 22.41%
+Recall: 86.67%
+F1-score: 35.62%
+AUROC: 78.88%
+AUPRC: 17.42%
+2024-07-19 09:12:40,740 INFO Processing Stream # 16: machine_nameAbb Robot_export_reactive_energy , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:12:54,930 INFO Epoch 0, Loss: 880.3884887695312
+2024-07-19 09:13:18,484 INFO Epoch 2, Loss: 1783.88916015625
+2024-07-19 09:13:40,927 INFO Epoch 4, Loss: 1181.056396484375
+2024-07-19 09:14:03,697 INFO Epoch 6, Loss: 933.1636352539062
+2024-07-19 09:14:25,830 INFO Epoch 8, Loss: 468.4685974121094
+2024-07-19 09:14:47,881 INFO Epoch 10, Loss: 945.3394165039062
+2024-07-19 09:15:10,445 INFO Epoch 12, Loss: 610.2400512695312
+2024-07-19 09:15:32,571 INFO Epoch 14, Loss: 463.1455383300781
+2024-07-19 09:15:54,872 INFO Epoch 16, Loss: 687.6429443359375
+2024-07-19 09:16:17,160 INFO Epoch 18, Loss: 306.78759765625
+2024-07-19 09:16:28,204 INFO Epoch 19, Loss: 674.5036010742188
+2024-07-19 09:16:30,053 INFO normalized prediction error: 4.49
+2024-07-19 09:16:31,256 INFO Metrics for the channel machine_nameAbb Robot_export_reactive_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:16:44,458 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_export_reactive_energy.pdf
+2024-07-19 09:16:44,590 INFO Processing Stream # 17: sensor_id2_AngX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:16:47,645 INFO Loading the model for the channel sensor_id2_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngX.pt
+2024-07-19 09:16:47,648 INFO Correctly loaded the model for the channel sensor_id2_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngX.pt
+2024-07-19 09:16:49,286 INFO normalized prediction error: 0.05
+2024-07-19 09:16:50,042 INFO Metrics for the channel sensor_id2_AngX found n 13 anomalies predicted
+Precision: 16.67%
+Recall: 100.00%
+F1-score: 28.57%
+AUROC: 95.90%
+AUPRC: 8.33%
+2024-07-19 09:16:50,146 INFO Processing Stream # 18: sensor_id1_AngX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:16:52,772 INFO Loading the model for the channel sensor_id1_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngX.pt
+2024-07-19 09:16:52,774 INFO Correctly loaded the model for the channel sensor_id1_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngX.pt
+2024-07-19 09:16:54,461 INFO normalized prediction error: 0.04
+2024-07-19 09:16:55,330 INFO Metrics for the channel sensor_id1_AngX found n 35 anomalies predicted
+Precision: 25.00%
+Recall: 100.00%
+F1-score: 40.00%
+AUROC: 85.89%
+AUPRC: 30.05%
+2024-07-19 09:16:55,438 INFO Processing Stream # 19: machine_nameAbb Robot_phase_angle , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:17:10,484 INFO Epoch 0, Loss: 715.1641845703125
+2024-07-19 09:17:33,716 INFO Epoch 2, Loss: 947.7646484375
+2024-07-19 09:17:56,453 INFO Epoch 4, Loss: 443.39404296875
+2024-07-19 09:18:18,735 INFO Epoch 6, Loss: 285.3485107421875
+2024-07-19 09:18:41,354 INFO Epoch 8, Loss: 441.3992919921875
+2024-07-19 09:19:04,140 INFO Epoch 10, Loss: 241.9978790283203
+2024-07-19 09:19:26,577 INFO Epoch 12, Loss: 267.8968811035156
+2024-07-19 09:19:49,215 INFO Epoch 14, Loss: 178.13720703125
+2024-07-19 09:20:11,908 INFO Epoch 16, Loss: 209.27748107910156
+2024-07-19 09:20:34,399 INFO Epoch 18, Loss: 221.921630859375
+2024-07-19 09:20:45,721 INFO Epoch 19, Loss: 332.2757263183594
+2024-07-19 09:20:47,294 INFO normalized prediction error: 6.31
+2024-07-19 09:20:48,065 INFO Metrics for the channel machine_nameAbb Robot_phase_angle found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:21:02,851 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_phase_angle.pdf
+2024-07-19 09:21:02,986 INFO Processing Stream # 20: sensor_id3_AngX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:06,881 INFO Loading the model for the channel sensor_id3_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngX.pt
+2024-07-19 09:21:06,884 INFO Correctly loaded the model for the channel sensor_id3_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngX.pt
+2024-07-19 09:21:08,547 INFO normalized prediction error: 0.12
+2024-07-19 09:21:09,365 INFO Metrics for the channel sensor_id3_AngX found n 27 anomalies predicted
+Precision: 66.67%
+Recall: 44.44%
+F1-score: 53.33%
+AUROC: 90.28%
+AUPRC: 43.70%
+2024-07-19 09:21:09,478 INFO Processing Stream # 21: sensor_id2_AngY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:12,118 INFO Loading the model for the channel sensor_id2_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngY.pt
+2024-07-19 09:21:12,121 INFO Correctly loaded the model for the channel sensor_id2_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngY.pt
+2024-07-19 09:21:13,778 INFO normalized prediction error: 0.28
+2024-07-19 09:21:14,483 INFO Metrics for the channel sensor_id2_AngY found n 12 anomalies predicted
+Precision: 35.29%
+Recall: 100.00%
+F1-score: 52.17%
+AUROC: 95.24%
+AUPRC: 55.82%
+2024-07-19 09:21:14,595 INFO Processing Stream # 22: sensor_id1_AngY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:17,744 INFO Loading the model for the channel sensor_id1_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngY.pt
+2024-07-19 09:21:17,746 INFO Correctly loaded the model for the channel sensor_id1_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngY.pt
+2024-07-19 09:21:19,774 INFO normalized prediction error: 0.17
+2024-07-19 09:21:20,918 INFO Metrics for the channel sensor_id1_AngY found n 7 anomalies predicted
+Precision: 37.50%
+Recall: 100.00%
+F1-score: 54.55%
+AUROC: 96.70%
+AUPRC: 26.01%
+2024-07-19 09:21:21,039 INFO Processing Stream # 23: sensor_id5_AngX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:23,659 INFO Loading the model for the channel sensor_id5_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngX.pt
+2024-07-19 09:21:23,662 INFO Correctly loaded the model for the channel sensor_id5_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngX.pt
+2024-07-19 09:21:25,340 INFO normalized prediction error: 0.16
+2024-07-19 09:21:26,074 INFO Metrics for the channel sensor_id5_AngX found n 5 anomalies predicted
+Precision: 50.00%
+Recall: 100.00%
+F1-score: 66.67%
+AUROC: 99.07%
+AUPRC: 70.83%
+2024-07-19 09:21:26,182 INFO Processing Stream # 24: sensor_id4_AngX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:28,881 INFO Loading the model for the channel sensor_id4_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngX.pt
+2024-07-19 09:21:28,884 INFO Correctly loaded the model for the channel sensor_id4_AngX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngX.pt
+2024-07-19 09:21:30,608 INFO normalized prediction error: 0.31
+2024-07-19 09:21:31,699 INFO Metrics for the channel sensor_id4_AngX found n 4 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:21:31,796 INFO Processing Stream # 25: sensor_id3_AngY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:35,316 INFO Loading the model for the channel sensor_id3_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngY.pt
+2024-07-19 09:21:35,318 INFO Correctly loaded the model for the channel sensor_id3_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngY.pt
+2024-07-19 09:21:36,997 INFO normalized prediction error: 0.10
+2024-07-19 09:21:37,731 INFO Metrics for the channel sensor_id3_AngY found n 8 anomalies predicted
+Precision: 66.67%
+Recall: 66.67%
+F1-score: 66.67%
+AUROC: 97.62%
+AUPRC: 37.50%
+2024-07-19 09:21:37,845 INFO Processing Stream # 26: sensor_id2_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:40,510 INFO Loading the model for the channel sensor_id2_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngZ.pt
+2024-07-19 09:21:40,512 INFO Correctly loaded the model for the channel sensor_id2_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_AngZ.pt
+2024-07-19 09:21:42,215 INFO normalized prediction error: 0.10
+2024-07-19 09:21:42,968 INFO Metrics for the channel sensor_id2_AngZ found n 24 anomalies predicted
+Precision: 57.14%
+Recall: 50.00%
+F1-score: 53.33%
+AUROC: 91.21%
+AUPRC: 32.99%
+2024-07-19 09:21:43,076 INFO Processing Stream # 27: sensor_id1_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:46,516 INFO Loading the model for the channel sensor_id1_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngZ.pt
+2024-07-19 09:21:46,519 INFO Correctly loaded the model for the channel sensor_id1_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_AngZ.pt
+2024-07-19 09:21:48,492 INFO normalized prediction error: 0.06
+2024-07-19 09:21:49,230 INFO Metrics for the channel sensor_id1_AngZ found n 25 anomalies predicted
+Precision: 22.22%
+Recall: 80.00%
+F1-score: 34.78%
+AUROC: 89.77%
+AUPRC: 14.51%
+2024-07-19 09:21:49,340 INFO Processing Stream # 28: sensor_id3_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:51,820 INFO Loading the model for the channel sensor_id3_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngZ.pt
+2024-07-19 09:21:51,823 INFO Correctly loaded the model for the channel sensor_id3_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_AngZ.pt
+2024-07-19 09:21:53,516 INFO normalized prediction error: 0.51
+2024-07-19 09:21:54,374 INFO Metrics for the channel sensor_id3_AngZ found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:21:54,481 INFO Processing Stream # 29: sensor_id4_AngY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:21:57,083 INFO Loading the model for the channel sensor_id4_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngY.pt
+2024-07-19 09:21:57,085 INFO Correctly loaded the model for the channel sensor_id4_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngY.pt
+2024-07-19 09:21:58,875 INFO normalized prediction error: 0.22
+2024-07-19 09:21:59,855 INFO Metrics for the channel sensor_id4_AngY found n 0 anomalies predicted
+Precision: 100.00%
+Recall: 100.00%
+F1-score: 100.00%
+AUROC: 100.00%
+AUPRC: 100.00%
+2024-07-19 09:21:59,939 INFO Processing Stream # 30: sensor_id5_AngY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:22:03,175 INFO Loading the model for the channel sensor_id5_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngY.pt
+2024-07-19 09:22:03,178 INFO Correctly loaded the model for the channel sensor_id5_AngY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngY.pt
+2024-07-19 09:22:04,871 INFO normalized prediction error: 0.38
+2024-07-19 09:22:05,684 INFO Metrics for the channel sensor_id5_AngY found n 6 anomalies predicted
+Precision: 60.00%
+Recall: 100.00%
+F1-score: 75.00%
+AUROC: 98.44%
+AUPRC: 40.56%
+2024-07-19 09:22:05,799 INFO Processing Stream # 31: machine_nameAbb Robot_import_active_energy , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:22:20,329 INFO Epoch 0, Loss: 3204.296142578125
+2024-07-19 09:22:42,597 INFO Epoch 2, Loss: 5901.7685546875
+2024-07-19 09:23:04,665 INFO Epoch 4, Loss: 7369.0712890625
+2024-07-19 09:23:26,804 INFO Epoch 6, Loss: 3939.927734375
+2024-07-19 09:23:48,967 INFO Epoch 8, Loss: 2936.578369140625
+2024-07-19 09:24:11,242 INFO Epoch 10, Loss: 6929.72607421875
+2024-07-19 09:24:33,816 INFO Epoch 12, Loss: 4599.2529296875
+2024-07-19 09:24:56,276 INFO Epoch 14, Loss: 4458.5517578125
+2024-07-19 09:25:18,805 INFO Epoch 16, Loss: 8255.2763671875
+2024-07-19 09:25:41,074 INFO Epoch 18, Loss: 5924.0859375
+2024-07-19 09:25:52,316 INFO Epoch 19, Loss: 3133.32763671875
+2024-07-19 09:25:54,274 INFO normalized prediction error: 18.05
+2024-07-19 09:25:55,270 INFO Metrics for the channel machine_nameAbb Robot_import_active_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:08,509 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_import_active_energy.pdf
+2024-07-19 09:26:08,668 INFO Processing Stream # 32: sensor_id5_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:12,784 INFO Loading the model for the channel sensor_id5_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngZ.pt
+2024-07-19 09:26:12,788 INFO Correctly loaded the model for the channel sensor_id5_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_AngZ.pt
+2024-07-19 09:26:14,366 INFO normalized prediction error: nan
+2024-07-19 09:26:14,884 INFO Metrics for the channel sensor_id5_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:14,995 INFO Processing Stream # 33: sensor_id4_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:17,717 INFO Loading the model for the channel sensor_id4_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngZ.pt
+2024-07-19 09:26:17,719 INFO Correctly loaded the model for the channel sensor_id4_AngZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_AngZ.pt
+2024-07-19 09:26:19,308 INFO normalized prediction error: nan
+2024-07-19 09:26:19,878 INFO Metrics for the channel sensor_id4_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:19,992 INFO Processing Stream # 34: sensor_id5_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:22,515 INFO Loading the model for the channel sensor_id5_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroX.pt
+2024-07-19 09:26:22,518 INFO Correctly loaded the model for the channel sensor_id5_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroX.pt
+2024-07-19 09:26:24,459 INFO normalized prediction error: 0.41
+2024-07-19 09:26:25,813 INFO Metrics for the channel sensor_id5_GyroX found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:26:25,914 INFO Processing Stream # 35: sensor_id3_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:28,889 INFO Loading the model for the channel sensor_id3_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroX.pt
+2024-07-19 09:26:28,892 INFO Correctly loaded the model for the channel sensor_id3_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroX.pt
+2024-07-19 09:26:30,442 INFO normalized prediction error: nan
+2024-07-19 09:26:30,976 INFO Metrics for the channel sensor_id3_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:31,090 INFO Processing Stream # 36: sensor_id1_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:33,747 INFO Loading the model for the channel sensor_id1_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroX.pt
+2024-07-19 09:26:33,749 INFO Correctly loaded the model for the channel sensor_id1_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroX.pt
+2024-07-19 09:26:35,408 INFO normalized prediction error: 0.40
+2024-07-19 09:26:36,166 INFO Metrics for the channel sensor_id1_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:36,277 INFO Processing Stream # 37: sensor_id2_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:40,219 INFO Loading the model for the channel sensor_id2_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroX.pt
+2024-07-19 09:26:40,224 INFO Correctly loaded the model for the channel sensor_id2_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroX.pt
+2024-07-19 09:26:41,870 INFO normalized prediction error: nan
+2024-07-19 09:26:42,452 INFO Metrics for the channel sensor_id2_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:42,570 INFO Processing Stream # 38: sensor_id4_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:45,203 INFO Loading the model for the channel sensor_id4_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroX.pt
+2024-07-19 09:26:45,206 INFO Correctly loaded the model for the channel sensor_id4_GyroX in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroX.pt
+2024-07-19 09:26:46,884 INFO normalized prediction error: 0.44
+2024-07-19 09:26:47,724 INFO Metrics for the channel sensor_id4_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:47,835 INFO Processing Stream # 39: sensor_id5_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:50,482 INFO Loading the model for the channel sensor_id5_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroY.pt
+2024-07-19 09:26:50,484 INFO Correctly loaded the model for the channel sensor_id5_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroY.pt
+2024-07-19 09:26:52,407 INFO normalized prediction error: nan
+2024-07-19 09:26:53,299 INFO Metrics for the channel sensor_id5_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:53,416 INFO Processing Stream # 40: sensor_id3_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:26:56,394 INFO Loading the model for the channel sensor_id3_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroY.pt
+2024-07-19 09:26:56,397 INFO Correctly loaded the model for the channel sensor_id3_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroY.pt
+2024-07-19 09:26:57,976 INFO normalized prediction error: nan
+2024-07-19 09:26:58,505 INFO Metrics for the channel sensor_id3_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:26:58,628 INFO Processing Stream # 41: sensor_id1_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:01,298 INFO Loading the model for the channel sensor_id1_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroY.pt
+2024-07-19 09:27:01,300 INFO Correctly loaded the model for the channel sensor_id1_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroY.pt
+2024-07-19 09:27:02,864 INFO normalized prediction error: nan
+2024-07-19 09:27:03,400 INFO Metrics for the channel sensor_id1_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:27:03,512 INFO Processing Stream # 42: sensor_id2_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:07,278 INFO Loading the model for the channel sensor_id2_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroY.pt
+2024-07-19 09:27:07,281 INFO Correctly loaded the model for the channel sensor_id2_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroY.pt
+2024-07-19 09:27:09,116 INFO normalized prediction error: 0.37
+2024-07-19 09:27:09,886 INFO Metrics for the channel sensor_id2_GyroY found n 2 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:10,003 INFO Processing Stream # 43: sensor_id4_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:12,517 INFO Loading the model for the channel sensor_id4_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroY.pt
+2024-07-19 09:27:12,520 INFO Correctly loaded the model for the channel sensor_id4_GyroY in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroY.pt
+2024-07-19 09:27:14,183 INFO normalized prediction error: 0.43
+2024-07-19 09:27:14,872 INFO Metrics for the channel sensor_id4_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:14,987 INFO Processing Stream # 44: sensor_id3_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:17,643 INFO Loading the model for the channel sensor_id3_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroZ.pt
+2024-07-19 09:27:17,646 INFO Correctly loaded the model for the channel sensor_id3_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_GyroZ.pt
+2024-07-19 09:27:19,511 INFO normalized prediction error: nan
+2024-07-19 09:27:20,414 INFO Metrics for the channel sensor_id3_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:27:20,520 INFO Processing Stream # 45: sensor_id1_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:23,688 INFO Loading the model for the channel sensor_id1_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroZ.pt
+2024-07-19 09:27:23,691 INFO Correctly loaded the model for the channel sensor_id1_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_GyroZ.pt
+2024-07-19 09:27:25,399 INFO normalized prediction error: 0.29
+2024-07-19 09:27:26,123 INFO Metrics for the channel sensor_id1_GyroZ found n 2 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:26,235 INFO Processing Stream # 46: sensor_id4_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:28,867 INFO Loading the model for the channel sensor_id4_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroZ.pt
+2024-07-19 09:27:28,870 INFO Correctly loaded the model for the channel sensor_id4_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_GyroZ.pt
+2024-07-19 09:27:30,557 INFO normalized prediction error: 0.35
+2024-07-19 09:27:31,169 INFO Metrics for the channel sensor_id4_GyroZ found n 2 anomalies predicted
+Precision: 66.67%
+Recall: 100.00%
+F1-score: 80.00%
+AUROC: 99.53%
+AUPRC: 79.17%
+2024-07-19 09:27:31,288 INFO Processing Stream # 47: sensor_id2_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:35,046 INFO Loading the model for the channel sensor_id2_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroZ.pt
+2024-07-19 09:27:35,049 INFO Correctly loaded the model for the channel sensor_id2_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_GyroZ.pt
+2024-07-19 09:27:36,833 INFO normalized prediction error: nan
+2024-07-19 09:27:37,383 INFO Metrics for the channel sensor_id2_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:27:37,494 INFO Processing Stream # 48: sensor_id5_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:40,219 INFO Loading the model for the channel sensor_id5_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroZ.pt
+2024-07-19 09:27:40,222 INFO Correctly loaded the model for the channel sensor_id5_GyroZ in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_GyroZ.pt
+2024-07-19 09:27:41,912 INFO normalized prediction error: 0.34
+2024-07-19 09:27:42,658 INFO Metrics for the channel sensor_id5_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:27:42,778 INFO Processing Stream # 49: sensor_id3_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:45,511 INFO Loading the model for the channel sensor_id3_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_Temperature.pt
+2024-07-19 09:27:45,514 INFO Correctly loaded the model for the channel sensor_id3_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id3_Temperature.pt
+2024-07-19 09:27:47,397 INFO normalized prediction error: 0.39
+2024-07-19 09:27:48,359 INFO Metrics for the channel sensor_id3_Temperature found n 4 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:48,462 INFO Processing Stream # 50: sensor_id4_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:51,545 INFO Loading the model for the channel sensor_id4_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_Temperature.pt
+2024-07-19 09:27:51,548 INFO Correctly loaded the model for the channel sensor_id4_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id4_Temperature.pt
+2024-07-19 09:27:53,208 INFO normalized prediction error: 0.53
+2024-07-19 09:27:53,876 INFO Metrics for the channel sensor_id4_Temperature found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:53,993 INFO Processing Stream # 51: sensor_id2_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:27:56,617 INFO Loading the model for the channel sensor_id2_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_Temperature.pt
+2024-07-19 09:27:56,620 INFO Correctly loaded the model for the channel sensor_id2_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id2_Temperature.pt
+2024-07-19 09:27:58,310 INFO normalized prediction error: 0.38
+2024-07-19 09:27:58,940 INFO Metrics for the channel sensor_id2_Temperature found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:27:59,066 INFO Processing Stream # 52: sensor_id5_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:02,739 INFO Loading the model for the channel sensor_id5_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_Temperature.pt
+2024-07-19 09:28:02,742 INFO Correctly loaded the model for the channel sensor_id5_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id5_Temperature.pt
+2024-07-19 09:28:04,601 INFO normalized prediction error: 0.36
+2024-07-19 09:28:05,218 INFO Metrics for the channel sensor_id5_Temperature found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:28:05,330 INFO Processing Stream # 53: sensor_id1_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:08,673 INFO Loading the model for the channel sensor_id1_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_Temperature.pt
+2024-07-19 09:28:08,679 INFO Correctly loaded the model for the channel sensor_id1_Temperature in the path : /content/data/2024-07-18_20.57.21/models/sensor_id1_Temperature.pt
+2024-07-19 09:28:10,761 INFO normalized prediction error: 0.37
+2024-07-19 09:28:11,426 INFO Metrics for the channel sensor_id1_Temperature found n 3 anomalies predicted
+Precision: 25.00%
+Recall: 100.00%
+F1-score: 40.00%
+AUROC: 97.35%
+AUPRC: 12.50%
+2024-07-19 09:28:11,541 INFO Processing Stream # 54: machine_nameKuka Robot_voltage , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:14,141 INFO Loading the model for the channel machine_nameKuka Robot_voltage in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_voltage.pt
+2024-07-19 09:28:14,145 INFO Correctly loaded the model for the channel machine_nameKuka Robot_voltage in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_voltage.pt
+2024-07-19 09:28:16,184 INFO normalized prediction error: 0.16
+2024-07-19 09:28:17,423 INFO Metrics for the channel machine_nameKuka Robot_voltage found n 15 anomalies predicted
+Precision: 20.83%
+Recall: 100.00%
+F1-score: 34.48%
+AUROC: 89.42%
+AUPRC: 14.93%
+2024-07-19 09:28:17,546 INFO Processing Stream # 55: machine_nameKuka Robot_current , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:20,312 INFO Loading the model for the channel machine_nameKuka Robot_current in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_current.pt
+2024-07-19 09:28:20,315 INFO Correctly loaded the model for the channel machine_nameKuka Robot_current in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_current.pt
+2024-07-19 09:28:21,890 INFO normalized prediction error: nan
+2024-07-19 09:28:22,395 INFO Metrics for the channel machine_nameKuka Robot_current found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:28:22,514 INFO Processing Stream # 56: machine_nameKuka Robot_power_factor , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:25,161 INFO Loading the model for the channel machine_nameKuka Robot_power_factor in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_power_factor.pt
+2024-07-19 09:28:25,164 INFO Correctly loaded the model for the channel machine_nameKuka Robot_power_factor in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_power_factor.pt
+2024-07-19 09:28:26,808 INFO normalized prediction error: 0.17
+2024-07-19 09:28:27,622 INFO Metrics for the channel machine_nameKuka Robot_power_factor found n 13 anomalies predicted
+Precision: 30.00%
+Recall: 75.00%
+F1-score: 42.86%
+AUROC: 92.83%
+AUPRC: 18.44%
+2024-07-19 09:28:27,733 INFO Processing Stream # 57: machine_nameKuka Robot_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:31,715 INFO Loading the model for the channel machine_nameKuka Robot_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_power.pt
+2024-07-19 09:28:31,717 INFO Correctly loaded the model for the channel machine_nameKuka Robot_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_power.pt
+2024-07-19 09:28:33,384 INFO normalized prediction error: 0.18
+2024-07-19 09:28:34,087 INFO Metrics for the channel machine_nameKuka Robot_power found n 5 anomalies predicted
+Precision: 33.33%
+Recall: 100.00%
+F1-score: 50.00%
+AUROC: 98.20%
+AUPRC: 16.67%
+2024-07-19 09:28:34,199 INFO Processing Stream # 58: machine_nameKuka Robot_frequency , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:36,809 INFO Loading the model for the channel machine_nameKuka Robot_frequency in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_frequency.pt
+2024-07-19 09:28:36,812 INFO Correctly loaded the model for the channel machine_nameKuka Robot_frequency in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_frequency.pt
+2024-07-19 09:28:38,504 INFO normalized prediction error: 0.17
+2024-07-19 09:28:39,117 INFO Metrics for the channel machine_nameKuka Robot_frequency found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:28:39,237 INFO Processing Stream # 59: machine_nameKuka Robot_reactive_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:42,209 INFO Loading the model for the channel machine_nameKuka Robot_reactive_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_reactive_power.pt
+2024-07-19 09:28:42,213 INFO Correctly loaded the model for the channel machine_nameKuka Robot_reactive_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_reactive_power.pt
+2024-07-19 09:28:44,242 INFO normalized prediction error: 1.85
+2024-07-19 09:28:45,617 INFO Metrics for the channel machine_nameKuka Robot_reactive_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:28:45,735 INFO Processing Stream # 60: machine_nameKuka Robot_apparent_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:48,421 INFO Loading the model for the channel machine_nameKuka Robot_apparent_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_apparent_power.pt
+2024-07-19 09:28:48,423 INFO Correctly loaded the model for the channel machine_nameKuka Robot_apparent_power in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_apparent_power.pt
+2024-07-19 09:28:50,121 INFO normalized prediction error: 0.18
+2024-07-19 09:28:50,817 INFO Metrics for the channel machine_nameKuka Robot_apparent_power found n 2 anomalies predicted
+Precision: 100.00%
+Recall: 100.00%
+F1-score: 100.00%
+AUROC: 100.00%
+AUPRC: 100.00%
+2024-07-19 09:28:50,931 INFO Processing Stream # 61: machine_nameKuka Robot_phase_angle , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:28:53,568 INFO Loading the model for the channel machine_nameKuka Robot_phase_angle in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_phase_angle.pt
+2024-07-19 09:28:53,570 INFO Correctly loaded the model for the channel machine_nameKuka Robot_phase_angle in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_phase_angle.pt
+2024-07-19 09:28:55,242 INFO normalized prediction error: 0.27
+2024-07-19 09:28:56,219 INFO Metrics for the channel machine_nameKuka Robot_phase_angle found n 2 anomalies predicted
+Precision: 50.00%
+Recall: 100.00%
+F1-score: 66.67%
+AUROC: 99.07%
+AUPRC: 25.00%
+2024-07-19 09:28:56,320 INFO Processing Stream # 62: machine_nameKuka Robot_import_active_energy , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:29:00,043 INFO Loading the model for the channel machine_nameKuka Robot_import_active_energy in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_import_active_energy.pt
+2024-07-19 09:29:00,045 INFO Correctly loaded the model for the channel machine_nameKuka Robot_import_active_energy in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_import_active_energy.pt
+2024-07-19 09:29:01,714 INFO normalized prediction error: 20.45
+2024-07-19 09:29:02,292 INFO Metrics for the channel machine_nameKuka Robot_import_active_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:29:02,416 INFO Processing Stream # 63: machine_nameKuka Robot_export_reactive_energy , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:29:05,063 INFO Loading the model for the channel machine_nameKuka Robot_export_reactive_energy in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_export_reactive_energy.pt
+2024-07-19 09:29:05,065 INFO Correctly loaded the model for the channel machine_nameKuka Robot_export_reactive_energy in the path : /content/data/2024-07-18_20.57.21/models/machine_nameKuka Robot_export_reactive_energy.pt
+2024-07-19 09:29:06,709 INFO normalized prediction error: 22.56
+2024-07-19 09:29:07,254 INFO Metrics for the channel machine_nameKuka Robot_export_reactive_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:29:07,366 INFO Processing Stream # 64: machine_nameAbb Robot_current , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:29:10,194 INFO Loading the model for the channel machine_nameAbb Robot_current in the path : /content/data/2024-07-18_20.57.21/models/machine_nameAbb Robot_current.pt
+2024-07-19 09:29:10,197 INFO Correctly loaded the model for the channel machine_nameAbb Robot_current in the path : /content/data/2024-07-18_20.57.21/models/machine_nameAbb Robot_current.pt
+2024-07-19 09:29:12,223 INFO normalized prediction error: 1.11
+2024-07-19 09:29:13,226 INFO Metrics for the channel machine_nameAbb Robot_current found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:29:13,335 INFO Processing Stream # 65: machine_nameAbb Robot_reactive_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:29:27,612 INFO Epoch 0, Loss: 786.145751953125
+2024-07-19 09:29:50,444 INFO Epoch 2, Loss: 706.28857421875
+2024-07-19 09:30:13,000 INFO Epoch 4, Loss: 522.6959838867188
+2024-07-19 09:30:35,532 INFO Epoch 6, Loss: 602.874755859375
+2024-07-19 09:30:57,925 INFO Epoch 8, Loss: 588.1980590820312
+2024-07-19 09:31:20,588 INFO Epoch 10, Loss: 531.677734375
+2024-07-19 09:31:43,105 INFO Epoch 12, Loss: 601.7360229492188
+2024-07-19 09:32:05,942 INFO Early stopping triggered at epoch 14
+2024-07-19 09:32:07,481 INFO normalized prediction error: 19.63
+2024-07-19 09:32:08,141 INFO Metrics for the channel machine_nameAbb Robot_reactive_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:32:21,151 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_reactive_power.pdf
+2024-07-19 09:32:21,297 INFO Processing Stream # 66: machine_nameAbb Robot_voltage , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:32:24,743 INFO Loading the model for the channel machine_nameAbb Robot_voltage in the path : /content/data/2024-07-18_20.57.21/models/machine_nameAbb Robot_voltage.pt
+2024-07-19 09:32:24,746 INFO Correctly loaded the model for the channel machine_nameAbb Robot_voltage in the path : /content/data/2024-07-18_20.57.21/models/machine_nameAbb Robot_voltage.pt
+2024-07-19 09:32:26,705 INFO normalized prediction error: 0.28
+2024-07-19 09:32:27,347 INFO Metrics for the channel machine_nameAbb Robot_voltage found n 12 anomalies predicted
+Precision: 23.53%
+Recall: 100.00%
+F1-score: 38.10%
+AUROC: 89.22%
+AUPRC: 12.90%
+2024-07-19 09:32:27,459 INFO Processing Stream # 67: machine_nameAbb Robot_frequency , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:32:41,590 INFO Epoch 0, Loss: 11.187182426452637
+2024-07-19 09:33:04,934 INFO Epoch 2, Loss: 6.993531227111816
+2024-07-19 09:33:28,315 INFO Epoch 4, Loss: 4.071976661682129
+2024-07-19 09:33:51,091 INFO Epoch 6, Loss: 5.285852432250977
+2024-07-19 09:34:13,758 INFO Epoch 8, Loss: 6.834744930267334
+2024-07-19 09:34:36,782 INFO Epoch 10, Loss: 7.3639116287231445
+2024-07-19 09:34:59,760 INFO Epoch 12, Loss: 5.407595634460449
+2024-07-19 09:35:11,088 INFO Early stopping triggered at epoch 13
+2024-07-19 09:35:12,982 INFO normalized prediction error: 22.04
+2024-07-19 09:35:13,735 INFO Metrics for the channel machine_nameAbb Robot_frequency found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:35:28,097 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_frequency.pdf
+2024-07-19 09:35:28,249 INFO Processing Stream # 68: machine_nameAbb Robot_apparent_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:35:42,418 INFO Epoch 0, Loss: 35.97320556640625
+2024-07-19 09:36:05,623 INFO Epoch 2, Loss: 17.74582290649414
+2024-07-19 09:36:28,844 INFO Epoch 4, Loss: 11.504987716674805
+2024-07-19 09:36:51,783 INFO Epoch 6, Loss: 17.84595489501953
+2024-07-19 09:37:14,457 INFO Epoch 8, Loss: 13.168116569519043
+2024-07-19 09:37:37,466 INFO Epoch 10, Loss: 15.462072372436523
+2024-07-19 09:38:00,445 INFO Epoch 12, Loss: 21.071020126342773
+2024-07-19 09:38:23,233 INFO Epoch 14, Loss: 20.240184783935547
+2024-07-19 09:38:46,088 INFO Epoch 16, Loss: 16.449417114257812
+2024-07-19 09:39:09,197 INFO Epoch 18, Loss: 6.9807915687561035
+2024-07-19 09:39:20,677 INFO Epoch 19, Loss: 20.875722885131836
+2024-07-19 09:39:22,231 INFO normalized prediction error: 0.32
+2024-07-19 09:39:23,045 INFO Metrics for the channel machine_nameAbb Robot_apparent_power found n 2 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:39:35,872 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_apparent_power.pdf
+2024-07-19 09:39:36,035 INFO Processing Stream # 69: machine_nameAbb Robot_power_factor , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:39:49,694 INFO Epoch 0, Loss: 7.0717949711252e-05
+2024-07-19 09:40:11,118 INFO Epoch 2, Loss: 8.958738180808723e-05
+2024-07-19 09:40:33,315 INFO Epoch 4, Loss: 9.329523891210556e-05
+2024-07-19 09:40:54,540 INFO Epoch 6, Loss: 9.728039731271565e-05
+2024-07-19 09:41:16,400 INFO Epoch 8, Loss: 9.470833174418658e-05
+2024-07-19 09:41:37,822 INFO Early stopping triggered at epoch 10
+2024-07-19 09:41:39,645 INFO normalized prediction error: 1.49
+2024-07-19 09:41:40,230 INFO Metrics for the channel machine_nameAbb Robot_power_factor found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-07-19 09:41:52,774 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_power_factor.pdf
+2024-07-19 09:41:52,912 INFO Processing Stream # 70: machine_nameAbb Robot_power , sample-rate : 0.1s, date : 20220811 
+2024-07-19 09:42:07,290 INFO Epoch 0, Loss: 47.2640380859375
+2024-07-19 09:42:30,569 INFO Epoch 2, Loss: 14.34003734588623
+2024-07-19 09:42:54,020 INFO Epoch 4, Loss: 14.767704963684082
+2024-07-19 09:43:16,697 INFO Epoch 6, Loss: 13.588022232055664
+2024-07-19 09:43:39,393 INFO Epoch 8, Loss: 9.348368644714355
+2024-07-19 09:44:02,529 INFO Epoch 10, Loss: 18.090133666992188
+2024-07-19 09:44:25,457 INFO Epoch 12, Loss: 12.783852577209473
+2024-07-19 09:44:36,822 INFO Early stopping triggered at epoch 13
+2024-07-19 09:44:38,739 INFO normalized prediction error: 0.75
+2024-07-19 09:44:39,900 INFO Metrics for the channel machine_nameAbb Robot_power found n 2 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-07-19 09:44:52,482 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/0.1s/machine_nameAbb Robot_power.pdf
+2024-07-19 09:44:53,018 INFO Applying pruning with dynamic threshold computed : 0.037197398841783635
+2024-07-19 09:44:53,022 INFO Final Prediction for sample_rate 0.1s final list anomalies found : [{'start_idx': 900, 'end_idx': 900, 'score': 1.9782923392901934}, {'start_idx': 985, 'end_idx': 1027, 'score': 2.5487921167714487}, {'start_idx': 1166, 'end_idx': 1217, 'score': 4.077265092655154}, {'start_idx': 1286, 'end_idx': 1323, 'score': 2.2468231904704528}, {'start_idx': 1452, 'end_idx': 1503, 'score': 2.37850388311574}, {'start_idx': 1526, 'end_idx': 1579, 'score': 5.587874820302072}, {'start_idx': 1588, 'end_idx': 1643, 'score': 4.559343652779439}, {'start_idx': 1598, 'end_idx': 1643, 'score': 2.470533222915576}, {'start_idx': 1644, 'end_idx': 1707, 'score': 2.4747724292928535}, {'start_idx': 1670, 'end_idx': 1707, 'score': 2.6237017037291204}, {'start_idx': 1708, 'end_idx': 1731, 'score': 2.2000767410368733}, {'start_idx': 1786, 'end_idx': 1835, 'score': 4.750074451483767}, {'start_idx': 1789, 'end_idx': 1835, 'score': 5.024327615305393}, {'start_idx': 1836, 'end_idx': 1854, 'score': 2.836699130942123}, {'start_idx': 1836, 'end_idx': 1899, 'score': 1.783073893180355}, {'start_idx': 1941, 'end_idx': 1963, 'score': 3.4614395811652763}, {'start_idx': 2284, 'end_idx': 2339, 'score': 1.629341681367873}, {'start_idx': 2292, 'end_idx': 2346, 'score': 0.7950685418323606}, {'start_idx': 2299, 'end_idx': 2346, 'score': 1.795198922823055}, {'start_idx': 2303, 'end_idx': 2347, 'score': 3.007542921505882}, {'start_idx': 2313, 'end_idx': 2347, 'score': 3.018560244013333}, {'start_idx': 2348, 'end_idx': 2383, 'score': 2.7674417963894555}, {'start_idx': 2348, 'end_idx': 2390, 'score': 2.728891007239127}, {'start_idx': 2348, 'end_idx': 2366, 'score': 2.0527053667000663}, {'start_idx': 2422, 'end_idx': 2468, 'score': 2.7250122967506307}, {'start_idx': 2422, 'end_idx': 2453, 'score': 1.250835420310666}, {'start_idx': 2430, 'end_idx': 2473, 'score': 2.6998232000093876}, {'start_idx': 2486, 'end_idx': 2535, 'score': 4.618681988668459}, {'start_idx': 2510, 'end_idx': 2539, 'score': 2.3285931929432993}, {'start_idx': 2540, 'end_idx': 2565, 'score': 2.2143727477596995}, {'start_idx': 2604, 'end_idx': 2654, 'score': 2.1352418598179237}, {'start_idx': 2710, 'end_idx': 2731, 'score': 2.2806938995672006}, {'start_idx': 2732, 'end_idx': 2745, 'score': 1.879474769976029}, {'start_idx': 3116, 'end_idx': 3116, 'score': 1.0817345418416977}, {'start_idx': 3244, 'end_idx': 3291, 'score': 3.8215929142735834}, {'start_idx': 3325, 'end_idx': 3371, 'score': 3.3756395667474317}, {'start_idx': 3437, 'end_idx': 3495, 'score': 2.47944359457838}, {'start_idx': 3628, 'end_idx': 3675, 'score': 2.2963913103592013}, {'start_idx': 3692, 'end_idx': 3740, 'score': 2.0268793574418416}, {'start_idx': 3908, 'end_idx': 3947, 'score': 4.081430479888712}, {'start_idx': 4012, 'end_idx': 4039, 'score': 3.458980536272413}, {'start_idx': 4140, 'end_idx': 4170, 'score': 3.304522800411608}, {'start_idx': 4355, 'end_idx': 4388, 'score': 3.092380597468154}, {'start_idx': 4440, 'end_idx': 4459, 'score': 3.2961198205595275}, {'start_idx': 4460, 'end_idx': 4476, 'score': 2.8298761985651537}, {'start_idx': 4527, 'end_idx': 4565, 'score': 2.466618132517944}, {'start_idx': 4552, 'end_idx': 4582, 'score': 0.8827731872760796}, {'start_idx': 4562, 'end_idx': 4587, 'score': 4.810735178157081}, {'start_idx': 4588, 'end_idx': 4621, 'score': 3.165407022300999}, {'start_idx': 4588, 'end_idx': 4620, 'score': 2.3454490280190536}, {'start_idx': 4616, 'end_idx': 4651, 'score': 2.377800716420924}, {'start_idx': 4652, 'end_idx': 4684, 'score': 2.5284325367248037}, {'start_idx': 4664, 'end_idx': 4703, 'score': 0.7723503196363604}, {'start_idx': 4716, 'end_idx': 4742, 'score': 2.210725932162887}, {'start_idx': 4732, 'end_idx': 4779, 'score': 2.5290974896857144}, {'start_idx': 4780, 'end_idx': 4780, 'score': 1.4493296943260754}, {'start_idx': 4820, 'end_idx': 4843, 'score': 2.100222808776941}, {'start_idx': 4844, 'end_idx': 4884, 'score': 1.9560657472531309}, {'start_idx': 4912, 'end_idx': 4949, 'score': 2.2753703219439645}, {'start_idx': 5141, 'end_idx': 5163, 'score': 6.535129694300553}, {'start_idx': 5164, 'end_idx': 5198, 'score': 4.311856389413188}, {'start_idx': 5228, 'end_idx': 5262, 'score': 3.3744872717252967}, {'start_idx': 5253, 'end_idx': 5291, 'score': 1.8530645133393426}, {'start_idx': 5292, 'end_idx': 5315, 'score': 1.8115552462381548}, {'start_idx': 5301, 'end_idx': 5336, 'score': 3.136201976953191}, {'start_idx': 5420, 'end_idx': 5471, 'score': 4.342059718004146}, {'start_idx': 5497, 'end_idx': 5543, 'score': 3.818336131572127}, {'start_idx': 5612, 'end_idx': 5648, 'score': 2.4434404848351092}, {'start_idx': 5612, 'end_idx': 5657, 'score': 0.7574378117554609}, {'start_idx': 5612, 'end_idx': 5647, 'score': 2.8524307215197453}, {'start_idx': 5620, 'end_idx': 5675, 'score': 2.375765803338119}, {'start_idx': 5676, 'end_idx': 5736, 'score': 2.379012354286819}, {'start_idx': 5689, 'end_idx': 5734, 'score': 1.2305574340898457}, {'start_idx': 5772, 'end_idx': 5803, 'score': 2.2971274772105685}, {'start_idx': 5781, 'end_idx': 5803, 'score': 2.0381468198660366}, {'start_idx': 5804, 'end_idx': 5838, 'score': 2.142139913445115}, {'start_idx': 5804, 'end_idx': 5841, 'score': 2.4653950714621304}, {'start_idx': 5834, 'end_idx': 5867, 'score': 1.6529785223360707}, {'start_idx': 5870, 'end_idx': 5912, 'score': 1.251547867982093}, {'start_idx': 5875, 'end_idx': 5913, 'score': 2.425357789998353}, {'start_idx': 5964, 'end_idx': 5995, 'score': 2.7931926635148723}, {'start_idx': 5969, 'end_idx': 5995, 'score': 2.2142917064411245}, {'start_idx': 5996, 'end_idx': 6041, 'score': 4.682806990437363}, {'start_idx': 5996, 'end_idx': 6020, 'score': 2.268327118306485}, {'start_idx': 5996, 'end_idx': 6022, 'score': 2.5209258402071866}, {'start_idx': 6009, 'end_idx': 6059, 'score': 2.637373953258269}, {'start_idx': 6060, 'end_idx': 6092, 'score': 1.1982221465486687}, {'start_idx': 6075, 'end_idx': 6123, 'score': 1.1991327283478332}, {'start_idx': 6079, 'end_idx': 6110, 'score': 2.9986597461397766}, {'start_idx': 6083, 'end_idx': 6123, 'score': 2.330637333518141}, {'start_idx': 6124, 'end_idx': 6124, 'score': 1.3629403665922544}, {'start_idx': 6124, 'end_idx': 6187, 'score': 2.2511447798006374}, {'start_idx': 6188, 'end_idx': 6212, 'score': 2.207618072759403}, {'start_idx': 6221, 'end_idx': 6251, 'score': 1.6317830134595532}, {'start_idx': 6333, 'end_idx': 6379, 'score': 1.3050218213433968}, {'start_idx': 6380, 'end_idx': 6417, 'score': 3.178708576066313}, {'start_idx': 6418, 'end_idx': 6443, 'score': 2.0351394055507828}, {'start_idx': 6512, 'end_idx': 6560, 'score': 3.753610017950449}, {'start_idx': 6597, 'end_idx': 6635, 'score': 3.7949736708101867}, {'start_idx': 6604, 'end_idx': 6635, 'score': 4.894670873880976}, {'start_idx': 6636, 'end_idx': 6660, 'score': 2.807885973214538}, {'start_idx': 6638, 'end_idx': 6669, 'score': 1.826549854724295}, {'start_idx': 6673, 'end_idx': 6699, 'score': 0.27584946501791147}, {'start_idx': 6709, 'end_idx': 6763, 'score': 1.5730256501467605}, {'start_idx': 6710, 'end_idx': 6763, 'score': 1.1260029763632284}, {'start_idx': 6719, 'end_idx': 6763, 'score': 2.5312870905527514}, {'start_idx': 6720, 'end_idx': 6763, 'score': 1.658074843817561}, {'start_idx': 6721, 'end_idx': 6763, 'score': 3.063387992593212}, {'start_idx': 6722, 'end_idx': 6763, 'score': 1.4148668044323471}, {'start_idx': 6726, 'end_idx': 6763, 'score': 1.6391303801230857}, {'start_idx': 6739, 'end_idx': 6763, 'score': 2.1064509812431944}, {'start_idx': 6764, 'end_idx': 6811, 'score': 2.579323296177796}, {'start_idx': 6764, 'end_idx': 6779, 'score': 1.3042179664144526}, {'start_idx': 6764, 'end_idx': 6793, 'score': 2.903161032961819}, {'start_idx': 6764, 'end_idx': 6785, 'score': 1.6106814535135163}, {'start_idx': 6775, 'end_idx': 6815, 'score': 2.6420314042940736}, {'start_idx': 6781, 'end_idx': 6827, 'score': 4.699730351192455}, {'start_idx': 6796, 'end_idx': 6827, 'score': 1.752048299472861}, {'start_idx': 6845, 'end_idx': 6891, 'score': 1.1945927830644565}, {'start_idx': 6853, 'end_idx': 6891, 'score': 1.5108971242096967}, {'start_idx': 6855, 'end_idx': 6891, 'score': 2.709394075710527}, {'start_idx': 6892, 'end_idx': 6951, 'score': 6.635149537781505}, {'start_idx': 6892, 'end_idx': 6914, 'score': 2.490274103447974}, {'start_idx': 6905, 'end_idx': 6948, 'score': 2.8383317418879797}, {'start_idx': 6974, 'end_idx': 7019, 'score': 3.1778255520746748}, {'start_idx': 6975, 'end_idx': 7019, 'score': 2.4486563237202903}, {'start_idx': 6998, 'end_idx': 7019, 'score': 7.482592622655728}, {'start_idx': 7020, 'end_idx': 7054, 'score': 5.219116979275324}, {'start_idx': 7063, 'end_idx': 7083, 'score': 3.0305811912608402}, {'start_idx': 7068, 'end_idx': 7083, 'score': 2.1776672583573022}, {'start_idx': 7084, 'end_idx': 7113, 'score': 2.721475351906043}, {'start_idx': 7089, 'end_idx': 7142, 'score': 2.119009876271472}, {'start_idx': 7095, 'end_idx': 7147, 'score': 1.2052806812603345}, {'start_idx': 7101, 'end_idx': 7147, 'score': 1.6139523530987168}, {'start_idx': 7148, 'end_idx': 7172, 'score': 1.3931677774411222}, {'start_idx': 7377, 'end_idx': 7403, 'score': 2.2978376435183336}, {'start_idx': 7761, 'end_idx': 7787, 'score': 2.3625630126568504}, {'start_idx': 7852, 'end_idx': 7888, 'score': 1.5188085553915776}, {'start_idx': 7852, 'end_idx': 7893, 'score': 1.6979555021297603}, {'start_idx': 7928, 'end_idx': 7967, 'score': 2.4820173214159045}, {'start_idx': 8340, 'end_idx': 8363, 'score': 6.444201494566265}, {'start_idx': 8364, 'end_idx': 8397, 'score': 4.201180707675395}, {'start_idx': 8556, 'end_idx': 8605, 'score': 1.2326287740828463}, {'start_idx': 8643, 'end_idx': 8683, 'score': 1.3083349733029606}, {'start_idx': 8718, 'end_idx': 8747, 'score': 1.3338101399987257}, {'start_idx': 8720, 'end_idx': 8747, 'score': 1.8540183125074008}, {'start_idx': 8921, 'end_idx': 8939, 'score': 3.4069393322263832}, {'start_idx': 9023, 'end_idx': 9067, 'score': 2.9899748612041757}, {'start_idx': 9036, 'end_idx': 9067, 'score': 1.305141499524625}, {'start_idx': 9099, 'end_idx': 9131, 'score': 1.1908173898570675}, {'start_idx': 9116, 'end_idx': 9131, 'score': 2.0986968616370647}, {'start_idx': 9132, 'end_idx': 9165, 'score': 2.932725296915772}, {'start_idx': 9132, 'end_idx': 9155, 'score': 1.2093007079035791}, {'start_idx': 9196, 'end_idx': 9243, 'score': 2.67546494875671}, {'start_idx': 9196, 'end_idx': 9259, 'score': 1.3384552807595236}, {'start_idx': 9260, 'end_idx': 9323, 'score': 1.5811488718605473}, {'start_idx': 9283, 'end_idx': 9323, 'score': 1.5495060246847678}, {'start_idx': 9298, 'end_idx': 9323, 'score': 3.010241695861841}, {'start_idx': 9324, 'end_idx': 9365, 'score': 3.0091619343059874}, {'start_idx': 9324, 'end_idx': 9353, 'score': 1.1643907004690577}, {'start_idx': 9324, 'end_idx': 9344, 'score': 1.3362721604965067}, {'start_idx': 9324, 'end_idx': 9387, 'score': 1.8171062565277578}, {'start_idx': 9404, 'end_idx': 9451, 'score': 2.411765596893817}, {'start_idx': 9491, 'end_idx': 9515, 'score': 2.157089151025844}, {'start_idx': 9492, 'end_idx': 9515, 'score': 1.135976401670159}, {'start_idx': 9516, 'end_idx': 9534, 'score': 1.2031400502512375}, {'start_idx': 9626, 'end_idx': 9643, 'score': 1.2055151181912036}, {'start_idx': 9644, 'end_idx': 9660, 'score': 1.1305571461011332}, {'start_idx': 9644, 'end_idx': 9699, 'score': 2.26198903712738}, {'start_idx': 9688, 'end_idx': 9707, 'score': 1.2683432908883157}, {'start_idx': 9708, 'end_idx': 9739, 'score': 1.3629685066766954}, {'start_idx': 9724, 'end_idx': 9754, 'score': 1.1266888399843866}, {'start_idx': 9799, 'end_idx': 9835, 'score': 2.3642703706642942}, {'start_idx': 9836, 'end_idx': 9853, 'score': 2.0040067540012845}, {'start_idx': 9857, 'end_idx': 9889, 'score': 1.173088662581689}, {'start_idx': 9924, 'end_idx': 9963, 'score': 3.067514922687951}, {'start_idx': 9964, 'end_idx': 10004, 'score': 3.9060179260238903}, {'start_idx': 9964, 'end_idx': 10027, 'score': 3.009451546708121}, {'start_idx': 10029, 'end_idx': 10076, 'score': 0.8140368219231123}, {'start_idx': 10056, 'end_idx': 10091, 'score': 3.3039791917600203}, {'start_idx': 10156, 'end_idx': 10175, 'score': 2.2114421283820307}, {'start_idx': 10167, 'end_idx': 10215, 'score': 2.1969912007768184}, {'start_idx': 10167, 'end_idx': 10210, 'score': 2.596230048552173}, {'start_idx': 10284, 'end_idx': 10321, 'score': 2.2989674687467874}, {'start_idx': 10348, 'end_idx': 10387, 'score': 2.474863435101366}, {'start_idx': 10454, 'end_idx': 10475, 'score': 2.3251717577424027}, {'start_idx': 10813, 'end_idx': 10859, 'score': 1.1068098728972569}, {'start_idx': 10818, 'end_idx': 10859, 'score': 1.7604166210162169}, {'start_idx': 10819, 'end_idx': 10859, 'score': 1.0853805326314259}, {'start_idx': 10821, 'end_idx': 10859, 'score': 1.2380923084607196}, {'start_idx': 10827, 'end_idx': 10859, 'score': 2.43300142878842}, {'start_idx': 10834, 'end_idx': 10859, 'score': 1.8598354624503235}, {'start_idx': 10860, 'end_idx': 10883, 'score': 1.8674601016882473}, {'start_idx': 10860, 'end_idx': 10891, 'score': 2.419141502295567}, {'start_idx': 10902, 'end_idx': 10923, 'score': 2.0084158485052623}, {'start_idx': 10924, 'end_idx': 10987, 'score': 2.599671736412119}, {'start_idx': 10952, 'end_idx': 10987, 'score': 2.9905016303564493}, {'start_idx': 11006, 'end_idx': 11051, 'score': 1.022416671183374}, {'start_idx': 11026, 'end_idx': 11051, 'score': 2.1764368353398713}, {'start_idx': 11052, 'end_idx': 11068, 'score': 2.002246194684816}, {'start_idx': 11052, 'end_idx': 11115, 'score': 1.1599905392265244}, {'start_idx': 11087, 'end_idx': 11115, 'score': 1.9342069491040648}, {'start_idx': 11130, 'end_idx': 11170, 'score': 1.9058253763358488}, {'start_idx': 11153, 'end_idx': 11179, 'score': 2.0633614553451323}, {'start_idx': 11180, 'end_idx': 11196, 'score': 1.959929161220502}, {'start_idx': 11244, 'end_idx': 11274, 'score': 2.0893129242245565}, {'start_idx': 11265, 'end_idx': 11301, 'score': 0.427216134762797}, {'start_idx': 11281, 'end_idx': 11307, 'score': 6.170532700635272}, {'start_idx': 11308, 'end_idx': 11338, 'score': 3.804245551216277}, {'start_idx': 11448, 'end_idx': 11499, 'score': 1.7465409717338496}, {'start_idx': 11500, 'end_idx': 11522, 'score': 1.0877426445125358}, {'start_idx': 11645, 'end_idx': 11691, 'score': 2.015986226206867}, {'start_idx': 11651, 'end_idx': 11691, 'score': 2.281361115170272}, {'start_idx': 11692, 'end_idx': 11755, 'score': 2.68115265236454}, {'start_idx': 11697, 'end_idx': 11755, 'score': 2.272345867907034}, {'start_idx': 11709, 'end_idx': 11755, 'score': 1.748935735379635}, {'start_idx': 11713, 'end_idx': 11755, 'score': 2.3327795035056456}, {'start_idx': 11756, 'end_idx': 11756, 'score': 0.7256228319344312}, {'start_idx': 11756, 'end_idx': 11819, 'score': 2.667864171847378}, {'start_idx': 11756, 'end_idx': 11776, 'score': 1.978685502605007}, {'start_idx': 11765, 'end_idx': 11819, 'score': 1.6214591751231953}, {'start_idx': 11781, 'end_idx': 11819, 'score': 2.279614262533233}, {'start_idx': 11823, 'end_idx': 11883, 'score': 1.945175793258025}, {'start_idx': 11827, 'end_idx': 11883, 'score': 2.980923763955801}, {'start_idx': 11832, 'end_idx': 11883, 'score': 2.7518218550274645}, {'start_idx': 11884, 'end_idx': 11947, 'score': 2.0217126766177}, {'start_idx': 12079, 'end_idx': 12133, 'score': 3.7718661804305076}, {'start_idx': 12079, 'end_idx': 12120, 'score': 1.3202430247174963}, {'start_idx': 12218, 'end_idx': 12264, 'score': 2.6705455131320264}, {'start_idx': 12396, 'end_idx': 12439, 'score': 3.124628224083142}, {'start_idx': 12474, 'end_idx': 12519, 'score': 1.307775920186209}, {'start_idx': 12479, 'end_idx': 12523, 'score': 3.333462358016034}, {'start_idx': 12588, 'end_idx': 12629, 'score': 2.9588652943320817}, {'start_idx': 12588, 'end_idx': 12632, 'score': 6.537720084773323}, {'start_idx': 12652, 'end_idx': 12712, 'score': 2.7363451463537074}, {'start_idx': 12655, 'end_idx': 12695, 'score': 1.2263223300107977}, {'start_idx': 12659, 'end_idx': 12693, 'score': 2.3317513201446616}, {'start_idx': 12723, 'end_idx': 12779, 'score': 5.604193770760233}, {'start_idx': 12844, 'end_idx': 12871, 'score': 2.0969909120780748}, {'start_idx': 12844, 'end_idx': 12874, 'score': 1.157266400723929}, {'start_idx': 12862, 'end_idx': 12901, 'score': 2.783341690128077}, {'start_idx': 12914, 'end_idx': 12953, 'score': 2.3662377908308416}, {'start_idx': 12953, 'end_idx': 12971, 'score': 1.1202270284263467}, {'start_idx': 12972, 'end_idx': 13003, 'score': 1.2859080291578406}, {'start_idx': 13038, 'end_idx': 13071, 'score': 1.1116545916707323}, {'start_idx': 13047, 'end_idx': 13099, 'score': 0.8032957504179818}, {'start_idx': 13100, 'end_idx': 13163, 'score': 0.9049905263196995}, {'start_idx': 13135, 'end_idx': 13163, 'score': 1.041335633078344}, {'start_idx': 13189, 'end_idx': 13221, 'score': 1.112878318242235}, {'start_idx': 13265, 'end_idx': 13291, 'score': 1.2538973867808676}, {'start_idx': 13272, 'end_idx': 13291, 'score': 3.9780117201570073}, {'start_idx': 13292, 'end_idx': 13336, 'score': 4.466122537446385}, {'start_idx': 13292, 'end_idx': 13355, 'score': 1.2769800836812013}, {'start_idx': 13313, 'end_idx': 13355, 'score': 1.7554536202902622}, {'start_idx': 13356, 'end_idx': 13419, 'score': 1.4032171110332965}, {'start_idx': 13365, 'end_idx': 13418, 'score': 2.9708864190982514}, {'start_idx': 13393, 'end_idx': 13419, 'score': 1.6955184118497308}, {'start_idx': 13420, 'end_idx': 13445, 'score': 1.7041549363466604}, {'start_idx': 13484, 'end_idx': 13531, 'score': 3.253331920331998}, {'start_idx': 13562, 'end_idx': 13600, 'score': 2.5130627332828532}, {'start_idx': 13571, 'end_idx': 13611, 'score': 4.753548675457187}, {'start_idx': 13612, 'end_idx': 13653, 'score': 2.961465791940492}, {'start_idx': 13612, 'end_idx': 13639, 'score': 3.7062935820569205}, {'start_idx': 13676, 'end_idx': 13719, 'score': 1.4178472457038276}, {'start_idx': 13701, 'end_idx': 13739, 'score': 2.6244711135662024}, {'start_idx': 13804, 'end_idx': 13821, 'score': 2.723302094326004}, {'start_idx': 13875, 'end_idx': 13931, 'score': 0.9070924096635218}, {'start_idx': 13932, 'end_idx': 13995, 'score': 1.1124483965803573}, {'start_idx': 13938, 'end_idx': 13995, 'score': 0.972327421196831}, {'start_idx': 13943, 'end_idx': 13978, 'score': 2.204215764110631}, {'start_idx': 13996, 'end_idx': 14045, 'score': 4.820900434061998}, {'start_idx': 13996, 'end_idx': 14022, 'score': 1.0654353143991164}, {'start_idx': 14060, 'end_idx': 14088, 'score': 2.2559393197249187}, {'start_idx': 14070, 'end_idx': 14123, 'score': 4.51471676532581}, {'start_idx': 14124, 'end_idx': 14187, 'score': 2.8052332208285042}, {'start_idx': 14136, 'end_idx': 14179, 'score': 1.4667800151539931}, {'start_idx': 14202, 'end_idx': 14251, 'score': 5.6124325538044735}, {'start_idx': 14204, 'end_idx': 14239, 'score': 2.2704196274009893}, {'start_idx': 14214, 'end_idx': 14244, 'score': 2.571866263083696}, {'start_idx': 14252, 'end_idx': 14260, 'score': 2.3348251902816326}, {'start_idx': 14252, 'end_idx': 14286, 'score': 3.045959143690946}, {'start_idx': 14274, 'end_idx': 14315, 'score': 2.3733397329134536}, {'start_idx': 14359, 'end_idx': 14379, 'score': 2.862521021292894}, {'start_idx': 14394, 'end_idx': 14443, 'score': 0.8243698748369841}, {'start_idx': 14444, 'end_idx': 14507, 'score': 1.2933840819038989}, {'start_idx': 14477, 'end_idx': 14507, 'score': 2.734410252172452}, {'start_idx': 14508, 'end_idx': 14571, 'score': 1.4874047718701717}, {'start_idx': 14509, 'end_idx': 14552, 'score': 3.5845302672717}, {'start_idx': 14574, 'end_idx': 14610, 'score': 2.3474427469206227}, {'start_idx': 14600, 'end_idx': 14635, 'score': 3.058043074321214}, {'start_idx': 14828, 'end_idx': 14879, 'score': 2.587596343474564}, {'start_idx': 14842, 'end_idx': 14891, 'score': 4.855231747046147}, {'start_idx': 14844, 'end_idx': 14879, 'score': 1.9409324707280469}, {'start_idx': 14956, 'end_idx': 14956, 'score': 0.8290049134765367}, {'start_idx': 15001, 'end_idx': 15019, 'score': 3.213242411406408}, {'start_idx': 15110, 'end_idx': 15147, 'score': 3.1455741755233575}, {'start_idx': 15193, 'end_idx': 15211, 'score': 3.724696205831911}, {'start_idx': 15212, 'end_idx': 15242, 'score': 3.8402601552919577}, {'start_idx': 15227, 'end_idx': 15275, 'score': 2.9105739440393434}, {'start_idx': 15374, 'end_idx': 15403, 'score': 4.945727895731969}, {'start_idx': 15380, 'end_idx': 15403, 'score': 2.940378118034737}, {'start_idx': 15404, 'end_idx': 15424, 'score': 3.1315171497489036}, {'start_idx': 15404, 'end_idx': 15452, 'score': 3.0812632903952504}, {'start_idx': 15422, 'end_idx': 15454, 'score': 2.923040059508115}, {'start_idx': 15429, 'end_idx': 15467, 'score': 1.8371287408882457}, {'start_idx': 15494, 'end_idx': 15531, 'score': 2.581597015989638}, {'start_idx': 15532, 'end_idx': 15564, 'score': 2.6735442284433453}, {'start_idx': 15570, 'end_idx': 15595, 'score': 2.8565530155011567}, {'start_idx': 15596, 'end_idx': 15650, 'score': 2.0704547517859164}, {'start_idx': 15596, 'end_idx': 15656, 'score': 2.6013294145775276}, {'start_idx': 15660, 'end_idx': 15698, 'score': 3.3785490897640074}, {'start_idx': 15677, 'end_idx': 15723, 'score': 1.058709972115087}, {'start_idx': 15685, 'end_idx': 15723, 'score': 2.2129047367165255}, {'start_idx': 15813, 'end_idx': 15851, 'score': 3.1392615673757565}, {'start_idx': 15825, 'end_idx': 15851, 'score': 3.1440155387455277}, {'start_idx': 15852, 'end_idx': 15879, 'score': 2.444184379252485}, {'start_idx': 15852, 'end_idx': 15878, 'score': 2.798477685175722}, {'start_idx': 15937, 'end_idx': 15979, 'score': 2.6912439955669214}, {'start_idx': 15957, 'end_idx': 15979, 'score': 0.788585804405799}, {'start_idx': 15959, 'end_idx': 15979, 'score': 3.1773414452000703}, {'start_idx': 15980, 'end_idx': 16005, 'score': 2.6441131819048826}, {'start_idx': 15981, 'end_idx': 16043, 'score': 1.5141332894747455}, {'start_idx': 15989, 'end_idx': 16043, 'score': 1.653956775730811}, {'start_idx': 16000, 'end_idx': 16043, 'score': 1.6338315299007353}, {'start_idx': 16003, 'end_idx': 16043, 'score': 2.604114704835113}, {'start_idx': 16008, 'end_idx': 16043, 'score': 4.502550317731797}, {'start_idx': 16044, 'end_idx': 16063, 'score': 2.357724987776978}, {'start_idx': 16044, 'end_idx': 16064, 'score': 1.5110400323759496}, {'start_idx': 16044, 'end_idx': 16062, 'score': 2.3282308729466115}, {'start_idx': 16044, 'end_idx': 16049, 'score': 1.4416102780618483}, {'start_idx': 16044, 'end_idx': 16052, 'score': 2.0538338650303767}, {'start_idx': 16108, 'end_idx': 16141, 'score': 2.777658790304456}, {'start_idx': 16236, 'end_idx': 16295, 'score': 7.5095185164115215}, {'start_idx': 16238, 'end_idx': 16277, 'score': 2.350505142709106}, {'start_idx': 16248, 'end_idx': 16293, 'score': 2.434715418250235}, {'start_idx': 16333, 'end_idx': 16363, 'score': 2.383307292621244}, {'start_idx': 16428, 'end_idx': 16448, 'score': 2.1724800207806507}, {'start_idx': 16620, 'end_idx': 16666, 'score': 2.3312008879981123}, {'start_idx': 16636, 'end_idx': 16683, 'score': 4.50672820901404}, {'start_idx': 16853, 'end_idx': 16875, 'score': 2.205940055506082}, {'start_idx': 16876, 'end_idx': 16924, 'score': 2.562393818727507}, {'start_idx': 16886, 'end_idx': 16935, 'score': 2.528097009635768}, {'start_idx': 16940, 'end_idx': 16940, 'score': 1.5478400524343143}, {'start_idx': 17007, 'end_idx': 17065, 'score': 3.583651520214781}, {'start_idx': 17035, 'end_idx': 17067, 'score': 3.2775147953630417}, {'start_idx': 17196, 'end_idx': 17196, 'score': 0.4407368234766957}, {'start_idx': 17300, 'end_idx': 17323, 'score': 2.03488348490332}, {'start_idx': 17324, 'end_idx': 17360, 'score': 2.592208088375352}, {'start_idx': 17354, 'end_idx': 17387, 'score': 4.100658862463332}, {'start_idx': 17355, 'end_idx': 17387, 'score': 3.380118899300732}, {'start_idx': 17356, 'end_idx': 17387, 'score': 3.665524522825677}, {'start_idx': 17366, 'end_idx': 17387, 'score': 2.2933728513932214}, {'start_idx': 17388, 'end_idx': 17451, 'score': 3.8527033696229878}, {'start_idx': 17417, 'end_idx': 17451, 'score': 1.0009492391570523}, {'start_idx': 17452, 'end_idx': 17515, 'score': 3.192342793918235}, {'start_idx': 17663, 'end_idx': 17707, 'score': 1.1850041235860704}, {'start_idx': 18165, 'end_idx': 18211, 'score': 1.0785838682544309}, {'start_idx': 18171, 'end_idx': 18219, 'score': 1.5947728838841295}, {'start_idx': 18172, 'end_idx': 18219, 'score': 2.8432242553161435}, {'start_idx': 18182, 'end_idx': 18219, 'score': 1.8201865459065902}, {'start_idx': 18220, 'end_idx': 18278, 'score': 6.030828563394273}, {'start_idx': 18220, 'end_idx': 18280, 'score': 4.979148992095907}, {'start_idx': 18220, 'end_idx': 18283, 'score': 0.6443233890492683}, {'start_idx': 18220, 'end_idx': 18241, 'score': 1.5297856511756442}, {'start_idx': 18230, 'end_idx': 18282, 'score': 4.119960597717707}, {'start_idx': 18245, 'end_idx': 18283, 'score': 0.6379864168974291}, {'start_idx': 18284, 'end_idx': 18309, 'score': 0.8476266695406441}, {'start_idx': 18284, 'end_idx': 18323, 'score': 3.510229348279277}, {'start_idx': 18284, 'end_idx': 18347, 'score': 4.153921651183836}, {'start_idx': 18284, 'end_idx': 18337, 'score': 0.7143913165144921}, {'start_idx': 18285, 'end_idx': 18347, 'score': 1.123452232899843}, {'start_idx': 18290, 'end_idx': 18347, 'score': 0.7523853769054389}, {'start_idx': 18294, 'end_idx': 18347, 'score': 2.977281726689742}, {'start_idx': 18300, 'end_idx': 18347, 'score': 5.056450229400315}, {'start_idx': 18307, 'end_idx': 18347, 'score': 4.016297510947051}, {'start_idx': 18328, 'end_idx': 18347, 'score': 1.8304004598669552}, {'start_idx': 18329, 'end_idx': 18347, 'score': 1.4052592109707842}, {'start_idx': 18348, 'end_idx': 18411, 'score': 1.457493116166139}, {'start_idx': 18348, 'end_idx': 18373, 'score': 3.6708713285261902}, {'start_idx': 18348, 'end_idx': 18379, 'score': 3.401908894244044}, {'start_idx': 18348, 'end_idx': 18372, 'score': 1.5576227396418696}, {'start_idx': 18348, 'end_idx': 18388, 'score': 3.697327098641449}, {'start_idx': 18384, 'end_idx': 18411, 'score': 0.8738141171199273}, {'start_idx': 18392, 'end_idx': 18411, 'score': 0.5056931665772817}, {'start_idx': 18412, 'end_idx': 18449, 'score': 0.7541890472596108}, {'start_idx': 18412, 'end_idx': 18430, 'score': 1.4662926290260339}, {'start_idx': 18428, 'end_idx': 18475, 'score': 4.808905874229804}, {'start_idx': 18431, 'end_idx': 18475, 'score': 2.6377158520500323}, {'start_idx': 18444, 'end_idx': 18475, 'score': 0.7936890138287055}, {'start_idx': 18447, 'end_idx': 18475, 'score': 3.691405220574816}, {'start_idx': 18454, 'end_idx': 18475, 'score': 2.8711817671667657}, {'start_idx': 18476, 'end_idx': 18480, 'score': 2.552925274126547}, {'start_idx': 18476, 'end_idx': 18532, 'score': 2.3461084592102868}, {'start_idx': 18509, 'end_idx': 18539, 'score': 4.094235686892329}, {'start_idx': 18517, 'end_idx': 18539, 'score': 0.9381852771398642}, {'start_idx': 18522, 'end_idx': 18539, 'score': 2.7386840097050347}, {'start_idx': 18540, 'end_idx': 18580, 'score': 3.4572663424528374}, {'start_idx': 18540, 'end_idx': 18564, 'score': 3.5121476394760673}, {'start_idx': 18540, 'end_idx': 18563, 'score': 2.8479665492564084}, {'start_idx': 18541, 'end_idx': 18583, 'score': 2.4878773245541597}, {'start_idx': 18546, 'end_idx': 18603, 'score': 2.948928187642938}, {'start_idx': 18576, 'end_idx': 18603, 'score': 3.273564865752549}, {'start_idx': 18584, 'end_idx': 18603, 'score': 1.0396076730376809}, {'start_idx': 18604, 'end_idx': 18667, 'score': 2.6100994328600433}, {'start_idx': 18640, 'end_idx': 18667, 'score': 1.2549908620488173}, {'start_idx': 18668, 'end_idx': 18716, 'score': 1.490074294386776}, {'start_idx': 18671, 'end_idx': 18706, 'score': 2.1441210476246098}, {'start_idx': 18693, 'end_idx': 18731, 'score': 2.753997830348086}, {'start_idx': 18715, 'end_idx': 18731, 'score': 3.2671924866244084}, {'start_idx': 18732, 'end_idx': 18748, 'score': 2.9774639145693325}, {'start_idx': 18732, 'end_idx': 18749, 'score': 1.5129204053161565}, {'start_idx': 18778, 'end_idx': 18795, 'score': 2.0102518364916646}, {'start_idx': 18796, 'end_idx': 18848, 'score': 4.172667255243349}, {'start_idx': 18802, 'end_idx': 18859, 'score': 1.0231325733760284}, {'start_idx': 18805, 'end_idx': 18859, 'score': 3.200990083079022}, {'start_idx': 18860, 'end_idx': 18869, 'score': 2.338213494803127}, {'start_idx': 18878, 'end_idx': 18923, 'score': 0.8349566050961194}, {'start_idx': 18884, 'end_idx': 18923, 'score': 0.6853275241550897}, {'start_idx': 18886, 'end_idx': 18923, 'score': 2.6382637539205716}, {'start_idx': 18887, 'end_idx': 18923, 'score': 2.7336313084558324}, {'start_idx': 18924, 'end_idx': 18924, 'score': 1.2319519640264296}, {'start_idx': 18924, 'end_idx': 18933, 'score': 1.4485038073423253}, {'start_idx': 18924, 'end_idx': 18987, 'score': 1.1073838409376127}, {'start_idx': 19003, 'end_idx': 19051, 'score': 2.420336271135281}, {'start_idx': 19017, 'end_idx': 19051, 'score': 2.5006594553538637}, {'start_idx': 19067, 'end_idx': 19101, 'score': 1.9214077812187036}, {'start_idx': 19096, 'end_idx': 19115, 'score': 1.4773437659689845}, {'start_idx': 19116, 'end_idx': 19178, 'score': 2.7874089456708444}, {'start_idx': 19116, 'end_idx': 19145, 'score': 1.572185203180372}, {'start_idx': 19147, 'end_idx': 19179, 'score': 2.3258914200174874}, {'start_idx': 19180, 'end_idx': 19180, 'score': 0.8143267479166745}, {'start_idx': 19196, 'end_idx': 19230, 'score': 2.2736171041114512}, {'start_idx': 19264, 'end_idx': 19305, 'score': 2.4887971424564186}, {'start_idx': 19264, 'end_idx': 19307, 'score': 2.4931849480444943}, {'start_idx': 19271, 'end_idx': 19307, 'score': 2.7714695746086697}, {'start_idx': 19289, 'end_idx': 19307, 'score': 2.4391354366742886}, {'start_idx': 19308, 'end_idx': 19330, 'score': 2.1690121097323156}, {'start_idx': 19391, 'end_idx': 19435, 'score': 2.1069564845978475}, {'start_idx': 19403, 'end_idx': 19435, 'score': 2.9375414762259244}, {'start_idx': 19500, 'end_idx': 19557, 'score': 1.0180066681087963}, {'start_idx': 19534, 'end_idx': 19563, 'score': 2.619024408515978}, {'start_idx': 19541, 'end_idx': 19563, 'score': 1.8517832769419917}, {'start_idx': 19586, 'end_idx': 19627, 'score': 5.578871398380519}, {'start_idx': 19628, 'end_idx': 19644, 'score': 2.7295818882782554}, {'start_idx': 19666, 'end_idx': 19691, 'score': 4.810808024438566}, {'start_idx': 19713, 'end_idx': 19755, 'score': 1.8621731780466835}, {'start_idx': 19756, 'end_idx': 19772, 'score': 1.6913494618041134}, {'start_idx': 19820, 'end_idx': 19855, 'score': 4.801057508239337}, {'start_idx': 19905, 'end_idx': 19935, 'score': 2.289027801581232}, {'start_idx': 20012, 'end_idx': 20066, 'score': 1.28354356718334}, {'start_idx': 20052, 'end_idx': 20075, 'score': 2.5786179724763136}, {'start_idx': 20087, 'end_idx': 20136, 'score': 4.645887220549616}, {'start_idx': 20140, 'end_idx': 20175, 'score': 3.629878929530056}, {'start_idx': 20248, 'end_idx': 20267, 'score': 1.2395227816648302}, {'start_idx': 20268, 'end_idx': 20296, 'score': 1.0772581355630313}, {'start_idx': 20306, 'end_idx': 20331, 'score': 2.4698466413868956}, {'start_idx': 20363, 'end_idx': 20395, 'score': 1.2952727050620556}, {'start_idx': 20371, 'end_idx': 20395, 'score': 2.259060191956225}, {'start_idx': 20374, 'end_idx': 20395, 'score': 1.7145575332066514}, {'start_idx': 20463, 'end_idx': 20514, 'score': 1.1245142131642318}, {'start_idx': 20486, 'end_idx': 20523, 'score': 2.03857551395424}, {'start_idx': 20501, 'end_idx': 20523, 'score': 3.564886565421108}, {'start_idx': 20524, 'end_idx': 20560, 'score': 3.177572862984216}, {'start_idx': 20524, 'end_idx': 20545, 'score': 1.4963702531880527}, {'start_idx': 20524, 'end_idx': 20524, 'score': 1.2286586151449628}, {'start_idx': 20652, 'end_idx': 20690, 'score': 2.4443132506815073}, {'start_idx': 20652, 'end_idx': 20687, 'score': 1.2676622663301798}, {'start_idx': 20724, 'end_idx': 20775, 'score': 2.1950255846096867}, {'start_idx': 20724, 'end_idx': 20779, 'score': 2.7452535416655564}, {'start_idx': 20853, 'end_idx': 20884, 'score': 2.066059800677711}, {'start_idx': 20853, 'end_idx': 20894, 'score': 2.539795644056859}, {'start_idx': 21117, 'end_idx': 21163, 'score': 2.0164232746439232}, {'start_idx': 21121, 'end_idx': 21163, 'score': 1.6314543878997474}, {'start_idx': 21122, 'end_idx': 21163, 'score': 1.0619885441401693}, {'start_idx': 21164, 'end_idx': 21190, 'score': 1.9897173766378848}, {'start_idx': 21169, 'end_idx': 21200, 'score': 1.9316844436621718}, {'start_idx': 21356, 'end_idx': 21409, 'score': 1.2702999230338747}, {'start_idx': 21374, 'end_idx': 21418, 'score': 2.0021142168601966}, {'start_idx': 21420, 'end_idx': 21420, 'score': 1.436670118507062}, {'start_idx': 21652, 'end_idx': 21675, 'score': 2.058681230679376}, {'start_idx': 21676, 'end_idx': 21716, 'score': 2.220914074894013}, {'start_idx': 21804, 'end_idx': 21851, 'score': 3.0883313621071573}, {'start_idx': 21899, 'end_idx': 21931, 'score': 1.1479994422190498}, {'start_idx': 21932, 'end_idx': 21995, 'score': 2.9266350943008743}, {'start_idx': 21932, 'end_idx': 21950, 'score': 1.0914194729812683}, {'start_idx': 21958, 'end_idx': 21995, 'score': 1.502871444137551}, {'start_idx': 21996, 'end_idx': 21996, 'score': 0.7191464404398371}, {'start_idx': 22026, 'end_idx': 22059, 'score': 2.2464664760271553}, {'start_idx': 22060, 'end_idx': 22084, 'score': 2.5514256469747805}, {'start_idx': 22092, 'end_idx': 22123, 'score': 1.6347274699981738}, {'start_idx': 22124, 'end_idx': 22150, 'score': 1.5959623178252476}, {'start_idx': 22124, 'end_idx': 22149, 'score': 1.4732440938134554}, {'start_idx': 22188, 'end_idx': 22209, 'score': 2.362826553003328}, {'start_idx': 22188, 'end_idx': 22226, 'score': 2.341908253457223}, {'start_idx': 22287, 'end_idx': 22315, 'score': 2.343126138325771}, {'start_idx': 22316, 'end_idx': 22342, 'score': 2.4542680255770803}, {'start_idx': 22364, 'end_idx': 22379, 'score': 1.1953568798119618}, {'start_idx': 22380, 'end_idx': 22422, 'score': 1.242664128714055}, {'start_idx': 22398, 'end_idx': 22443, 'score': 2.443489396594545}, {'start_idx': 22444, 'end_idx': 22507, 'score': 2.3703395072445748}, {'start_idx': 22486, 'end_idx': 22507, 'score': 2.3072358837819067}, {'start_idx': 22508, 'end_idx': 22532, 'score': 2.3391327341426615}, {'start_idx': 22601, 'end_idx': 22635, 'score': 5.73507151801803}, {'start_idx': 22636, 'end_idx': 22660, 'score': 3.1092479186151696}, {'start_idx': 22636, 'end_idx': 22636, 'score': 1.1162373300805337}, {'start_idx': 22649, 'end_idx': 22695, 'score': 3.1188215236556984}, {'start_idx': 22700, 'end_idx': 22742, 'score': 4.415968863715096}, {'start_idx': 22747, 'end_idx': 22763, 'score': 2.1213342641378907}, {'start_idx': 22764, 'end_idx': 22787, 'score': 2.0183862560530135}, {'start_idx': 22785, 'end_idx': 22827, 'score': 2.3405070081723274}, {'start_idx': 22792, 'end_idx': 22827, 'score': 4.526989456160775}, {'start_idx': 22828, 'end_idx': 22840, 'score': 2.564306251476336}, {'start_idx': 22828, 'end_idx': 22828, 'score': 1.1565173717363049}, {'start_idx': 22956, 'end_idx': 22993, 'score': 3.918794313543307}, {'start_idx': 23020, 'end_idx': 23048, 'score': 1.8584290001936246}, {'start_idx': 23061, 'end_idx': 23083, 'score': 1.8459394685946473}, {'start_idx': 23084, 'end_idx': 23127, 'score': 1.278421394439999}, {'start_idx': 23212, 'end_idx': 23275, 'score': 2.5279705211400327}, {'start_idx': 23247, 'end_idx': 23275, 'score': 2.3154753383473894}, {'start_idx': 23340, 'end_idx': 23403, 'score': 2.4304574452748486}, {'start_idx': 23468, 'end_idx': 23498, 'score': 2.644361495845911}, {'start_idx': 23602, 'end_idx': 23636, 'score': 2.4831296205441333}, {'start_idx': 23724, 'end_idx': 23749, 'score': 1.8166301220937988}, {'start_idx': 23724, 'end_idx': 23756, 'score': 2.146796894679443}, {'start_idx': 23865, 'end_idx': 23912, 'score': 3.8429117497023}, {'start_idx': 23990, 'end_idx': 24043, 'score': 4.257609063283915}, {'start_idx': 24128, 'end_idx': 24171, 'score': 4.096214086746501}, {'start_idx': 24254, 'end_idx': 24284, 'score': 2.823917944671808}, {'start_idx': 24374, 'end_idx': 24418, 'score': 0.976037100328971}, {'start_idx': 24432, 'end_idx': 24467, 'score': 3.1300625797704074}, {'start_idx': 24509, 'end_idx': 24547, 'score': 2.8888035314849883}, {'start_idx': 24648, 'end_idx': 24683, 'score': 3.339775755978279}, {'start_idx': 24649, 'end_idx': 24683, 'score': 2.9396364140458013}, {'start_idx': 24684, 'end_idx': 24735, 'score': 3.1466588900150967}, {'start_idx': 24684, 'end_idx': 24733, 'score': 3.118612186581328}, {'start_idx': 24684, 'end_idx': 24724, 'score': 1.2131761019541119}, {'start_idx': 24768, 'end_idx': 24811, 'score': 3.4811363807095854}, {'start_idx': 24769, 'end_idx': 24811, 'score': 2.8099390647853375}, {'start_idx': 24812, 'end_idx': 24824, 'score': 1.996571607007708}, {'start_idx': 24841, 'end_idx': 24875, 'score': 6.100572049717064}, {'start_idx': 24876, 'end_idx': 24899, 'score': 3.2640092453621854}, {'start_idx': 24876, 'end_idx': 24898, 'score': 2.2107715630158324}, {'start_idx': 24876, 'end_idx': 24904, 'score': 2.8080009974164426}, {'start_idx': 24958, 'end_idx': 25003, 'score': 2.110560631206042}, {'start_idx': 24958, 'end_idx': 24994, 'score': 2.7085708355066767}, {'start_idx': 24977, 'end_idx': 25003, 'score': 1.8842500127411645}, {'start_idx': 25004, 'end_idx': 25022, 'score': 1.4681332489250665}, {'start_idx': 25021, 'end_idx': 25067, 'score': 2.4487676254616932}, {'start_idx': 25046, 'end_idx': 25067, 'score': 2.603824925372551}, {'start_idx': 25068, 'end_idx': 25080, 'score': 2.1798572198568626}, {'start_idx': 25134, 'end_idx': 25179, 'score': 1.2216749671417548}, {'start_idx': 25159, 'end_idx': 25195, 'score': 4.42218905766367}, {'start_idx': 25164, 'end_idx': 25195, 'score': 1.35946979885351}, {'start_idx': 25165, 'end_idx': 25195, 'score': 2.0703550989022914}, {'start_idx': 25196, 'end_idx': 25210, 'score': 2.9122260588519264}, {'start_idx': 25196, 'end_idx': 25196, 'score': 0.7163303192876762}, {'start_idx': 25206, 'end_idx': 25259, 'score': 2.4845657604160833}, {'start_idx': 25241, 'end_idx': 25259, 'score': 3.4727649784579127}, {'start_idx': 25260, 'end_idx': 25287, 'score': 3.911072049032346}, {'start_idx': 25260, 'end_idx': 25293, 'score': 2.40644646472613}, {'start_idx': 25352, 'end_idx': 25387, 'score': 1.105118251834126}, {'start_idx': 25388, 'end_idx': 25440, 'score': 2.4205623732625927}, {'start_idx': 25388, 'end_idx': 25421, 'score': 1.2062045783721886}, {'start_idx': 25399, 'end_idx': 25432, 'score': 1.4026133600717323}, {'start_idx': 25419, 'end_idx': 25451, 'score': 3.6722920259811054}, {'start_idx': 25516, 'end_idx': 25545, 'score': 3.6182056856975797}, {'start_idx': 25580, 'end_idx': 25580, 'score': 0.8816497190524161}, {'start_idx': 25644, 'end_idx': 25689, 'score': 1.6970193116029317}, {'start_idx': 25644, 'end_idx': 25695, 'score': 2.610893643045193}, {'start_idx': 25687, 'end_idx': 25707, 'score': 3.1627810080658496}, {'start_idx': 25788, 'end_idx': 25828, 'score': 1.834030680289564}, {'start_idx': 25964, 'end_idx': 26008, 'score': 2.743456976815245}, {'start_idx': 25964, 'end_idx': 26000, 'score': 1.9418333962710193}, {'start_idx': 26092, 'end_idx': 26145, 'score': 2.7825034675871225}, {'start_idx': 26092, 'end_idx': 26137, 'score': 2.7222052338560174}, {'start_idx': 26231, 'end_idx': 26277, 'score': 1.6550288847249568}, {'start_idx': 26305, 'end_idx': 26347, 'score': 2.4576548310384103}, {'start_idx': 26420, 'end_idx': 26475, 'score': 2.605313654165105}, {'start_idx': 26500, 'end_idx': 26539, 'score': 5.520434301411883}, {'start_idx': 26540, 'end_idx': 26558, 'score': 2.70276696647243}, {'start_idx': 26622, 'end_idx': 26667, 'score': 2.7370449366105656}, {'start_idx': 26633, 'end_idx': 26667, 'score': 1.307024851672864}, {'start_idx': 26668, 'end_idx': 26688, 'score': 2.345385723229472}, {'start_idx': 26668, 'end_idx': 26694, 'score': 1.267056172544898}, {'start_idx': 26764, 'end_idx': 26795, 'score': 1.1316946566696262}, {'start_idx': 26773, 'end_idx': 26795, 'score': 1.6895516279193783}, {'start_idx': 26796, 'end_idx': 26825, 'score': 1.2147913218709845}, {'start_idx': 26796, 'end_idx': 26821, 'score': 1.7445940361572898}, {'start_idx': 26924, 'end_idx': 26924, 'score': 1.1371723135924363}, {'start_idx': 26954, 'end_idx': 26987, 'score': 2.3974939441820102}, {'start_idx': 27193, 'end_idx': 27243, 'score': 1.86948917043914}, {'start_idx': 27244, 'end_idx': 27287, 'score': 1.9656009680237758}, {'start_idx': 27262, 'end_idx': 27298, 'score': 2.315401944446569}, {'start_idx': 27269, 'end_idx': 27307, 'score': 2.6528016398304737}, {'start_idx': 27325, 'end_idx': 27361, 'score': 2.012818329828593}, {'start_idx': 27345, 'end_idx': 27371, 'score': 1.972640068960273}, {'start_idx': 27692, 'end_idx': 27723, 'score': 2.01045944091368}, {'start_idx': 27727, 'end_idx': 27755, 'score': 2.480552533213906}, {'start_idx': 27780, 'end_idx': 27819, 'score': 2.8962230794835375}, {'start_idx': 27820, 'end_idx': 27883, 'score': 2.9019797760177335}, {'start_idx': 27913, 'end_idx': 27947, 'score': 1.41016041211851}, {'start_idx': 27916, 'end_idx': 27947, 'score': 2.56889619767559}, {'start_idx': 28031, 'end_idx': 28075, 'score': 2.495858996674844}, {'start_idx': 28044, 'end_idx': 28075, 'score': 0.9198780789418978}, {'start_idx': 28076, 'end_idx': 28102, 'score': 1.00645479058166}, {'start_idx': 28076, 'end_idx': 28110, 'score': 2.539145739988468}, {'start_idx': 28140, 'end_idx': 28189, 'score': 3.6702000345132166}, {'start_idx': 28270, 'end_idx': 28314, 'score': 2.65047793923727}, {'start_idx': 28304, 'end_idx': 28331, 'score': 3.5608699515777587}, {'start_idx': 28405, 'end_idx': 28437, 'score': 1.6328182719369198}, {'start_idx': 28494, 'end_idx': 28523, 'score': 1.7274016390592386}, {'start_idx': 28524, 'end_idx': 28571, 'score': 5.5783516515808245}, {'start_idx': 28533, 'end_idx': 28587, 'score': 2.2760177149159824}, {'start_idx': 28536, 'end_idx': 28587, 'score': 3.221197630404404}, {'start_idx': 28537, 'end_idx': 28587, 'score': 2.8916970672660853}, {'start_idx': 28543, 'end_idx': 28587, 'score': 3.365789022320006}, {'start_idx': 28547, 'end_idx': 28587, 'score': 0.7807398309391839}, {'start_idx': 28556, 'end_idx': 28587, 'score': 1.0277363686701488}, {'start_idx': 28588, 'end_idx': 28604, 'score': 2.041020254611019}, {'start_idx': 28588, 'end_idx': 28651, 'score': 2.3355018501788303}, {'start_idx': 28668, 'end_idx': 28710, 'score': 1.189252421825587}, {'start_idx': 28673, 'end_idx': 28715, 'score': 2.658911350550196}, {'start_idx': 28716, 'end_idx': 28727, 'score': 1.9257296290453592}, {'start_idx': 28780, 'end_idx': 28820, 'score': 2.4219295342697196}, {'start_idx': 28780, 'end_idx': 28808, 'score': 2.759278703567377}, {'start_idx': 28784, 'end_idx': 28824, 'score': 2.709567006050271}, {'start_idx': 28908, 'end_idx': 28952, 'score': 2.2420520156122024}, {'start_idx': 28908, 'end_idx': 28942, 'score': 2.654918491097721}, {'start_idx': 28908, 'end_idx': 28937, 'score': 1.1372237860117154}, {'start_idx': 28917, 'end_idx': 28957, 'score': 2.684494698113898}, {'start_idx': 29015, 'end_idx': 29035, 'score': 5.002050634998443}, {'start_idx': 29036, 'end_idx': 29071, 'score': 3.8987912590903027}, {'start_idx': 29040, 'end_idx': 29095, 'score': 2.3214749702396285}, {'start_idx': 29040, 'end_idx': 29077, 'score': 2.4200574040988756}, {'start_idx': 29101, 'end_idx': 29150, 'score': 0.7914078056856761}, {'start_idx': 29112, 'end_idx': 29151, 'score': 2.2365797943553622}, {'start_idx': 29129, 'end_idx': 29163, 'score': 1.2646786330491802}, {'start_idx': 29136, 'end_idx': 29163, 'score': 1.2423899635724571}, {'start_idx': 29164, 'end_idx': 29187, 'score': 0.7236054911686286}, {'start_idx': 29169, 'end_idx': 29222, 'score': 2.1606513961674194}, {'start_idx': 29272, 'end_idx': 29291, 'score': 4.497747214074973}, {'start_idx': 29292, 'end_idx': 29323, 'score': 3.6751065517836645}, {'start_idx': 29292, 'end_idx': 29316, 'score': 1.3077733549086137}, {'start_idx': 29339, 'end_idx': 29355, 'score': 2.308579953138161}, {'start_idx': 29356, 'end_idx': 29373, 'score': 2.1178478801945904}, {'start_idx': 29457, 'end_idx': 29483, 'score': 2.251013266963277}, {'start_idx': 29484, 'end_idx': 29531, 'score': 2.5679035124221397}, {'start_idx': 29552, 'end_idx': 29587, 'score': 1.9041310571773278}, {'start_idx': 29612, 'end_idx': 29637, 'score': 2.274949476692132}, {'start_idx': 29702, 'end_idx': 29737, 'score': 1.9991935569770123}, {'start_idx': 29740, 'end_idx': 29740, 'score': 1.1009281111966942}, {'start_idx': 29764, 'end_idx': 29803, 'score': 2.266638201570601}, {'start_idx': 29996, 'end_idx': 30031, 'score': 1.7156498910941045}, {'start_idx': 30036, 'end_idx': 30059, 'score': 1.837516208239213}, {'start_idx': 30061, 'end_idx': 30119, 'score': 2.570228464526022}, {'start_idx': 30064, 'end_idx': 30116, 'score': 2.401926852264372}, {'start_idx': 30086, 'end_idx': 30120, 'score': 1.7037467634506755}, {'start_idx': 30125, 'end_idx': 30160, 'score': 1.7526355266810698}, {'start_idx': 30191, 'end_idx': 30249, 'score': 1.6320882761667728}, {'start_idx': 30342, 'end_idx': 30379, 'score': 1.9174882992805222}, {'start_idx': 30401, 'end_idx': 30443, 'score': 5.5939104031110585}, {'start_idx': 30444, 'end_idx': 30458, 'score': 2.445563733527761}, {'start_idx': 30508, 'end_idx': 30537, 'score': 1.7871323917339013}, {'start_idx': 30596, 'end_idx': 30635, 'score': 0.711439010966373}, {'start_idx': 30636, 'end_idx': 30699, 'score': 1.117990580497145}, {'start_idx': 30700, 'end_idx': 30763, 'score': 1.2727628807952687}, {'start_idx': 30844, 'end_idx': 30882, 'score': 2.2068447566798293}, {'start_idx': 30892, 'end_idx': 30922, 'score': 1.9103901178402656}, {'start_idx': 30905, 'end_idx': 30955, 'score': 2.446540521002176}, {'start_idx': 31025, 'end_idx': 31062, 'score': 1.9400284239624745}, {'start_idx': 31084, 'end_idx': 31113, 'score': 2.1052043111882877}, {'start_idx': 31114, 'end_idx': 31147, 'score': 2.346650126856616}, {'start_idx': 31166, 'end_idx': 31211, 'score': 4.799594612032238}, {'start_idx': 31256, 'end_idx': 31275, 'score': 1.797862193041759}, {'start_idx': 31299, 'end_idx': 31339, 'score': 2.684531673586773}, {'start_idx': 31386, 'end_idx': 31403, 'score': 5.122394471946179}, {'start_idx': 31404, 'end_idx': 31436, 'score': 4.314443827656024}, {'start_idx': 31418, 'end_idx': 31461, 'score': 2.3106808058039503}, {'start_idx': 31532, 'end_idx': 31577, 'score': 1.2054797571186007}, {'start_idx': 31623, 'end_idx': 31656, 'score': 2.093600339136739}, {'start_idx': 31660, 'end_idx': 31711, 'score': 1.2678056715068315}, {'start_idx': 31852, 'end_idx': 31900, 'score': 2.365268024259881}, {'start_idx': 32070, 'end_idx': 32107, 'score': 1.1341320730004447}, {'start_idx': 32082, 'end_idx': 32107, 'score': 2.1066501999900322}, {'start_idx': 32108, 'end_idx': 32134, 'score': 2.1130618925075524}, {'start_idx': 32108, 'end_idx': 32129, 'score': 1.121211212299919}, {'start_idx': 32260, 'end_idx': 32299, 'score': 3.16939368742632}, {'start_idx': 32267, 'end_idx': 32299, 'score': 2.587413376437976}, {'start_idx': 32270, 'end_idx': 32299, 'score': 0.6921498180987087}, {'start_idx': 32280, 'end_idx': 32299, 'score': 1.0293542987766018}, {'start_idx': 32300, 'end_idx': 32326, 'score': 2.7544551056083226}, {'start_idx': 32300, 'end_idx': 32348, 'score': 0.9404850009307957}, {'start_idx': 32364, 'end_idx': 32404, 'score': 1.7534787094970479}, {'start_idx': 32364, 'end_idx': 32411, 'score': 1.7066628799518269}, {'start_idx': 32387, 'end_idx': 32427, 'score': 1.3268165491877986}, {'start_idx': 32394, 'end_idx': 32427, 'score': 3.4726050708520106}, {'start_idx': 32395, 'end_idx': 32427, 'score': 2.0836586550591187}, {'start_idx': 32428, 'end_idx': 32446, 'score': 2.188030014607877}, {'start_idx': 32454, 'end_idx': 32491, 'score': 2.0911571665728896}, {'start_idx': 32497, 'end_idx': 32538, 'score': 2.5499946642872495}, {'start_idx': 32556, 'end_idx': 32594, 'score': 2.6938323073974972}, {'start_idx': 32556, 'end_idx': 32619, 'score': 3.449686787573606}, {'start_idx': 32620, 'end_idx': 32620, 'score': 1.6443450530408208}, {'start_idx': 32791, 'end_idx': 32811, 'score': 1.783629419391648}, {'start_idx': 32812, 'end_idx': 32847, 'score': 2.0310570203107297}, {'start_idx': 32834, 'end_idx': 32871, 'score': 1.2026375747826317}, {'start_idx': 32849, 'end_idx': 32875, 'score': 3.334396487029352}, {'start_idx': 32949, 'end_idx': 32994, 'score': 2.177151781528717}, {'start_idx': 33004, 'end_idx': 33004, 'score': 1.706184626234799}, {'start_idx': 33009, 'end_idx': 33047, 'score': 1.3189084913461377}, {'start_idx': 33068, 'end_idx': 33111, 'score': 2.5065183048134108}, {'start_idx': 33199, 'end_idx': 33244, 'score': 2.2132020138010904}, {'start_idx': 33219, 'end_idx': 33259, 'score': 3.126380836154281}, {'start_idx': 33305, 'end_idx': 33323, 'score': 2.413931442356185}, {'start_idx': 33324, 'end_idx': 33344, 'score': 2.1100458689128327}, {'start_idx': 33411, 'end_idx': 33446, 'score': 2.102724877780175}, {'start_idx': 33421, 'end_idx': 33451, 'score': 2.347667922243206}, {'start_idx': 33452, 'end_idx': 33493, 'score': 2.414969449622843}, {'start_idx': 33498, 'end_idx': 33515, 'score': 3.9621197374311437}, {'start_idx': 33516, 'end_idx': 33548, 'score': 3.5238410602196906}, {'start_idx': 33583, 'end_idx': 33638, 'score': 2.248151072136263}, {'start_idx': 33615, 'end_idx': 33643, 'score': 1.7556119390145037}, {'start_idx': 33644, 'end_idx': 33697, 'score': 1.9993381899782836}, {'start_idx': 33644, 'end_idx': 33644, 'score': 0.14516211369474485}, {'start_idx': 33739, 'end_idx': 33771, 'score': 2.011104053921255}, {'start_idx': 33772, 'end_idx': 33823, 'score': 3.030298056457548}, {'start_idx': 33785, 'end_idx': 33827, 'score': 2.4190149461574433}, {'start_idx': 33836, 'end_idx': 33865, 'score': 2.12885260010975}, {'start_idx': 33877, 'end_idx': 33899, 'score': 1.4304673982720209}, {'start_idx': 33964, 'end_idx': 33999, 'score': 2.274393609594323}, {'start_idx': 34028, 'end_idx': 34070, 'score': 2.4436918224981916}, {'start_idx': 34092, 'end_idx': 34092, 'score': 1.1336135708278963}, {'start_idx': 34213, 'end_idx': 34268, 'score': 3.9032477599351734}]
+2024-07-19 09:44:53,420 INFO Final Metrics for sample rate 0.1s with 70 different channels
+Precision: 11.56%
+Recall: 100.00%
+F1-score: 20.72%
+AUROC: 51.17%
+AUPRC: 11.04%
+
+2024-07-19 09:45:09,590 INFO Graphical output saved on path : data/2024-07-18_20.57.21/plot_predictions/final_anomalies_prediction_sample_rate_0.1s.pdf
+2024-07-19 09:45:09,714 INFO Ended Processing date: 20220811, rate: 0.1s
+2024-07-19 09:46:46,669 INFO #### Configuration Details ####
+path_to_config = /content/Time_Series_Anomaly_Detection/telemanom/config.yaml
+logger = <Logger telemanom (INFO)>
+train = True
+predict = True
+batch_size = 64
+window_size = 15
+smoothing_perc = 0.05
+error_buffer = 15
+loss_metric = mse
+optimizer = adam
+activation = leakyReLu
+validation_split = 0.2
+dropout = 0.2
+lstm_batch_size = 64
+weight_decay = 0.01
+learning_rate = 0.05
+epochs = 20
+layer_LSTM = 2
+layers = [80, 80]
+patience = 10
+min_delta = 0.0003
+l_s = 300
+n_predictions = 2
+p = 0.15
+run_id = 2024-07-18_20.57.21
+config_path = config.yaml
+sample_rate = ['0.1s']
+save_on_drive = True
+skip_graphics = False
+verbose = False
+treshold = True
+dataset_path = dataset/Kuka_v1/
+Please for more info about the model and the configuration see : data/2024-07-18_20.57.21/info_model/info_model.txt
+####End of Configuration Details ####
