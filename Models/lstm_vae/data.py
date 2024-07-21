@@ -141,11 +141,11 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     # print(np.max(test.values), np.min(test.values))
 
     print("Getting windows for training data...")
-    train_windows = get_windows(train, window_size)
+    train_windows = get_windows(train_records, window_size)
     print("Getting windows and labels for calibration data...")
-    cal_windows, cal_labels = get_windows_labels_pa(cal, window_size, collisions_interval, k_pa)
+    cal_windows, cal_labels = get_windows_labels_pa(cal_records, window_size, collisions_interval, k_pa)
     print("Getting windows and labels for test data...")
-    test_windows, test_labels = get_windows_labels_pa(test, window_size, collisions_interval, k_pa)
+    test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
 
     return train_windows, cal_windows, cal_labels, test_windows, test_labels
     
