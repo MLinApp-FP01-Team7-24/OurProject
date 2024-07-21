@@ -29,6 +29,8 @@ def get_df(filepaths_csv, delimiter=";"):
     # Set timestamp as index
     df.index = df['time']
 
+    df = df.sort_index(axis=1)
+
     # Drop useless columns
     columns_to_drop = [column for column in df.columns if "Abb" in column or "Temperature" in column]
     df.drop(["machine_nameKuka Robot_export_active_energy",
@@ -129,12 +131,13 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Reading collisions data...")
     collisions_interval = get_collisions(filepath_cal)
 
+    print(train_records.shape, cal_records.shape, test_records.shape)
+
     print("Normalizing data...")
     min_max_scaler = MinMaxScaler()
-    test_values = min_max_scaler.fit_transform(test_records.values)
-    train_values = min_max_scaler.transform(train_records.values)
+    train_values = min_max_scaler.fit_transform(train_records.values)
     cal_values = min_max_scaler.transform(cal_records.values)
-   
+    test_values = min_max_scaler.transform(test_records.values)
 
     train_records = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
     cal_records = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
@@ -152,4 +155,3 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
 
     return train_windows, cal_windows, cal_labels, test_windows, test_labels
-    
