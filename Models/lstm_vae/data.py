@@ -53,26 +53,12 @@ def get_collisions(filepath):
 
     return collisions_interval
 
-def normalize(records, scaler):
-    values = scaler.transform(records.values)
-    records = pd.DataFrame(values, columns=records.columns, index=records.index)
-
-    return records
-
-def not_work_normalize(train_records, cal_records, test_records):
+def normalize(train_records, cal_records, test_records):
     min_max_scaler = MinMaxScaler()
-
-    print(np.max(train_records.values), np.min(train_records.values))
-    print(np.max(cal_records.values), np.min(cal_records.values))
-    print(np.max(test_records.values), np.min(test_records.values))
 
     train_values = min_max_scaler.fit_transform(train_records.values)
     cal_values = min_max_scaler.transform(cal_records.values)
     test_values = min_max_scaler.transform(test_records.values)
-
-    print(np.max(train_values), np.min(train_values))
-    print(np.max(cal_values), np.min(cal_values))
-    print(np.max(test_values), np.min(test_values))
 
     train = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
     cal = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
@@ -131,21 +117,8 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Reading collisions data...")
     collisions_interval = get_collisions(filepath_cal)
 
-    print(train_records.shape, cal_records.shape, test_records.shape)
-
     print("Normalizing data...")
-    min_max_scaler = MinMaxScaler()
-    train_values = min_max_scaler.fit_transform(train_records.values)
-    cal_values = min_max_scaler.transform(cal_records.values)
-    test_values = min_max_scaler.transform(test_records.values)
-
-    train_records = pd.DataFrame(train_values, columns=train_records.columns, index=train_records.index)
-    cal_records = pd.DataFrame(cal_values, columns=cal_records.columns, index=cal_records.index)
-    test_records = pd.DataFrame(test_values, columns=test_records.columns, index=test_records.index)
-
-    print(np.max(train_records.values), np.min(train_records.values))
-    print(np.max(cal_records.values), np.min(cal_records.values))
-    print(np.max(test_records.values), np.min(test_records.values))
+    train_records, cal_records, test_records = normalize(train_records, cal_records, test_records)
 
     print("Getting windows for training data...")
     train_windows = get_windows(train_records, window_size)
