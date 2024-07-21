@@ -100,3 +100,24 @@ def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sa
     test_windows, test_labels = get_windows_labels_pa(test_records, window_size, collisions_interval, k_pa)
 
     return test_windows, test_labels
+
+def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 3, 4], file_numbers_cal=[6], file_numbers_test=[1, 5], filepath_train='./kuka_dataset/normal', filepath_cal='./kuka_dataset/collisions', filepath_test='./kuka_dataset/collisions'):
+    print("Reading training data...")
+    train_records = get_records(filepath_train, sampling, file_numbers_train)
+    print("Reading calibration data...")
+    cal_records = get_records(filepath_cal, sampling, file_numbers_cal)
+    print("Reading test data...")
+    test_records = get_records(filepath_test, sampling, file_numbers_test)
+    print("Reading collisions data...")
+    collisions_interval = get_collisions(filepath_cal)
+    print("Normalizing data...")
+    train, cal, test = normalize(train_records, cal_records, test_records)
+    print("Getting windows for training data...")
+    train_windows = get_windows(train, window_size)
+    print("Getting windows and labels for calibration data...")
+    cal_windows, cal_labels = get_windows_labels_pa(cal, window_size, collisions_interval, k_pa)
+    print("Getting windows and labels for test data...")
+    test_windows, test_labels = get_windows_labels_pa(test, window_size, collisions_interval, k_pa)
+
+    return train_windows, cal_windows, cal_labels, test_windows, test_labels
+    
