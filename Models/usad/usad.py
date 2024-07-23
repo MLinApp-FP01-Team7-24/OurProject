@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from utils import *
+from Models.usad.utils import *
 device = get_default_device()
 
 class Encoder(nn.Module):
