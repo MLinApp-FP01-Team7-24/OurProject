@@ -67,6 +67,7 @@ def train_stage1(config: dict,
     input_length = config['trainer_params']['input_length']
     train_exp = ExpVQVAE(input_length, config, len(train_data_loader.dataset))
     trainer = pl.Trainer(#logger=wandb_logger,
+                         accumulate_grad_batches=config['dataset']['batch_sizes']['stage1'],
                          enable_checkpointing=False,
                          #callbacks=[LearningRateMonitor(logging_interval='epoch')],
                          max_epochs=config['trainer_params']['max_epochs']['stage1'],
