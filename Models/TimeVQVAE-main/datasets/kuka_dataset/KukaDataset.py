@@ -111,7 +111,7 @@ class KukaDataset(Dataset):
                     else: self.targets.append('Low')
                     window_df.drop(columns=['time'], inplace=True)
                     self.kuka_df.append(window_df)
-            if 'time' in self.kept_columns: self.kept_columns.remove('time')
+            #if 'time' in self.kept_columns: self.kept_columns.remove('time')
 
         if verbose: print('files were read...')
         print(len(self.kuka_df), self.kuka_df[0].shape)
