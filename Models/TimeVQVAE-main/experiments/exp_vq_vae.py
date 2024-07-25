@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from torch.optim.lr_scheduler import CosineAnnealingLR
 import matplotlib.pyplot as plt
 #import wandb
+import gc
 
 from encoder_decoders.vq_vae_encdec import VQVAEEncoder, VQVAEDecoder
 from experiments.exp_base import ExpBase, detach_the_unnecessary
@@ -111,6 +112,7 @@ class ExpVQVAE(ExpBase):
             z_fcn = self.fcn(x.float(), return_feature_vector=True).detach()
             zhat_fcn = self.fcn(xhat_l.float() + xhat_h.float(), return_feature_vector=True)
             recons_loss['perceptual'] = F.mse_loss(z_fcn, zhat_fcn)
+            del z_fcn, zhat_fcn
 
         # plot `x` and `xhat`
         r = np.random.rand()
@@ -138,6 +140,13 @@ class ExpVQVAE(ExpBase):
             plt.tight_layout()
             #wandb.log({"x vs xhat (training)": wandb.Image(plt)})
             plt.close()
+
+        # Explicitly delete large tensors
+        del x, x_masked, xf, u_l, x_l, u_l_masked, z_l, z_q_l, xfhat_l, uhat_l, xhat_l
+        del u_h, x_h, u_h_masked, z_h, z_q_h, xfhat_h, uhat_h, xhat_h
+
+        # Force garbage collection
+        #gc.collect()
 
         return recons_loss, vq_losses, perplexities
 
