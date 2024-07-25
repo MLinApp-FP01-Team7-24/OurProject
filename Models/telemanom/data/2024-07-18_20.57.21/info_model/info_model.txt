@@ -1,0 +1,42 @@
+###### CONFIGURATION ######
+logger: <Logger telemanom (INFO)>
+train: True
+predict: True
+batch_size: 64
+window_size: 15
+smoothing_perc: 0.05
+error_buffer: 15
+loss_metric: mse
+optimizer: adam
+activation: leakyReLu
+validation_split: 0.2
+dropout: 0.2
+lstm_batch_size: 64
+weight_decay: 0.01
+learning_rate: 0.05
+epochs: 20
+layer_LSTM: 2
+layers: [80, 80]
+patience: 10
+min_delta: 0.0003
+l_s: 300
+n_predictions: 2
+p: 0.15
+run_id: None
+config_path: config.yaml
+sample_rate: ['0.1s']
+save_on_drive: True
+skip_graphics: False
+verbose: False
+treshold: True
+
+###### MODEL INFO ######
+list_lstm (ModuleList): ModuleList(
+  (0): LSTM(1, 80, batch_first=True)
+  (1): LSTM(80, 80, batch_first=True)
+)
+list_dropout (ModuleList): ModuleList(
+  (0-1): 2 x Dropout(p=0.2, inplace=False)
+)
+fc (Linear): Linear(in_features=80, out_features=2, bias=True)
+activation (LeakyReLU): LeakyReLU(negative_slope=0.01)
