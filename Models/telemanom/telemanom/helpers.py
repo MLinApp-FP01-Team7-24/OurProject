@@ -632,7 +632,7 @@ def saveOnDrive(name_dir=""):
 
 def saveInfoLogger(model,config,run_id):
     # Crea il percorso del file se non esiste
-    path = os.path.join('trained_models/telemanom', run_id, 'info_model')
+    path = get_correct_path(os.path.join('trained_models/telemanom', run_id, 'info_model'))
     os.makedirs(path, exist_ok=True)
 
     # Specifica il file per salvare le informazioni
