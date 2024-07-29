@@ -303,13 +303,13 @@ def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_chan
                 true_labels.append(1)  # True Positive
                 pred_scores.append(score)
                 found = True
-                print(f"True Positive: Predicted anomaly from {pred_start} to {pred_end} overlaps with real anomaly from {real_start} to {real_end}")
+                #print(f"True Positive: Predicted anomaly from {pred_start} to {pred_end} overlaps with real anomaly from {real_start} to {real_end}")
                 break
 
         if not found:
             true_labels.append(0)  # False Negative
             pred_scores.append(0)  # No score since it's a miss
-            print(f"False Negative: No predicted anomaly overlaps with real anomaly from {real_start} to {real_end}")
+            #print(f"False Negative: No predicted anomaly overlaps with real anomaly from {real_start} to {real_end}")
 
     for anomaly in predicted_intervals:
         pred_start = anomaly['start']
@@ -318,7 +318,7 @@ def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_chan
         if not any(real_start <= pred_end and real_end >= pred_start for real_start, real_end in real_intervals):
             true_labels.append(0)
             pred_scores.append(score)
-            print(f"False Positive: Predicted anomaly from {pred_start} to {pred_end} does not overlap with any real anomaly")
+            #print(f"False Positive: Predicted anomaly from {pred_start} to {pred_end} does not overlap with any real anomaly")
 
     if any(pred_scores) and len(predicted_intervals)>0: # Check if there are any non-zero scores
         precision, recall, thresholds = precision_recall_curve(true_labels, pred_scores)
@@ -335,7 +335,6 @@ def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_chan
         optimal_threshold = thresholds[optimal_idx]
         f1_score = 2 * precision* recall / (precision + recall + 1e-8)
     else:
-        # Default metrics when no predictions are available
         precision = recall = f1_score = auroc = auprc = 0.0
 
     return precision, recall, f1_score, auroc, auprc,optimal_threshold
