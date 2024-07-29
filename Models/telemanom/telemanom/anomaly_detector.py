@@ -75,7 +75,7 @@ class Anomaly_Detector:
         logger.info("Ended Setup Anomaly Detector...")
 
         # Aggiunta di un FileHandler al logger basato sull'ID
-        hdlr = logging.FileHandler('trained_models/telemanom/logs/%s.log' % self.id)
+        hdlr = logging.FileHandler(helpers.get_correct_path('trained_models/telemanom/logs/%s.log' % self.id))
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
         hdlr.setFormatter(formatter)
         logger.addHandler(hdlr)
@@ -265,7 +265,7 @@ class Anomaly_Detector:
 
         if not self.args.skip_graphics:
             name_file_graphs_sample_rate = f"final_anomalies_prediction_sample_rate_{sample_rate}"
-            path_show_graphics = os.path.join('data', self.id, 'plot_predictions',name_file_graphs_sample_rate + ".pdf")
+            path_show_graphics = helpers.get_correct_path(os.path.join('trained_models/telemanom/', self.id, 'plot_predictions',name_file_graphs_sample_rate + ".pdf"))
             error_details = {
                 "normalized": None,
                 "anom_scores": error_total_score,
@@ -357,8 +357,8 @@ class Anomaly_Detector:
                                                    num_anomalies_predict=len(errors.E_seq))
 
                         if not self.config.skip_graphics:
-                            path_show_graphics = os.path.join('trained_models/telemanom', self.id, 'plot_predictions', sample_rate,
-                                                          channel_name + ".pdf")
+                            path_show_graphics = helpers.get_correct_path(os.path.join('trained_models/telemanom', self.id, 'plot_predictions', sample_rate,
+                                                          channel_name + ".pdf"))
 
                             if not os.path.exists(path_show_graphics):
                                 helpers.show_and_save_graphic_results(path_show_graphics, channel, errors, y_test_timestamp,

@@ -24,7 +24,7 @@ class LSTModel(nn.Module):
         self.list_dropout = nn.ModuleList()
 
         self.list_lstm.append(nn.LSTM(input_dim, hidden_dim1, batch_first=True))
-        for i in range(1, self.config.layer_LSTM - 2):
+        for i in range(0, self.config.layer_LSTM - 2):
             self.list_lstm.append(nn.LSTM(hidden_dim1, hidden_dim1, batch_first=True))
         self.list_lstm.append(nn.LSTM(hidden_dim1, hidden_dim2, batch_first=True))
 
@@ -142,16 +142,11 @@ class Model:
             if epoch % 2 == 0:
                 logger.info(f'Epoch {epoch}, Loss: {loss.item()}')
 
-        if not early_stopped:
-            logger.info(f'Epoch {epoch}, Loss: {loss.item()}')
-
-
-
     def save(self):
         """
         Salva il modello allenato.
         """
-        torch.save(self.model, os.path.join('trained_models/telemanom', self.run_id, 'models', '{}.pt'.format(self.chan_id)))
+        torch.save(self.model, helpers.get_correct_path(os.path.join('trained_models/telemanom', self.run_id, 'models', '{}.pt'.format(self.chan_id))))
 
     def predict(self, x):
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -217,7 +212,7 @@ class Model:
         self.y_hat = np.reshape(self.y_hat, (self.y_hat.size,))
         channel.y_hat = self.y_hat
 
-        np.save(os.path.join('trained_models/telemanom', self.run_id, 'y_hat', '{}.npy'.format(self.chan_id)), self.y_hat)
+        np.save(helpers.get_correct_path(os.path.join('trained_models/telemanom', self.run_id, 'y_hat', '{}.npy'.format(self.chan_id))), self.y_hat)
 
         return channel
 

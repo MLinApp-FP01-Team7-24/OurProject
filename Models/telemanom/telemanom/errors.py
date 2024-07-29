@@ -72,8 +72,8 @@ class Errors:
             .mean().values.flatten()
 
         # Salvataggio degli errori lisciati per ulteriori analisi
-        np.save(os.path.join('trained_models/telemanom', run_id, 'smoothed_errors', '{}.npy'
-                             .format(channel.id)),
+        np.save(helpers.get_correct_path(os.path.join('trained_models/telemanom', run_id, 'smoothed_errors', '{}.npy'
+                             .format(channel.id))),
                 np.array(self.e_s))
 
         # Normalizzazione degli errori di predizione rispetto all'intervallo dei valori del canale

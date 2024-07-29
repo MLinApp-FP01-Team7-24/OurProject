@@ -183,7 +183,8 @@ def log_config_details(run_id=None,config=None,header="",body="",footer=""):
     for attr_name, attr_value in vars(config).items():
         message_parts.append(f"{attr_name} = {attr_value}")
 
-    footer = f"Please for more info about the model and the configuration see : data/{run_id}/info_model/info_model.txt\n####End of Configuration Details ####\n"
+    path_info = get_correct_path(f"trained_models/telemanom/{run_id}/info_model/info_model.txt")
+    footer = f"Please for more info about the model and the configuration see : {path_info}\n####End of Configuration Details ####\n"
     message_parts.append(footer)
 
     formatted_message = "\n".join(message_parts)
