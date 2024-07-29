@@ -30,7 +30,7 @@ class Channel:
             test (arr): dati di test caricati dal file .npy
         """
 
-        assert len(dataset_sample_rate.keys()) == 2 and dataset_sample_rate.get('train') is not None and dataset_sample_rate.get('test') is not None
+        assert dataset_sample_rate.get('train') is not None and dataset_sample_rate.get('test') is not None
 
         self.id = chan_id
         self.config = config
@@ -38,6 +38,9 @@ class Channel:
         self.dataset_labels = dataset_labels
         self.train = dataset_sample_rate.get('train')
         self.test = dataset_sample_rate.get('test')
+        self.dataset_calibration = None
+        if dataset_sample_rate.get("calibration") is not None and len(dataset_sample_rate.get("calibration"))>0:
+            self.dataset_calibration = dataset_sample_rate.get("calibration")
         self.date_prediction = date_prediction
         self.dataset_channel = dataset_sample_rate
         self.X_train = None
@@ -45,12 +48,14 @@ class Channel:
         self.y_train_timestamp = None
         self.X_test = None
         self.y_test = None
+        self.X_calibration = None
+        self.y_calibration = None
         self.y_test_timestamp = None
         self.y_hat = None
 
         self.prepare_data()
 
-    def shape_data(self, arr, train=True):
+    def shape_data(self, arr, type=""):
         """
         Prepara le sequenze di dati per l'addestramento o il testing del modello LSTM.
         Questa funzione trasforma un array di serie temporali in un formato adatto per il modello LSTM,
@@ -89,7 +94,7 @@ class Channel:
         #
         # I primi 250 valori di telemetria di ogni sequenza andranno in self.X_train.
         # Gli ultimi 10 valori di telemetria di ogni sequenza andranno in self.y_train.
-        if train:
+        if type == "train":
             # self.X_train (o self.X_test se train=False) sarà composto da tutti i punti nella sequenza eccetto gli ultimi n_predictions.
             #  Dal esempio, per ogni sequenza in data, la porzione data[:, :-self.config.n_predictions, 1]
             #  seleziona tutti i valori di telemetria dall'inizio della sequenza fino al punto prima dell'inizio
@@ -100,16 +105,18 @@ class Channel:
             # (solo telemetria), come specificato da data[:, -self.config.n_predictions:, 1].
             self.y_train = data[:, -self.config.n_predictions:, 1]
             self.y_train = self.y_train.astype(np.float32)
-            # Per ogni riga dei valori reali di train è stata presa la prima tupla non predetto (timestamp-telemetria)
             self.y_train_timestamp = data[:,-self.config.n_predictions, :]
-        else:
-            # Analogamente per i dati di test
+        elif type == "test":
             self.X_test = data[:, :-self.config.n_predictions, 1]
             self.X_test =  np.expand_dims(self.X_test,axis=2).astype(np.float32)
             self.y_test = data[:, -self.config.n_predictions:, 1]
             self.y_test = self.y_test.astype(np.float32)
-            # Per ogni riga dei valori reali di test è stata presa la prima tupla non predetto (timestamp-telemetria)
             self.y_test_timestamp = data[:, -self.config.n_predictions, :]
+        elif type == "calibration":
+            self.X_calibration = data[:, :-self.config.n_predictions, 1]
+            self.X_calibration = np.expand_dims(self.X_calibration,axis=2).astype(np.float32)
+            self.y_calibration = data[:, -self.config.n_predictions:, 1]
+            self.y_calibration = self.y_calibration.astype(np.float32)
 
     def prepare_data(self):
         """
@@ -120,9 +127,12 @@ class Channel:
 
             self.train = self.dataset_channel['train'].values
             self.test = self.dataset_channel['test'].values
+            if self.dataset_calibration is not None and len(self.dataset_calibration)>0:
+                self.calibration = self.dataset_calibration[['time', self.id]].values
+                self.shape_data(self.calibration, "calibration")
 
-            self.shape_data(self.train)
-            self.shape_data(self.test, train=False)
+            self.shape_data(self.train,"train")
+            self.shape_data(self.test, "test")
 
         except FileNotFoundError as e:
             logger.critical(e)

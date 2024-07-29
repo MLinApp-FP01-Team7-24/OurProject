@@ -19,7 +19,7 @@ logger = helpers.getLogger()
 
 class Anomaly_Detector:
     def __init__(self, dataset_labels=None, result_path='results/', config_path='config.yaml', dataset=None,
-                 date_prediction="20220811", args=None):
+                 date_prediction="20220811", args=None,dataset_calibration = None):
         """
         Classe principale per eseguire il rilevamento delle anomalie su un gruppo di canali
         con valori memorizzati in file .npy. Valuta anche le prestazioni rispetto a un
@@ -49,6 +49,7 @@ class Anomaly_Detector:
         self.dataset_labels = dataset_labels
         self.dataset = dataset
         self.date_prediction = date_prediction
+        self.dataset_calibration = dataset_calibration
         self.results = []
         self.result_df = None
         self.chan_df = self.verify_dataset_columns()
@@ -71,8 +72,10 @@ class Anomaly_Detector:
 
         helpers.make_dirs(self.id,self.config)
 
+        logger.info("Ended Setup Anomaly Detector...")
+
         # Aggiunta di un FileHandler al logger basato sull'ID
-        hdlr = logging.FileHandler('data/logs/%s.log' % self.id)
+        hdlr = logging.FileHandler('trained_models/telemanom/logs/%s.log' % self.id)
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
         hdlr.setFormatter(formatter)
         logger.addHandler(hdlr)
@@ -100,10 +103,8 @@ class Anomaly_Detector:
         for dataset_type in data.keys():
             for sample_rate, df in data.get(dataset_type).items():
                 headers[sample_rate] = None
-                # Identifica colonne con tutti i valori a zero
                 zero_value_columns = df.columns[(df == 0).all()]
                 removed_columns.update(zero_value_columns)
-                # Rimuovi queste colonne dal DataFrame
                 df.drop(zero_value_columns, axis=1, inplace=True)
                 logger.info(
                     f"For {dataset_type} dataset with sample : {sample_rate} Pruned channels {list(removed_columns)} because they contain only zero values.")
@@ -210,7 +211,7 @@ class Anomaly_Detector:
         return final_anomalies
 
 
-    def compute_treshold_and_prun(self,anomalies_lists,data_to_show):
+    def compute_threshold_and_prun(self,anomalies_lists,data_to_show):
         precision, recall, f1_score, auroc, auprc, optimal_threshold = helpers.calculate_metrics(
             real_anomalies=pd.DataFrame(self.dataset_labels,
                                             columns=['ID',
@@ -309,7 +310,8 @@ class Anomaly_Detector:
                         logger.info(f"Processing Stream # {i}: {channel_name} , sample-rate : {sample_rate}, date : {self.date_prediction} ")
                         channel = Channel(config=self.config, chan_id=channel_name,
                                           dataset_sample_rate={'train': dataset_sample_rate_train,
-                                                               'test': dataset_sample_rate_test},
+                                                               'test': dataset_sample_rate_test,
+                                                               "calibration" :self.dataset_calibration },
                                           dataset_labels=self.dataset_labels, sample_rate=sample_rate,
                                           date_prediction=self.date_prediction)
 
@@ -318,11 +320,10 @@ class Anomaly_Detector:
                             channel = model.batch_predict(channel)
                             helpers.saveInfoLogger(model, self.config, self.id)
                         else:
-                            path_load_prediction_model = helpers.get_correct_path(os.path.join("data",self.id,'y_hat', '{}.npy'.format(channel.id)))
+                            path_load_prediction_model = helpers.get_correct_path(os.path.join("trained_models/telemanom",self.id,'y_hat', '{}.npy'.format(channel.id)))
                             logger.info(f"Starting retrieving model prediction for the run_id : {self.id} for the channel : {channel.id} in the path : {path_load_prediction_model}")
                             channel.y_hat = np.load(path_load_prediction_model)
                             logger.info(f"Correctly ended retrieving model prediction for the run_id : {self.id} for the channel : {channel.id}")
-
 
                         errors = Errors(channel, self.config, self.id)
                         errors.process_batches(channel)
@@ -356,7 +357,7 @@ class Anomaly_Detector:
                                                    num_anomalies_predict=len(errors.E_seq))
 
                         if not self.config.skip_graphics:
-                            path_show_graphics = os.path.join('data', self.id, 'plot_predictions', sample_rate,
+                            path_show_graphics = os.path.join('trained_models/telemanom', self.id, 'plot_predictions', sample_rate,
                                                           channel_name + ".pdf")
 
                             if not os.path.exists(path_show_graphics):
@@ -379,8 +380,8 @@ class Anomaly_Detector:
 
                     # logger.info(f"Final Step for sample_rate {sample_rate} error_total: {error_total_sample_rate}")
                     merged_error_total_sample_score = self.merge_anomalies(error_total_score_sample_rate)
-                    if self.config.treshold:
-                        merged_error_total_sample_score = self.compute_treshold_and_prun(merged_error_total_sample_score,y_test_timestamp)
+                    if self.config.threshold:
+                        merged_error_total_sample_score = self.compute_threshold_and_prun(merged_error_total_sample_score,y_test_timestamp)
 
                     logger.info(f"Final Prediction for sample_rate {sample_rate} final list anomalies found : {merged_error_total_sample_score}")
                     error_total_score.append(merged_error_total_sample_score)
@@ -395,8 +396,8 @@ class Anomaly_Detector:
 
         # if len(error_total_score)>0:
         #     merged_error_total = self.merge_anomalies(error_total_score)
-        #     if self.config.treshold:
-        #         merged_error_total = self.compute_treshold_and_prun(merged_error_total,y_test_timestamp)
+        #     if self.config.threshold:
+        #         merged_error_total = self.compute_threshold_and_prun(merged_error_total,y_test_timestamp)
         #
         #     logger.info(f"Final Predictions with sample_rate list : {self.dataset.get(self.date_prediction).get('test').keys()} final list anomalies found : {merged_error_total}")
         #     self.log_final_stats(sample_rate=None, error_total_score=merged_error_total,

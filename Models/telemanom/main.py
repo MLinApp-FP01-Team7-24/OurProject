@@ -11,8 +11,8 @@ logger = getLogger()
 
 # Configurazione degli argomenti della riga di comando
 parser = argparse.ArgumentParser(description='Rilevamento anomalie su dataset Kuka.')
-parser.add_argument('--dataset_path', type=str, default='../../dataset/Kuka_v1/',help='Percorso della directory dei dati.')
-parser.add_argument('--config_path', type=str, default='config.yaml',help='Percorso del file di configurazione config.yaml.')
+parser.add_argument('--dataset_path', type=str, default='kuka_dataset',help='Percorso della directory dei dati.')
+parser.add_argument('--config_path', type=str, default='Models/telemanom/config.yaml',help='Percorso del file di configurazione config.yaml.')
 parser.add_argument('--sample_rate', type=str, nargs='+', default=[],help='Lista sample rate da usare, se non specificato tutti')
 parser.add_argument('--run_id', type=str,default=None,help='Cerca nella directory data/{run_id} i parametri per partire')
 parser.add_argument('--batch_size', type=int, help='Numero di valori da valutare in ogni batch.')
@@ -36,20 +36,19 @@ parser.add_argument('--verbose', action='store_true', help='Mostra informazioni 
 parser.add_argument('--train', action='store_true', help='Se parametro settato allora viene applicato il traning al modello')
 parser.add_argument("--predict", action="store_true", help="Il modello è forzato a dare nuove predizioni, se parametro non presente allora usa quelle del run_id")
 parser.add_argument('--num_channels', type=int, help='Numero canali da considerare')
-parser.add_argument('--treshold',action="store_true", help='Se parametro presente viene calcolata una threshold dinamica alle anomalie finali')
+parser.add_argument('--threshold',action="store_true", help='Se parametro presente viene calcolata una threshold dinamica alle anomalie finali')
 args = parser.parse_args()
 
 if __name__ == '__main__':
 
     list_samples = list(args.sample_rate)
-    dataset, dataset_label = setup_dataset(get_correct_path(args.dataset_path),list_samples)
+    dataset, dataset_label,dataset_calibration = setup_dataset(get_correct_path(args.dataset_path),list_samples)
 
     for date_prediction in list(dataset.keys()):
-        print(f"Starting Time Series Analysis Detection with date {date_prediction}")
-        print("Starting Setup Anomaly Detector...")
+        getLogger().info(f"Starting Time Series Analysis Detection with date {date_prediction}")
+        getLogger().info("Starting Setup Anomaly Detector...")
         detector = Anomaly_Detector(dataset_labels=dataset_label, result_path='results/', config_path=get_correct_path(args.config_path),
-                                    dataset=dataset, date_prediction=date_prediction, args=args)
-        print("Ended Setup Anomaly Detector...")
-        print("Starting Anomaly Detector Analysis...")
+                                    dataset=dataset, date_prediction=date_prediction, args=args,dataset_calibration = dataset_calibration)
+        getLogger().info("Starting Anomaly Detector Analysis...")
         detector.run()
 

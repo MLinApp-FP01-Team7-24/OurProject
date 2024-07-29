@@ -72,7 +72,7 @@ class Errors:
             .mean().values.flatten()
 
         # Salvataggio degli errori lisciati per ulteriori analisi
-        np.save(os.path.join('data', run_id, 'smoothed_errors', '{}.npy'
+        np.save(os.path.join('trained_models/telemanom', run_id, 'smoothed_errors', '{}.npy'
                              .format(channel.id)),
                 np.array(self.e_s))
 

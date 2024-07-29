@@ -1,3 +1,0 @@
-#####METRICS SAMPLE_RATE: 0.1s######
-Metrics for the channel sensor_id5_AccX found n 5 anomalies predicted
-Precision: 0.50% --- Recall: 1.00% --- F1-score: 0.67% --- AUROC: 0.98% --- AUPRC: 0.29%

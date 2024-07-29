@@ -14,6 +14,7 @@ import matplotlib.dates as mdates
 import shutil
 import gdown
 from sklearn.metrics import precision_recall_curve, roc_curve, auc
+from sklearn.metrics import confusion_matrix
 
 sys.path.append('../telemanom')
 def get_correct_path(path):
@@ -25,10 +26,6 @@ def get_correct_path(path):
 
     return path
 
-
-output_dataset = get_correct_path("../../dataset_V2")
-
-
 class Config:
     """Loads parameters from config.yaml into global object
 
@@ -39,19 +36,17 @@ class Config:
         if '/content' in os.getcwd():
             path_to_config = "/content/Time_Series_Anomaly_Detection/telemanom/config.yaml"
 
-        self.path_to_config = path_to_config
-
         if os.path.isfile(path_to_config):
             pass
         else:
-            self.path_to_config = '../{}'.format(self.path_to_config)
+            self.path_to_config = '../{}'.format(path_to_config)
 
-        with open(self.path_to_config, "r") as f:
+        with open(path_to_config, "r") as f:
             dictionary = yaml.load(f.read(), Loader=yaml.FullLoader)
 
         if dictionary['run_id'] != "None" or args.run_id is not None:
             run_id = dictionary['run_id'] if dictionary['run_id'] != "None" else args.run_id
-            path_config_load = get_correct_path(f"data/{run_id}/info_model/info_model.txt")
+            path_config_load = get_correct_path(f"trained_models/telemanom/{run_id}/info_model/info_model.txt")
 
             getLogger().info(f"Starting retrieving configuration for run_id : {run_id} from the path : {path_config_load}")
             self.load_config(path_config_load)
@@ -114,14 +109,14 @@ def make_dirs(_id,config):
     '''Create directories for storing data in repo (using datetime ID) if they don't already exist'''
 
     if not config.train or not config.predict:
-        if not os.path.isdir('data/%s' % _id):
-            if not os.path.isdir('data/'):
-                os.mkdir("data")
+        if not os.path.isdir('trained_models/telemanom/%s' % _id):
+            if not os.path.isdir('trained_models/telemanom/'):
+                os.mkdir("trained_models/telemanom/")
 
-            os.mkdir('data/%s' % _id)
+            os.mkdir('trained_models/telemanom/%s' % _id)
 
-    paths = ['data', 'data/%s' % _id, 'data/logs', 'data/%s/models' % _id, 'data/%s/smoothed_errors' % _id,
-             'data/%s/y_hat' % _id, 'data/%s/info_model' % _id,  'data/%s/results' % _id]
+    paths = ['trained_models/telemanom/', 'trained_models/telemanom/%s' % _id, 'trained_models/telemanom/logs', 'trained_models/telemanom/%s/models' % _id, 'trained_models/telemanom/%s/smoothed_errors' % _id,
+             'trained_models/telemanom/%s/y_hat' % _id, 'trained_models/telemanom/%s/info_model' % _id,  'trained_models/telemanom/%s/results' % _id]
 
     for p in paths:
         if not os.path.isdir(p):
@@ -184,24 +179,17 @@ def split_data_by_time(data):
 def log_config_details(run_id=None,config=None,header="",body="",footer=""):
 
     logger = getLogger()
-    # Aggiunta di un'intestazione formattata per migliorare la leggibilità del log
     header = "#### Configuration Details ####"
     message_parts = [header]
 
-    # Itera sugli attributi dell'istanza Config e aggiungi ogni attributo e valore al messaggio
     for attr_name, attr_value in vars(config).items():
         message_parts.append(f"{attr_name} = {attr_value}")
 
-    # Aggiungi un footer per chiudere la sezione del log
     footer = f"Please for more info about the model and the configuration see : data/{run_id}/info_model/info_model.txt\n####End of Configuration Details ####\n"
     message_parts.append(footer)
 
-    # Unisci tutte le parti in un unico messaggio
     formatted_message = "\n".join(message_parts)
     logger.info(formatted_message)
-
-
-
 
 def highlight_anomalies(ax, anomalies):
     # Controlla se l'etichetta "Anomalia" è già nella legenda
@@ -316,11 +304,13 @@ def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_chan
                 true_labels.append(1)  # True Positive
                 pred_scores.append(score)
                 found = True
+                print(f"True Positive: Predicted anomaly from {pred_start} to {pred_end} overlaps with real anomaly from {real_start} to {real_end}")
                 break
 
         if not found:
             true_labels.append(0)  # False Negative
             pred_scores.append(0)  # No score since it's a miss
+            print(f"False Negative: No predicted anomaly overlaps with real anomaly from {real_start} to {real_end}")
 
     for anomaly in predicted_intervals:
         pred_start = anomaly['start']
@@ -329,6 +319,7 @@ def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_chan
         if not any(real_start <= pred_end and real_end >= pred_start for real_start, real_end in real_intervals):
             true_labels.append(0)
             pred_scores.append(score)
+            print(f"False Positive: Predicted anomaly from {pred_start} to {pred_end} does not overlap with any real anomaly")
 
     if any(pred_scores) and len(predicted_intervals)>0: # Check if there are any non-zero scores
         precision, recall, thresholds = precision_recall_curve(true_labels, pred_scores)
@@ -439,21 +430,14 @@ def extract_labels_from_excel(path_file,name_folder=""):
     Estrae le etichette delle anomalie da un file Excel con uno o più fogli,
     ognuno contenente colonne per 'Inizio/Fine' e 'Timestamp'.
     """
-    if not f"_correct" in path_file:
-        path_file = refactor_excel_labels(path_file, name_folder=name_folder)
-
-    assert (path_file == f"{output_dataset}/{name_folder}/{name_folder}_collisions_timestamp_correct.csv")
-
-    df = pd.read_csv(path_file)
+    df = refactor_excel_labels(path_file, name_folder=name_folder)
     anomalies = []
 
     df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S')
 
-    # Separare le righe di inizio e fine
     starts = df[df['Inizio/fine'] == 'i'].reset_index(drop=True)
     ends = df[df['Inizio/fine'] == 'f'].reset_index(drop=True)
 
-    # Assumiamo che ogni 'i' ha un corrispondente 'f' nella stessa sequenza
     for i, (start, end) in enumerate(zip(starts['Timestamp'], ends['Timestamp'])):
         duration = (end - start).total_seconds() * 1000  # Durata in millisecondi
         anomalies.append({
@@ -463,7 +447,6 @@ def extract_labels_from_excel(path_file,name_folder=""):
             'Duration (ms)': duration
         })
 
-    # Crea un DataFrame per le anomalie
     anomalies_df = pd.DataFrame(anomalies)
     return anomalies_df
 
@@ -473,12 +456,8 @@ def refactor_excel_labels(file_path, name_folder):
     Modifica i timestamp in un file Excel aggiungendo un offset di fuso orario e salva il file modificato.
     """
     timezone_offset = -2
-    output_path = os.path.join(os.path.join(output_dataset, name_folder),
-                               file_path.split("/")[-1].replace(".xlsx", "_correct.csv"))
-    print(f"Starting Refactor Labels Data from File : {file_path} with TZ : {timezone_offset}H")
+    getLogger().info(f"Starting Refactor Labels Data from File : {file_path} with TZ : {timezone_offset}H")
     xls = pd.ExcelFile(file_path)
-
-    # Creiamo una lista per accumulare i DataFrame di ciascun foglio
     combined_df_list = []
 
     for sheet_name in xls.sheet_names:
@@ -487,24 +466,14 @@ def refactor_excel_labels(file_path, name_folder):
         df['Timestamp'] = df['Timestamp'].dt.strftime('%Y-%m-%d %H:%M:%S')
         combined_df_list.append(df)
 
-    # Combiniamo tutti i DataFrame in uno solo
     combined_df = pd.concat(combined_df_list, ignore_index=True)
-
     combined_df = combined_df.sort_values(by='Timestamp').reset_index(drop=True)
+    getLogger().info(f"Ended Refactor Labels.")
 
-    combined_df.to_csv(output_path, index=False)
-    print(f"Ended Refactor Labels. Data saved to {output_path}")
-
-    return output_path
+    return combined_df
 
 
 def combination_and_check_csv(df1, df2):
-    """
-    Verifica e concatena due DataFrame garantendo la corretta sequenzialità temporale.
-    """
-    assert pd.to_datetime(df1['time'].iloc[-1]) < pd.to_datetime(
-        df2['time'].iloc[0]), "Discontinuità temporale tra i file"
-
     combined_df = pd.concat([df1, df2])
     assert len(combined_df) == len(df1) + len(df2), "Errore nella lunghezza della concatenazione"
 
@@ -561,127 +530,66 @@ def setup_dataset(dataset_path=get_correct_path("dataset/Kuka_v1"),list_samples=
         print(f"Dataset Kuka V1 Downloaded in the path {dataset_path}")
 
     data_map = {}
-    steps = {}  # Dizionario per tenere traccia degli step per ogni frequenza di campionamento
+    steps = {}
     sampling_data = {}
-    dataset_ready = os.path.exists(output_dataset)
-    dataset_path = output_dataset if dataset_ready else dataset_path
-    print(f"Starting retrieving Kuka_v1 dataset from the path : {dataset_path}")
+    df_calibration = None
+    df_labels = None
+    getLogger().info(f"Starting retrieving Kuka_v1 dataset from the path : {dataset_path}")
 
-    if not dataset_ready:
-        print(f"Starting Refactor Dataset, the output path is : {output_dataset}")
-        os.makedirs(output_dataset, exist_ok=True)
-
-        for name_folder in os.listdir(dataset_path):
-            if name_folder != "Extra" and not name_folder.startswith("."):
-                date_dataset = None
-                path_folder = os.path.join(dataset_path, name_folder)
-                files = os.listdir(path_folder)
-                sorted_files = sorted(files, key=custom_sort_key)
-                # Raccogli tutti i file CSV per quella data
-                for file in sorted_files:
-                    folder_type = 'test' if '_collision_' in file else 'train'
-                    file_path = os.path.join(path_folder, folder_type, file)
-
-                    if date_dataset is not None and name_folder == "collisions" and  f"{date_dataset}_collisions_timestamp.xlsx" in file:
-                        print(f"Starting Extracting Labels Data from File : {file} from the path : {file_path}")
-                        file_path = os.path.join(dataset_path, name_folder, file)
-                        df_labels = extract_labels_from_excel(file_path, date_dataset)
-                        print(f"Ended Extracting Labels Data ")
-                        break
-
-                    sample_rate_file = file.split('_')[-1].replace('.csv', '')
-                    if file.endswith('.csv') and not file.endswith('metadata.csv') and not file=="dataset.csv" and (len(list_samples)==0 or (len(list_samples)>0 and sample_rate_file in list_samples )):
-                        date_dataset = file_path.split("_")[-3]
-                        output_name_folder_path = os.path.join(output_dataset, date_dataset)
-                        if not hasattr(sampling_data, date_dataset) and not os.path.exists(output_name_folder_path):
-                            os.makedirs(output_name_folder_path, exist_ok=True)
-                            sampling_data = {'train': {}, 'test': {}}
-                            steps = {'train': {},'test': {}}  # Inizializza il conteggio degli step per questa data
-
-                        print(f"Processing file: {file}")  # Log per il file in elaborazione
-                        sample_rate = file.split('_')[-1].replace('.csv', '')
-                        df = load_csv(os.path.join(path_folder, file), parse_dates=['time'])
-
-                        # Salva i dati la prima volta che viene creata la chiave
-                        if sample_rate not in sampling_data[folder_type]:
-                            output_sample_path = os.path.join(output_name_folder_path, folder_type, sample_rate)
-                            os.makedirs(output_sample_path, exist_ok=True)
-                            sampling_data[folder_type][sample_rate] = df
-                            steps[folder_type][sample_rate] = 0
-                            file_name = f"{output_sample_path}/{date_dataset}_{sample_rate}{'_collision_' if folder_type == 'test' else '_'}step0.csv"
-                            df.to_csv(file_name, index=False)
-                            print(f"Step : 0 - Sample Rate : {sample_rate}  - Output Path : {file_name}")
-
-                        # Aggiorna e salva i dati nei passaggi successivi
-                        else:
-                            output_sample_path = os.path.join(output_name_folder_path, folder_type, sample_rate)
-                            os.makedirs(output_sample_path, exist_ok=True)
-                            current_df = sampling_data[folder_type][sample_rate]
-                            step_count = steps[folder_type][sample_rate] + 1
-                            file_name_csv = f"{output_sample_path}/{date_dataset}_{sample_rate}{'_collision_' if folder_type == 'test' else '_'}step{step_count}.csv"
-                            sampling_data[folder_type][sample_rate] = combination_and_check_csv(current_df,df)
-                            sampling_data[folder_type][sample_rate].sort_values('time', inplace=True)
-                            sampling_data[folder_type][sample_rate].reset_index(drop=True, inplace=True)
-                            steps[folder_type][sample_rate] = step_count
-                            sampling_data[folder_type][sample_rate].to_csv(file_name_csv, index=False)
-                            print(f"Step : {step_count} - Sample Rate : {sample_rate}  - Output Path : {file_name_csv}")
-
-                data_map[date_dataset] = sampling_data
-
-    if dataset_ready:
-        sampling_data = {}
-        for name_folder in os.listdir(dataset_path):
+    for name_folder in os.listdir(dataset_path):
+        getLogger().info(f"Processing the directory {name_folder}")
+        if name_folder != "Extra" and not name_folder.startswith("."):
+            date_dataset = None
             path_folder = os.path.join(dataset_path, name_folder)
-            if os.path.isdir(path_folder):
-                print(f"Processing the directory : {name_folder} in the path : {path_folder}")
-                for dataset_type in os.listdir(path_folder):
-                    dataset_type_path = os.path.join(path_folder, dataset_type)
-                    if not dataset_type.startswith("."):
-                        if f"{name_folder}_collisions_timestamp.csv" in dataset_type or f"{name_folder}_collisions_timestamp_correct.csv" in dataset_type:
-                            print(f"Starting Extracting Labels Data from File : {name_folder} from the path : {dataset_type_path}")
-                            df_labels = extract_labels_from_excel(dataset_type_path,name_folder)
-                            print(f"Ended Extracting Labels Data")
-                            continue
-                        if os.path.isdir(dataset_type_path):
-                            for sample_rate in os.listdir(dataset_type_path):
-                                if not sample_rate.startswith("."):
-                                    path_sample_rate = os.path.join(dataset_type_path, sample_rate)
+            files = os.listdir(path_folder)
+            sorted_files = sorted(files, key=custom_sort_key)
+            for file in sorted_files:
+                folder_type = 'test' if 'collisions' in name_folder else 'train'
+                file_path = os.path.join(path_folder, folder_type, file)
 
-                                    if (len(list_samples)==0 or (len(list_samples)>0 and sample_rate in list_samples)) and os.path.isdir(path_sample_rate):
-                                        latest_file, max_step = find_latest_step_file(
-                                            [f for f in os.listdir(path_sample_rate) if
-                                             f.endswith('.csv') and not f.endswith('metadata.csv')])
-                                        print(f"Processing the sub-directory : {os.path.join(dataset_type, sample_rate)} in the path : {path_sample_rate}")
+                if date_dataset is not None and name_folder == "collisions" and  f"{date_dataset}_collisions_timestamp.xlsx" in file:
+                    getLogger().info(f"Starting Extracting Labels Data from File : {file} from the path : {file_path}")
+                    file_path = os.path.join(dataset_path, name_folder, file)
+                    df_labels = extract_labels_from_excel(file_path, date_dataset)
+                    getLogger().info(f"Ended Extracting Labels Data ")
+                    continue
 
-                                        if latest_file:
-                                            print(f"Processing latest step file: {latest_file} with step number: {max_step}")
-                                            file_path = os.path.join(path_sample_rate, latest_file)
-                                            df = load_csv(file_path, parse_dates=['time'], separator=",")
+                if date_dataset is not None and name_folder == "collisions" and file == "rec6_20220811_rbtc_0.1s.csv":
+                    getLogger().info(f"Starting Extracting Dataset for Calibration from File : {file} from the path : {file_path}")
+                    df_calibration = load_csv(os.path.join(path_folder, file), parse_dates=['time'])
+                    getLogger().info(f"Ended Extracting Dataset for Calibration from File : {file} from the path : {file_path}")
+                    continue
 
-                                            if sampling_data.get(name_folder) is None:
-                                                sampling_data[name_folder] = {}
-                                            if sampling_data.get(name_folder).get(dataset_type) is None:
-                                                sampling_data[name_folder][dataset_type] = {}
-                                            if sampling_data.get(name_folder).get(dataset_type).get(
-                                                    sample_rate) is None:
-                                                sampling_data[name_folder][dataset_type][sample_rate] = {}
+                sample_rate_file = file.split('_')[-1].replace('.csv', '')
+                if file.endswith('.csv') and not file.endswith('metadata.csv') and not file=="dataset.csv" and (len(list_samples)==0 or (len(list_samples)>0 and sample_rate_file in list_samples )):
+                    date_dataset = file_path.split("_")[-3]
+                    if len(sampling_data.items())==0:
+                        sampling_data = {'train': {}, 'test': {}}
+                        steps = {'train': {},'test': {}}
 
-                                            sampling_data[name_folder][dataset_type][sample_rate] = df
-                                            print(f"For Sample Rate : {os.path.join(dataset_type, sample_rate)} - Added the step {max_step} from the File Path : {file_path}")
+                    getLogger().info(f"Processing file: {file}")
+                    sample_rate = file.split('_')[-1].replace('.csv', '')
+                    df = load_csv(os.path.join(path_folder, file), parse_dates=['time'])
 
-                                            if data_map.get(name_folder) is None:
-                                                data_map[name_folder] = {}
-                                            if data_map.get(name_folder).get(dataset_type) is None:
-                                                data_map[name_folder][dataset_type] = {}
-                                            if data_map.get(name_folder).get(dataset_type).get(sample_rate) is None:
-                                                data_map[name_folder][dataset_type][sample_rate] = {}
+                    if sample_rate not in sampling_data[folder_type]:
+                        sampling_data[folder_type][sample_rate] = df
+                        steps[folder_type][sample_rate] = 0
+                        getLogger().info(f"Step : 0 - Sample Rate : {sample_rate}")
+                    else:
+                        current_df = sampling_data[folder_type][sample_rate]
+                        step_count = steps[folder_type][sample_rate] + 1
+                        sampling_data[folder_type][sample_rate] = combination_and_check_csv(current_df,df)
+                        sampling_data[folder_type][sample_rate].sort_values('time', inplace=True)
+                        sampling_data[folder_type][sample_rate].reset_index(drop=True, inplace=True)
+                        steps[folder_type][sample_rate] = step_count
+                        getLogger().info(f"Step : {step_count} - Sample Rate : {sample_rate}")
 
-                                            data_map[name_folder][dataset_type][sample_rate] = sampling_data[name_folder][dataset_type][sample_rate]
+        data_map[date_dataset] = sampling_data
 
-    print(f"Ended retrieving Kuka_v1 dataset ...")
-    print("Data Collected Correctly")
+    getLogger().info(f"Ended retrieving Kuka_v1 dataset ...")
+    getLogger().info("Data Collected Correctly")
 
-    return data_map, df_labels
+    return data_map, df_labels,df_calibration
 
 # Funzione ricorsiva per copiare solo i file mancanti
 def copy_missing_files(source, target):
@@ -697,8 +605,8 @@ def copy_missing_files(source, target):
                 shutil.copy(src_path, dst_path)
 
 def saveOnDrive(name_dir=""):
-    pathOriginal = f"/content/data/{name_dir}/"
-    path_original_log = f"/content/data/logs/{name_dir}.log"
+    pathOriginal = f"/content/OurProject/trained_models/telemanom/{name_dir}/"
+    path_original_log = f"/content/OurProject/trained_models/telemanom/logs/{name_dir}.log"
     drive = "/content/drive/MyDrive/"
 
     if not os.path.isdir(pathOriginal):
@@ -726,7 +634,7 @@ def saveOnDrive(name_dir=""):
 
 def saveInfoLogger(model,config,run_id):
     # Crea il percorso del file se non esiste
-    path = os.path.join('data', run_id, 'info_model')
+    path = os.path.join('trained_models/telemanom', run_id, 'info_model')
     os.makedirs(path, exist_ok=True)
 
     # Specifica il file per salvare le informazioni
@@ -751,14 +659,10 @@ def saveInfoLogger(model,config,run_id):
 
 
 def saveResultsMetrics(run_id, sample_rate, channel_name, precision, recall, f1_score,auprc,auroc,average=False,num_channels=0,num_anomalies_predict=0):
-    # Crea il percorso del file se non esiste
-    path = get_correct_path(os.path.join('data', run_id, 'results'))
+    path = get_correct_path(os.path.join('trained_models/telemanom', run_id, 'results'))
     os.makedirs(path, exist_ok=True)
 
-    # Specifica il file per salvare le informazioni
     file_path = os.path.join(path, 'results_metrics.txt')
-
-    # Inizializza una variabile per controllare se l'header del sample rate esiste
     sample_rate_header = f"#####METRICS SAMPLE_RATE: {sample_rate}######"
 
     if not average:
@@ -766,7 +670,6 @@ def saveResultsMetrics(run_id, sample_rate, channel_name, precision, recall, f1_
     else:
         search_text = f"\n\nFinal Metrics for the sample_rate {sample_rate} with {num_channels} different channels"
 
-        # Leggi il contenuto del file e determina se è necessario aggiungere l'header o la riga delle metriche
     content = ""
     header_exists = False
     metric_exists = False
@@ -777,16 +680,13 @@ def saveResultsMetrics(run_id, sample_rate, channel_name, precision, recall, f1_
             header_exists = sample_rate_header in content
             metric_exists = search_text in content
 
-    # Prepara il testo da scrivere
     if not average:
         text = f"\nMetrics for the channel {channel_name} found n {num_anomalies_predict} anomalies predicted\nPrecision: {precision:.2f}% --- Recall: {recall:.2f}% --- F1-score: {f1_score:.2f}% --- AUROC: {auroc:.2f}% --- AUPRC: {auprc:.2f}%\n"
     else:
         text = f"\nFinal Metrics for the sample_rate {sample_rate} with {num_channels} different channels\nPrecision: {precision:.2f}% --- Recall: {recall:.2f}% --- F1-score: {f1_score:.2f}% --- AUROC: {auroc:.2f}% --- AUPRC: {auprc:.2f}%\n"
 
-    # Scrivi nel file solo se necessario
     with open(file_path, 'a') as file:
         if not header_exists:
-            # Aggiungi due righe vuote prima del nuovo header se il file non è vuoto
             if os.path.getsize(file_path) > 0:
                 file.write("\n\n")
             file.write(sample_rate_header)

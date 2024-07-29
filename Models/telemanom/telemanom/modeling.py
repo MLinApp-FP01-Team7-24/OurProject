@@ -71,8 +71,7 @@ class Model:
         self.y_hat = np.array([])
         self.model = None
 
-        path_model_run_id = helpers.get_correct_path(os.path.join('data', self.config.run_id, 'models', self.chan_id + '.pt'))
-        # Carica il modello pre-allenato se l'allenamento non è necessario
+        path_model_run_id = helpers.get_correct_path(os.path.join('trained_models/telemanom', self.run_id, 'models', self.chan_id + '.pt'))
         if not self.config.train or os.path.isfile(path_model_run_id):
             logger.info(f"Loading the model for the channel {self.chan_id} in the path : {path_model_run_id}")
             try:
@@ -106,10 +105,13 @@ class Model:
         criterion = nn.MSELoss()
         optimizer = torch.optim.Adam(self.model.parameters(), lr=self.config.learning_rate,
                                      weight_decay=self.config.weight_decay)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10,verbose=True)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10)
+
+        if channel.dataset_channel is not None and len(channel.dataset_channel)>0:
+            self.calibrate(channel)
 
         train_data=TensorDataset(torch.tensor(channel.X_train).float(),torch.tensor(channel.y_train).float())
-        train_loader = DataLoader(train_data, batch_size=self.config.lstm_batch_size, shuffle=True)
+        train_loader = DataLoader(train_data, batch_size=self.config.lstm_batch_size, shuffle=False)
         the_last_loss = float('inf')
         patience_counter = 0
 
@@ -149,7 +151,7 @@ class Model:
         """
         Salva il modello allenato.
         """
-        torch.save(self.model, os.path.join('data', self.run_id, 'models', '{}.pt'.format(self.chan_id)))
+        torch.save(self.model, os.path.join('trained_models/telemanom', self.run_id, 'models', '{}.pt'.format(self.chan_id)))
 
     def predict(self, x):
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -200,13 +202,11 @@ class Model:
         if num_batches < 0:
             raise ValueError('l_s ({}) troppo grande per la lunghezza del flusso {}.'.format(self.config.l_s, channel.y_test.shape[0]))
 
-        # Simula l'arrivo dei dati in batch, prevedendo ciascun batch
         for i in range(0, num_batches + 1):
             prior_idx = i * self.config.batch_size
             idx = (i + 1) * self.config.batch_size
 
             if i + 1 == num_batches + 1:
-                # I valori rimanenti non saranno necessariamente uguali alla dimensione del batch
                 idx = channel.y_test.shape[0]
 
             X_test_batch = channel.X_test[prior_idx:idx]
@@ -217,6 +217,28 @@ class Model:
         self.y_hat = np.reshape(self.y_hat, (self.y_hat.size,))
         channel.y_hat = self.y_hat
 
-        np.save(os.path.join('data', self.run_id, 'y_hat', '{}.npy'.format(self.chan_id)), self.y_hat)
+        np.save(os.path.join('trained_models/telemanom', self.run_id, 'y_hat', '{}.npy'.format(self.chan_id)), self.y_hat)
 
         return channel
+
+    def calibrate(self, channel):
+        logger.info("Starting calibration for the model ...")
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        criterion = nn.MSELoss()
+        optimizer = torch.optim.Adam(self.model.parameters(), lr=self.config.learning_rate,weight_decay=self.config.weight_decay)
+
+        calibration_data = TensorDataset(torch.tensor(channel.X_calibration).float(),torch.tensor(channel.y_calibration).float())
+        calibration_loader = DataLoader(calibration_data, batch_size=self.config.lstm_batch_size, shuffle=False)
+
+        calibration_epochs = 15
+        for epoch in range(calibration_epochs+1):
+            for x_calib, y_calib in calibration_loader:
+                x_calib, y_calib = x_calib.to(device), y_calib.to(device)
+                optimizer.zero_grad()
+                outputs = self.model(x_calib)
+                outputs = outputs[:, -1, :]
+                loss = criterion(outputs, y_calib)
+                loss.backward()
+                optimizer.step()
+
+        logger.info("Ended calibration for the model ...")
