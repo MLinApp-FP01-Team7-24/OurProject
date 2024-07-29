@@ -5,7 +5,7 @@ from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
 import os
 import logging
-import Models.telemanom.telemanom.helpers as helpers
+import telemanom.helpers as helpers
 
 # Sopprime gli avvisi di ottimizzazione della CPU di TensorFlow
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'

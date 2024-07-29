@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import more_itertools as mit
 import os
-import Models.telemanom.telemanom.helpers as helpers
+import telemanom.helpers as helpers
 
 logger = helpers.getLogger()
 

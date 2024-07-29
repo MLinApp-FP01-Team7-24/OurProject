@@ -18,11 +18,8 @@ from sklearn.metrics import confusion_matrix
 
 sys.path.append('../telemanom')
 def get_correct_path(path):
-    if '/content' in os.getcwd() and path.startswith("dataset"):
-        return "/content/" + path
-
     if '/content' in os.getcwd():
-        return "/content/Time_Series_Anomaly_Detection/telemanom/" + path
+        return "/content/OurProject/" + path
 
     return path
 
@@ -34,7 +31,7 @@ class Config:
     def __init__(self, path_to_config,args=None):
 
         if '/content' in os.getcwd():
-            path_to_config = "/content/Time_Series_Anomaly_Detection/telemanom/config.yaml"
+            path_to_config = "/content/OurProject/Models/telemanom/config.yaml"
 
         if os.path.isfile(path_to_config):
             pass
@@ -107,16 +104,17 @@ class Config:
 
 def make_dirs(_id,config):
     '''Create directories for storing data in repo (using datetime ID) if they don't already exist'''
-
+    starting_path = get_correct_path("")
     if not config.train or not config.predict:
-        if not os.path.isdir('trained_models/telemanom/%s' % _id):
-            if not os.path.isdir('trained_models/telemanom/'):
-                os.mkdir("trained_models/telemanom/")
+        if not os.path.isdir(starting_path+'trained_models/telemanom/%s' % _id):
+            if not os.path.isdir(starting_path+'trained_models/telemanom/'):
+                os.mkdir(starting_path+"trained_models/telemanom/")
 
-            os.mkdir('trained_models/telemanom/%s' % _id)
+            os.mkdir(starting_path+'trained_models/telemanom/%s' % _id)
 
-    paths = ['trained_models/telemanom/', 'trained_models/telemanom/%s' % _id, 'trained_models/telemanom/logs', 'trained_models/telemanom/%s/models' % _id, 'trained_models/telemanom/%s/smoothed_errors' % _id,
-             'trained_models/telemanom/%s/y_hat' % _id, 'trained_models/telemanom/%s/info_model' % _id,  'trained_models/telemanom/%s/results' % _id]
+    paths = [starting_path+'trained_models/telemanom/', starting_path+'trained_models/telemanom/%s' % _id, starting_path+'trained_models/telemanom/logs',
+             starting_path+'trained_models/telemanom/%s/models' % _id, starting_path+'trained_models/telemanom/%s/smoothed_errors' % _id,
+             starting_path+'trained_models/telemanom/%s/y_hat' % _id, starting_path+'trained_models/telemanom/%s/info_model' % _id,  starting_path+'trained_models/telemanom/%s/results' % _id]
 
     for p in paths:
         if not os.path.isdir(p):
