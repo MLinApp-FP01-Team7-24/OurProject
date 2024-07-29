@@ -25,11 +25,11 @@ lstm_batch_size: 64
 weight_decay : 0.01
 learning_rate : 0.05
 # maximum number of epochs allowed (if early stopping criteria not met)
-epochs: 0
+epochs: 20
 layer_LSTM : 3
 # network architecture [<neurons in hidden layer>, <neurons in hidden layer>]
 # Size of input layer not listed - dependent on evr modules and types included (see 'evr_modules' and 'erv_types' above)
-layers: [80,80]
+layers: [100,100]
 
 # Number of consequetive training iterations to allow without decreasing the val_loss by at least min_delta 
 patience: 10
@@ -46,7 +46,7 @@ n_predictions: 2
 # ==================================
 
 # minimum percent decrease between max errors in anomalous sequences (used for pruning)
-p: 0.15
+p: 0.50
 
 dataset_path : "kuka_dataset"
 config_path : "Models/telemanom/config.yaml"
