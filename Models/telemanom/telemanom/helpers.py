@@ -472,6 +472,7 @@ def refactor_excel_labels(file_path, name_folder):
 
 
 def combination_and_check_csv(df1, df2):
+    df2 = df2.reindex(columns=df1.columns)
     combined_df = pd.concat([df1, df2])
     assert len(combined_df) == len(df1) + len(df2), "Errore nella lunghezza della concatenazione"
 
