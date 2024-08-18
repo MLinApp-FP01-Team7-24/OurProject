@@ -1,0 +1,37 @@
+2024-07-29 18:20:48,867 INFO Starting Anomaly Detector Analysis...
+2024-07-29 18:20:48,867 INFO #### Configuration Details ####
+run_id = 2024-07-18_20.57.21
+train = True
+predict = True
+batch_size = 64
+window_size = 30
+smoothing_perc = 0.05
+error_buffer = 3
+loss_metric = mse
+optimizer = adam
+activation = relu
+validation_split = 0.2
+dropout = 0.2
+lstm_batch_size = 64
+weight_decay = 0.01
+learning_rate = 0.05
+epochs = 20
+layer_LSTM = 3
+layers = [100, 100]
+patience = 10
+min_delta = 0.0003
+l_s = 300
+n_predictions = 2
+p = 0.5
+dataset_path = kuka_dataset
+config_path = Models/telemanom/config.yaml
+sample_rate = ['0.1s']
+save_on_drive = False
+skip_graphics = True
+verbose = False
+threshold = True
+Please for more info about the model and the configuration see : data/2024-07-18_20.57.21/info_model/info_model.txt
+####End of Configuration Details ####
+
+2024-07-29 18:20:48,867 INFO Processing date: 20220811, rate: 0.1s
+2024-07-29 18:20:48,867 INFO Processing Stream # 1: sensor_id5_AccX , sample-rate : 0.1s, date : 20220811 
