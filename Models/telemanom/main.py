@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-import my_utils.verbose as verbose
 from telemanom.anomaly_detector import Anomaly_Detector
 import argparse
 from telemanom.helpers import setup_dataset,get_correct_path,getLogger
