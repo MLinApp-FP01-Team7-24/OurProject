@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser(description='Rilevamento anomalie su dataset Ku
 parser.add_argument('--dataset_path', type=str, default='kuka_dataset',help='Percorso della directory dei dati.')
 parser.add_argument('--config_path', type=str, default='Models/telemanom/config.yaml',help='Percorso del file di configurazione config.yaml.')
 parser.add_argument('--sample_rate', type=str, nargs='+', default=[],help='Lista sample rate da usare, se non specificato tutti')
-parser.add_argument('--run_id', type=str,default=None,help='Cerca nella directory data/{run_id} i parametri per partire')
+parser.add_argument('--run_id', type=str,default=None,help='Cerca nella directory trained_models/telemanom/{run_id} i parametri per partire')
 parser.add_argument('--batch_size', type=int, help='Numero di valori da valutare in ogni batch.')
 parser.add_argument('--window_size', type=int, help='Numero di batch consecutivi usati nel calcolo degli errori.')
 parser.add_argument('--smoothing_perc', type=float, help='Determina la dimensione della finestra usata nello smoothing EWMA.')
