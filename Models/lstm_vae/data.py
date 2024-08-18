@@ -107,7 +107,7 @@ def get_test_windows(window_size, k_pa, filepath='./kuka_dataset/collisions', sa
 
     return test_windows, test_labels
 
-def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 3, 4], file_numbers_cal=[6], file_numbers_test=[1, 5], filepath_train='./kuka_dataset/normal', filepath_cal='./kuka_dataset/collisions', filepath_test='./kuka_dataset/collisions'):
+def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 3, 4], file_numbers_cal=[6], file_numbers_test=[1, 5], filepath_train='./kuka_dataset/normal', filepath_cal='./kuka_dataset/collisions', filepath_test='./kuka_dataset/collisions', norm=True):
     print("Reading training data...")
     train_records = get_records(filepath_train, sampling, file_numbers_train)
     print("Reading calibration data...")
@@ -117,8 +117,9 @@ def get_data_windows(window_size, k_pa, sampling=0.1, file_numbers_train=[0, 2, 
     print("Reading collisions data...")
     collisions_interval = get_collisions(filepath_cal)
 
-    print("Normalizing data...")
-    train_records, cal_records, test_records = normalize(train_records, cal_records, test_records)
+    if norm:
+        print("Normalizing data...")
+        train_records, cal_records, test_records = normalize(train_records, cal_records, test_records)
 
     print("Getting windows for training data...")
     train_windows = get_windows(train_records, window_size)
