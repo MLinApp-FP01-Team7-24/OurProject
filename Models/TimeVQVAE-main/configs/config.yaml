@@ -14,7 +14,7 @@ trainer_params:
   max_epochs:
     stage1: 60
     stage2: 5 # 10000
-  input_length: 100 # Andre added this °u°
+  input_length: 20 # Andre added this °u°
 
 
 encoder:
