@@ -54,7 +54,8 @@ class KukaDataset(Dataset):
             if verbose: print('reading data...')
             #read the whole list of ts
             kuka_ts = [pd.read_csv(os.path.join(data_path, fpath), sep=";") for fpath in os.listdir(data_path)
-                       if fpath.endswith('_0.1s.csv')]
+                       if fpath.endswith('_0.1s.csv') and (columns_to_keep is None or columns_to_keep is not None 
+                       and (not test and fpath.startswith('rec1') or test and not fpath.startswith('rec1')))]
             
             # Sort columns by name !!!
             kuka_ts = [df.sort_index(axis=1) for df in kuka_ts]
@@ -185,15 +186,16 @@ class KukaDataset(Dataset):
         """
         assert idx < len(self), f"Got {idx=} when {len(self)=}"
         time_series = self.kuka_df[idx].values.astype(np.float32)
+        
         # point_wise labels
-        if not self.test:
-            #train data with labels 
-            timestep_labels = self.targets[idx]
-            labels = self.risk_encoder.transform(np.array(timestep_labels).reshape(-1, 1)).todense()
-        elif self.test:
-            #test data without risk_level as key in dataframe
-            labels = np.empty((len(time_series),3))
-            labels.fill(np.nan)
+        #if not self.test:
+        #train data with labels 
+        timestep_labels = self.targets[idx]
+        labels = self.risk_encoder.transform(np.array(timestep_labels).reshape(-1, 1)).todense()
+        #elif self.test:
+        #    #test data without risk_level as key in dataframe
+        #    labels = np.empty((len(time_series),3))
+        #    labels.fill(np.nan)
 
         if self.time_first: return torch.Tensor(time_series) , torch.Tensor(labels)
         return torch.transpose(torch.Tensor(time_series), 1, 0) , torch.transpose(torch.Tensor(labels), 1, 0)
