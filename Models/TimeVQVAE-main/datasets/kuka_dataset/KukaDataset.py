@@ -55,7 +55,7 @@ class KukaDataset(Dataset):
             #read the whole list of ts
             kuka_ts = [pd.read_csv(os.path.join(data_path, fpath), sep=";") for fpath in os.listdir(data_path)
                        if fpath.endswith('_0.1s.csv') and (columns_to_keep is None or columns_to_keep is not None 
-                       and (not test and fpath.startswith('rec1') or test and not fpath.startswith('rec1')))]
+                       and (not test and fpath.startswith('rec6') or test and not fpath.startswith('rec6')))]
             
             # Sort columns by name !!!
             kuka_ts = [df.sort_index(axis=1) for df in kuka_ts]
