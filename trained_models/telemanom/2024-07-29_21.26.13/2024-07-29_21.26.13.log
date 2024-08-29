@@ -757,9 +757,9 @@ AUPRC: 0.00%
 2024-08-01 13:34:13,653 INFO Final Prediction for sample_rate 0.1s final list anomalies found : [{'start_idx': 12520, 'end_idx': 12523, 'score': 4.1237372678776945}, {'start_idx': 12744, 'end_idx': 12779, 'score': 4.370826618279232}, {'start_idx': 13868, 'end_idx': 13930, 'score': 4.984388407281234}, {'start_idx': 15298, 'end_idx': 15339, 'score': 3.9080967473397465}, {'start_idx': 16098, 'end_idx': 16107, 'score': 4.395875746377336}, {'start_idx': 19116, 'end_idx': 19177, 'score': 3.8930008477261375}, {'start_idx': 21356, 'end_idx': 21416, 'score': 3.967399603216569}, {'start_idx': 25025, 'end_idx': 25067, 'score': 4.009306761221977}]
 2024-08-01 13:34:13,827 INFO Final Metrics for sample rate 0.1s with 70 different channels
 Precision: 28.57%
-Recall: 100.00%
+Recall: 65.00%
 F1-score: 44.44%
-AUROC: 95.95%
+AUROC: 62.95%
 AUPRC: 16.31%
 
 2024-08-01 13:34:22,444 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-07-29_21.26.13/plot_predictions/final_anomalies_prediction_sample_rate_0.1s.pdf

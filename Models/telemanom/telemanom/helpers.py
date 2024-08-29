@@ -97,7 +97,8 @@ class Config:
             for line in config_section.split('\n'):
                 if ': ' in line:
                     key, value = line.split(': ', 1)
-                    setattr(self, key.strip(), yaml.safe_load(value))
+                    if key not in ['train','predict']:
+                        setattr(self, key.strip(), yaml.safe_load(value))
         except Exception as error:
             getLogger().info(f"Failed loading configuration for the file : {path_config}")
 

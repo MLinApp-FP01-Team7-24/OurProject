@@ -2,7 +2,6 @@ import os
 import numpy as np
 from datetime import datetime as dt
 import logging
-from sklearn.decomposition import PCA
 from telemanom.helpers import Config
 from telemanom.errors import Errors
 import telemanom.helpers as helpers
@@ -108,17 +107,6 @@ class Anomaly_Detector:
                 df.drop(zero_value_columns, axis=1, inplace=True)
                 logger.info(
                     f"For {dataset_type} dataset with sample : {sample_rate} Pruned channels {list(removed_columns)} because they contain only zero values.")
-                if hasattr(self, 'config') and getattr(self.config, 'pca', False):
-                    logger.info("Applying PCA to retain 99% of variance.")
-                    # Verifica che ci siano abbastanza colonne
-                    if df.shape[1] <= 1:
-                        logger.info("Not enough columns to apply PCA.")
-                        raise ValueError("Not enough columns to apply PCA.")
-
-                        # Preparazione dei dati per PCA
-                    pca = PCA(n_components=0.99)  # Conserva il 99% della varianza
-                    pca.fit(df)
-                    transformed_data = pca.transform(df)
 
                 headers[sample_rate] = df.columns.tolist()
 
@@ -331,11 +319,11 @@ class Anomaly_Detector:
                             y_test_timestamp = channel.y_test_timestamp
 
                         precision, recall, f1_score,auroc, auprc,optimal_threshold = helpers.calculate_metrics(
-                            real_anomalies=pd.DataFrame(self.dataset_labels,columns=['ID', 'Timestamp-Start', 'Timestamp-End','Duration (ms)'])
+                              real_anomalies=pd.DataFrame(self.dataset_labels,columns=['ID', 'Timestamp-Start', 'Timestamp-End','Duration (ms)'])
                             , predicted_anomalies=errors.anom_scores
                             , df_timestamp_data_channel_test=pd.DataFrame(y_test_timestamp,columns=['timestamp', channel.id]))
 
-                        num_channels += 1  # Incrementa il contatore dei canali validi
+                        num_channels += 1
                         precision_percent = precision * 100
                         recall_percent = recall * 100
                         f1_score_percent = f1_score * 100

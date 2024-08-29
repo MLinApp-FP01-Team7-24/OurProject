@@ -803,9 +803,9 @@ AUPRC: 0.00%
 2024-08-16 12:06:49,254 INFO Final Prediction for sample_rate 0.1s final list anomalies found : [{'start_idx': 1646, 'end_idx': 1693, 'score': 4.874688626530534}, {'start_idx': 3397, 'end_idx': 3421, 'score': 8.13187157591137}, {'start_idx': 4845, 'end_idx': 4893, 'score': 4.830300747471224}, {'start_idx': 5052, 'end_idx': 5085, 'score': 4.957809613750659}, {'start_idx': 7786, 'end_idx': 7837, 'score': 4.7900126217297165}, {'start_idx': 7953, 'end_idx': 7965, 'score': 5.46608929937333}, {'start_idx': 9078, 'end_idx': 9117, 'score': 7.4382191101930735}, {'start_idx': 9228, 'end_idx': 9245, 'score': 5.491774486555991}, {'start_idx': 10707, 'end_idx': 10717, 'score': 6.348017670286848}, {'start_idx': 12737, 'end_idx': 12765, 'score': 9.559869317761763}, {'start_idx': 16513, 'end_idx': 16541, 'score': 5.32381042527025}, {'start_idx': 18869, 'end_idx': 18909, 'score': 5.22900925679742}, {'start_idx': 19106, 'end_idx': 19165, 'score': 4.837489140537848}, {'start_idx': 25018, 'end_idx': 25053, 'score': 5.151752456015656}, {'start_idx': 25634, 'end_idx': 25693, 'score': 4.98581675049143}]
 2024-08-16 12:06:49,535 INFO Final Metrics for sample rate 0.1s with 70 different channels
 Precision: 30.00%
-Recall: 75.00%
+Recall: 55.00%
 F1-score: 42.86%
-AUROC: 93.20%
+AUROC: 73.20%
 AUPRC: 18.67%
 
 2024-08-16 12:06:58,200 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-07-30_22.17.34/plot_predictions/final_anomalies_prediction_sample_rate_0.1s.pdf

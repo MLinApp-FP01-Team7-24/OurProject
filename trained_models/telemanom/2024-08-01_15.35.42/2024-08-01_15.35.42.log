@@ -814,10 +814,10 @@ AUPRC: 0.00%
 2024-08-16 12:14:04,669 INFO Applying pruning with dynamic threshold computed : 3.0696521231316836
 2024-08-16 12:14:04,669 INFO Final Prediction for sample_rate 0.1s final list anomalies found : [{'start_idx': 2580, 'end_idx': 2661, 'score': 3.629630528897235}, {'start_idx': 3503, 'end_idx': 3563, 'score': 4.07476326322655}, {'start_idx': 5052, 'end_idx': 5099, 'score': 3.4512516449812036}, {'start_idx': 5148, 'end_idx': 5163, 'score': 3.9535868521033373}, {'start_idx': 5164, 'end_idx': 5223, 'score': 3.609478929550225}, {'start_idx': 5228, 'end_idx': 5291, 'score': 3.87995905079521}, {'start_idx': 7953, 'end_idx': 7979, 'score': 3.3546288231488672}, {'start_idx': 7980, 'end_idx': 8043, 'score': 4.573747682513649}, {'start_idx': 9228, 'end_idx': 9259, 'score': 3.1106928246619425}, {'start_idx': 10574, 'end_idx': 10603, 'score': 4.316811350051202}, {'start_idx': 12737, 'end_idx': 12779, 'score': 3.4516126318333957}, {'start_idx': 16091, 'end_idx': 16107, 'score': 3.3909466026050397}, {'start_idx': 16513, 'end_idx': 16555, 'score': 4.878190433535028}, {'start_idx': 16556, 'end_idx': 16604, 'score': 3.360913019328283}, {'start_idx': 16592, 'end_idx': 16619, 'score': 3.126285324092273}, {'start_idx': 16753, 'end_idx': 16811, 'score': 3.969051851498373}, {'start_idx': 16876, 'end_idx': 16937, 'score': 3.824685052332909}, {'start_idx': 17150, 'end_idx': 17195, 'score': 3.278932751409456}, {'start_idx': 19116, 'end_idx': 19179, 'score': 3.0986422791638644}, {'start_idx': 23005, 'end_idx': 23019, 'score': 3.2410230944636944}, {'start_idx': 25018, 'end_idx': 25067, 'score': 3.0761762873599623}, {'start_idx': 25644, 'end_idx': 25707, 'score': 4.109100158939237}, {'start_idx': 26906, 'end_idx': 26923, 'score': 3.0842477678884315}, {'start_idx': 28023, 'end_idx': 28075, 'score': 3.5182493423300545}]
 2024-08-16 12:14:04,828 INFO Final Metrics for sample rate 0.1s with 70 different channels
-Precision: 66.67%
+Precision: 36.67%
 Recall: 50.00%
 F1-score: 57.14%
-AUROC: 94.74%
+AUROC: 54.74%
 AUPRC: 54.40%
 
 2024-08-16 12:14:13,330 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-01_15.35.42/plot_predictions/final_anomalies_prediction_sample_rate_0.1s.pdf
