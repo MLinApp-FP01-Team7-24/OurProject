@@ -1,0 +1,911 @@
+2024-08-17 21:26:22,872 INFO Starting Anomaly Detector Analysis...
+2024-08-17 21:26:22,872 INFO #### Configuration Details ####
+train = True
+predict = True
+batch_size = 64
+window_size = 15
+smoothing_perc = 0.05
+error_buffer = 6
+loss_metric = mse
+optimizer = adam
+activation = leakyReLu
+validation_split = 0.2
+dropout = 0.2
+lstm_batch_size = 64
+weight_decay = 0.01
+learning_rate = 0.01
+epochs = 20
+layer_LSTM = 4
+layers = [85, 85]
+patience = 10
+min_delta = 0.0003
+l_s = 300
+n_predictions = 2
+p = 0.35
+config_path = Models/telemanom/config.yaml
+run_id = 2024-08-16_12.55.17
+sample_rate = ['0.1s']
+save_on_drive = True
+skip_graphics = False
+verbose = False
+threshold = True
+dataset_path = kuka_dataset
+Please for more info about the model and the configuration see : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/info_model/info_model.txt
+####End of Configuration Details ####
+
+2024-08-17 21:26:22,872 INFO Processing date: 20220811, rate: 0.1s
+2024-08-17 21:26:22,872 INFO Processing Stream # 1: sensor_id5_AccX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:25,807 INFO Loading the model for the channel sensor_id5_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccX.pt
+2024-08-17 21:26:26,039 INFO Correctly loaded the model for the channel sensor_id5_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccX.pt
+2024-08-17 21:26:28,786 INFO normalized prediction error: 0.04
+2024-08-17 21:26:29,552 INFO Metrics for the channel sensor_id5_AccX found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:26:29,645 INFO Processing Stream # 2: sensor_id1_AccX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:32,148 INFO Loading the model for the channel sensor_id1_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccX.pt
+2024-08-17 21:26:32,151 INFO Correctly loaded the model for the channel sensor_id1_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccX.pt
+2024-08-17 21:26:34,544 INFO normalized prediction error: 0.01
+2024-08-17 21:26:35,579 INFO Metrics for the channel sensor_id1_AccX found n 6 anomalies predicted
+Precision: 25.00%
+Recall: 100.00%
+F1-score: 40.00%
+AUROC: 97.35%
+AUPRC: 12.50%
+2024-08-17 21:26:35,654 INFO Processing Stream # 3: sensor_id2_AccX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:39,319 INFO Loading the model for the channel sensor_id2_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccX.pt
+2024-08-17 21:26:39,322 INFO Correctly loaded the model for the channel sensor_id2_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccX.pt
+2024-08-17 21:26:41,492 INFO normalized prediction error: nan
+2024-08-17 21:26:41,969 INFO Metrics for the channel sensor_id2_AccX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:26:42,061 INFO Processing Stream # 4: machine_nameKuka Robot_voltage , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:44,490 INFO Loading the model for the channel machine_nameKuka Robot_voltage in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_voltage.pt
+2024-08-17 21:26:44,493 INFO Correctly loaded the model for the channel machine_nameKuka Robot_voltage in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_voltage.pt
+2024-08-17 21:26:46,878 INFO normalized prediction error: 0.32
+2024-08-17 21:26:47,488 INFO Metrics for the channel machine_nameKuka Robot_voltage found n 1 anomalies predicted
+Precision: 50.00%
+Recall: 100.00%
+F1-score: 66.67%
+AUROC: 99.07%
+AUPRC: 25.00%
+2024-08-17 21:26:47,582 INFO Processing Stream # 5: sensor_id4_AccX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:51,307 INFO Loading the model for the channel sensor_id4_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccX.pt
+2024-08-17 21:26:51,311 INFO Correctly loaded the model for the channel sensor_id4_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccX.pt
+2024-08-17 21:26:53,838 INFO normalized prediction error: 0.05
+2024-08-17 21:26:54,629 INFO Metrics for the channel sensor_id4_AccX found n 2 anomalies predicted
+Precision: 33.33%
+Recall: 100.00%
+F1-score: 50.00%
+AUROC: 96.33%
+AUPRC: 18.33%
+2024-08-17 21:26:54,730 INFO Processing Stream # 6: sensor_id3_AccX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:26:57,158 INFO Loading the model for the channel sensor_id3_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccX.pt
+2024-08-17 21:26:57,161 INFO Correctly loaded the model for the channel sensor_id3_AccX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccX.pt
+2024-08-17 21:26:59,577 INFO normalized prediction error: 0.36
+2024-08-17 21:27:00,090 INFO Metrics for the channel sensor_id3_AccX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:27:00,200 INFO Processing Stream # 7: sensor_id5_AccY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:03,071 INFO Loading the model for the channel sensor_id5_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccY.pt
+2024-08-17 21:27:03,075 INFO Correctly loaded the model for the channel sensor_id5_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccY.pt
+2024-08-17 21:27:05,689 INFO normalized prediction error: 0.03
+2024-08-17 21:27:06,821 INFO Metrics for the channel sensor_id5_AccY found n 6 anomalies predicted
+Precision: 100.00%
+Recall: 50.00%
+F1-score: 66.67%
+AUROC: 98.21%
+AUPRC: 63.33%
+2024-08-17 21:27:06,926 INFO Processing Stream # 8: sensor_id1_AccY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:09,679 INFO Loading the model for the channel sensor_id1_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccY.pt
+2024-08-17 21:27:09,683 INFO Correctly loaded the model for the channel sensor_id1_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccY.pt
+2024-08-17 21:27:12,317 INFO normalized prediction error: 0.26
+2024-08-17 21:27:13,013 INFO Metrics for the channel sensor_id1_AccY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:27:13,106 INFO Processing Stream # 9: sensor_id2_AccY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:15,830 INFO Loading the model for the channel sensor_id2_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccY.pt
+2024-08-17 21:27:15,833 INFO Correctly loaded the model for the channel sensor_id2_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccY.pt
+2024-08-17 21:27:18,449 INFO normalized prediction error: 0.05
+2024-08-17 21:27:19,670 INFO Metrics for the channel sensor_id2_AccY found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:27:19,758 INFO Processing Stream # 10: sensor_id4_AccY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:22,489 INFO Loading the model for the channel sensor_id4_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccY.pt
+2024-08-17 21:27:22,492 INFO Correctly loaded the model for the channel sensor_id4_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccY.pt
+2024-08-17 21:27:24,928 INFO normalized prediction error: 0.18
+2024-08-17 21:27:25,444 INFO Metrics for the channel sensor_id4_AccY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:27:25,543 INFO Processing Stream # 11: sensor_id3_AccY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:28,138 INFO Loading the model for the channel sensor_id3_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccY.pt
+2024-08-17 21:27:28,141 INFO Correctly loaded the model for the channel sensor_id3_AccY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccY.pt
+2024-08-17 21:27:30,639 INFO normalized prediction error: 0.32
+2024-08-17 21:27:31,444 INFO Metrics for the channel sensor_id3_AccY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:27:31,516 INFO Processing Stream # 12: sensor_id5_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:35,191 INFO Loading the model for the channel sensor_id5_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccZ.pt
+2024-08-17 21:27:35,195 INFO Correctly loaded the model for the channel sensor_id5_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AccZ.pt
+2024-08-17 21:27:37,647 INFO normalized prediction error: 0.03
+2024-08-17 21:27:38,472 INFO Metrics for the channel sensor_id5_AccZ found n 8 anomalies predicted
+Precision: 55.56%
+Recall: 100.00%
+F1-score: 71.43%
+AUROC: 97.55%
+AUPRC: 59.13%
+2024-08-17 21:27:38,571 INFO Processing Stream # 13: sensor_id1_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:41,030 INFO Loading the model for the channel sensor_id1_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccZ.pt
+2024-08-17 21:27:41,033 INFO Correctly loaded the model for the channel sensor_id1_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AccZ.pt
+2024-08-17 21:27:43,497 INFO normalized prediction error: 0.02
+2024-08-17 21:27:44,362 INFO Metrics for the channel sensor_id1_AccZ found n 12 anomalies predicted
+Precision: 21.43%
+Recall: 100.00%
+F1-score: 35.29%
+AUROC: 93.79%
+AUPRC: 16.39%
+2024-08-17 21:27:44,453 INFO Processing Stream # 14: sensor_id4_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:48,359 INFO Loading the model for the channel sensor_id4_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccZ.pt
+2024-08-17 21:27:48,362 INFO Correctly loaded the model for the channel sensor_id4_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AccZ.pt
+2024-08-17 21:27:50,825 INFO normalized prediction error: 0.00
+2024-08-17 21:27:51,677 INFO Metrics for the channel sensor_id4_AccZ found n 3 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:27:51,777 INFO Processing Stream # 15: sensor_id2_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:27:54,199 INFO Loading the model for the channel sensor_id2_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccZ.pt
+2024-08-17 21:27:54,202 INFO Correctly loaded the model for the channel sensor_id2_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AccZ.pt
+2024-08-17 21:27:56,653 INFO normalized prediction error: 0.07
+2024-08-17 21:27:57,419 INFO Metrics for the channel sensor_id2_AccZ found n 3 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:27:57,516 INFO Processing Stream # 16: sensor_id3_AccZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:01,324 INFO Loading the model for the channel sensor_id3_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccZ.pt
+2024-08-17 21:28:01,328 INFO Correctly loaded the model for the channel sensor_id3_AccZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AccZ.pt
+2024-08-17 21:28:03,645 INFO normalized prediction error: nan
+2024-08-17 21:28:04,129 INFO Metrics for the channel sensor_id3_AccZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:04,228 INFO Processing Stream # 17: machine_nameKuka Robot_current , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:06,690 INFO Loading the model for the channel machine_nameKuka Robot_current in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_current.pt
+2024-08-17 21:28:06,694 INFO Correctly loaded the model for the channel machine_nameKuka Robot_current in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_current.pt
+2024-08-17 21:28:09,071 INFO normalized prediction error: 0.19
+2024-08-17 21:28:09,747 INFO Metrics for the channel machine_nameKuka Robot_current found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:09,837 INFO Processing Stream # 18: machine_nameKuka Robot_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:12,747 INFO Loading the model for the channel machine_nameKuka Robot_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_power.pt
+2024-08-17 21:28:12,751 INFO Correctly loaded the model for the channel machine_nameKuka Robot_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_power.pt
+2024-08-17 21:28:15,453 INFO normalized prediction error: 0.19
+2024-08-17 21:28:16,337 INFO Metrics for the channel machine_nameKuka Robot_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:16,427 INFO Processing Stream # 19: sensor_id4_AngX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:18,867 INFO Loading the model for the channel sensor_id4_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngX.pt
+2024-08-17 21:28:18,870 INFO Correctly loaded the model for the channel sensor_id4_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngX.pt
+2024-08-17 21:28:21,125 INFO normalized prediction error: nan
+2024-08-17 21:28:21,588 INFO Metrics for the channel sensor_id4_AngX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:21,681 INFO Processing Stream # 20: sensor_id2_AngX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:24,323 INFO Loading the model for the channel sensor_id2_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngX.pt
+2024-08-17 21:28:24,327 INFO Correctly loaded the model for the channel sensor_id2_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngX.pt
+2024-08-17 21:28:26,899 INFO normalized prediction error: 0.04
+2024-08-17 21:28:28,049 INFO Metrics for the channel sensor_id2_AngX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:28,130 INFO Processing Stream # 21: sensor_id1_AngX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:31,284 INFO Loading the model for the channel sensor_id1_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngX.pt
+2024-08-17 21:28:31,288 INFO Correctly loaded the model for the channel sensor_id1_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngX.pt
+2024-08-17 21:28:33,804 INFO normalized prediction error: 0.05
+2024-08-17 21:28:34,655 INFO Metrics for the channel sensor_id1_AngX found n 2 anomalies predicted
+Precision: 100.00%
+Recall: 100.00%
+F1-score: 100.00%
+AUROC: 100.00%
+AUPRC: 100.00%
+2024-08-17 21:28:34,760 INFO Processing Stream # 22: sensor_id5_AngX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:37,423 INFO Loading the model for the channel sensor_id5_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngX.pt
+2024-08-17 21:28:37,426 INFO Correctly loaded the model for the channel sensor_id5_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngX.pt
+2024-08-17 21:28:39,920 INFO normalized prediction error: 0.15
+2024-08-17 21:28:40,865 INFO Metrics for the channel sensor_id5_AngX found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:28:40,950 INFO Processing Stream # 23: sensor_id3_AngX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:44,492 INFO Loading the model for the channel sensor_id3_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngX.pt
+2024-08-17 21:28:44,495 INFO Correctly loaded the model for the channel sensor_id3_AngX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngX.pt
+2024-08-17 21:28:47,015 INFO normalized prediction error: 0.13
+2024-08-17 21:28:48,317 INFO Metrics for the channel sensor_id3_AngX found n 11 anomalies predicted
+Precision: 33.33%
+Recall: 100.00%
+F1-score: 50.00%
+AUROC: 94.11%
+AUPRC: 40.45%
+2024-08-17 21:28:48,403 INFO Processing Stream # 24: sensor_id2_AngY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:51,880 INFO Loading the model for the channel sensor_id2_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngY.pt
+2024-08-17 21:28:51,883 INFO Correctly loaded the model for the channel sensor_id2_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngY.pt
+2024-08-17 21:28:54,452 INFO normalized prediction error: 0.27
+2024-08-17 21:28:55,460 INFO Metrics for the channel sensor_id2_AngY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:28:55,539 INFO Processing Stream # 25: sensor_id4_AngY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:28:59,032 INFO Loading the model for the channel sensor_id4_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngY.pt
+2024-08-17 21:28:59,036 INFO Correctly loaded the model for the channel sensor_id4_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngY.pt
+2024-08-17 21:29:01,574 INFO normalized prediction error: 0.19
+2024-08-17 21:29:02,166 INFO Metrics for the channel sensor_id4_AngY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:29:02,260 INFO Processing Stream # 26: sensor_id1_AngY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:04,703 INFO Loading the model for the channel sensor_id1_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngY.pt
+2024-08-17 21:29:04,706 INFO Correctly loaded the model for the channel sensor_id1_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngY.pt
+2024-08-17 21:29:07,271 INFO normalized prediction error: 0.17
+2024-08-17 21:29:07,978 INFO Metrics for the channel sensor_id1_AngY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:29:08,079 INFO Processing Stream # 27: sensor_id5_AngY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:12,139 INFO Loading the model for the channel sensor_id5_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngY.pt
+2024-08-17 21:29:12,142 INFO Correctly loaded the model for the channel sensor_id5_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngY.pt
+2024-08-17 21:29:14,681 INFO normalized prediction error: 0.38
+2024-08-17 21:29:15,383 INFO Metrics for the channel sensor_id5_AngY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:29:15,481 INFO Processing Stream # 28: sensor_id4_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:17,877 INFO Loading the model for the channel sensor_id4_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngZ.pt
+2024-08-17 21:29:17,880 INFO Correctly loaded the model for the channel sensor_id4_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_AngZ.pt
+2024-08-17 21:29:20,384 INFO normalized prediction error: 0.23
+2024-08-17 21:29:20,876 INFO Metrics for the channel sensor_id4_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:29:20,966 INFO Processing Stream # 29: sensor_id2_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:24,561 INFO Loading the model for the channel sensor_id2_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngZ.pt
+2024-08-17 21:29:24,564 INFO Correctly loaded the model for the channel sensor_id2_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_AngZ.pt
+2024-08-17 21:29:27,212 INFO normalized prediction error: 0.24
+2024-08-17 21:29:27,791 INFO Metrics for the channel sensor_id2_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:29:27,893 INFO Processing Stream # 30: sensor_id3_AngY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:30,351 INFO Loading the model for the channel sensor_id3_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngY.pt
+2024-08-17 21:29:30,354 INFO Correctly loaded the model for the channel sensor_id3_AngY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngY.pt
+2024-08-17 21:29:32,898 INFO normalized prediction error: 0.15
+2024-08-17 21:29:33,615 INFO Metrics for the channel sensor_id3_AngY found n 6 anomalies predicted
+Precision: 75.00%
+Recall: 100.00%
+F1-score: 85.71%
+AUROC: 99.69%
+AUPRC: 90.28%
+2024-08-17 21:29:33,709 INFO Processing Stream # 31: sensor_id1_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:36,630 INFO Loading the model for the channel sensor_id1_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngZ.pt
+2024-08-17 21:29:36,633 INFO Correctly loaded the model for the channel sensor_id1_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_AngZ.pt
+2024-08-17 21:29:39,374 INFO normalized prediction error: 0.37
+2024-08-17 21:29:40,164 INFO Metrics for the channel sensor_id1_AngZ found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:29:40,262 INFO Processing Stream # 32: sensor_id5_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:42,684 INFO Loading the model for the channel sensor_id5_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngZ.pt
+2024-08-17 21:29:42,687 INFO Correctly loaded the model for the channel sensor_id5_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_AngZ.pt
+2024-08-17 21:29:45,228 INFO normalized prediction error: 0.26
+2024-08-17 21:29:45,806 INFO Metrics for the channel sensor_id5_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:29:45,896 INFO Processing Stream # 33: sensor_id3_AngZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:48,561 INFO Loading the model for the channel sensor_id3_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngZ.pt
+2024-08-17 21:29:48,564 INFO Correctly loaded the model for the channel sensor_id3_AngZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_AngZ.pt
+2024-08-17 21:29:51,228 INFO normalized prediction error: 0.33
+2024-08-17 21:29:52,361 INFO Metrics for the channel sensor_id3_AngZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:29:52,449 INFO Processing Stream # 34: machine_nameKuka Robot_apparent_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:29:55,281 INFO Loading the model for the channel machine_nameKuka Robot_apparent_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_apparent_power.pt
+2024-08-17 21:29:55,284 INFO Correctly loaded the model for the channel machine_nameKuka Robot_apparent_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_apparent_power.pt
+2024-08-17 21:29:57,840 INFO normalized prediction error: 0.19
+2024-08-17 21:29:58,404 INFO Metrics for the channel machine_nameKuka Robot_apparent_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:29:58,498 INFO Processing Stream # 35: sensor_id1_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:01,071 INFO Loading the model for the channel sensor_id1_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroX.pt
+2024-08-17 21:30:01,074 INFO Correctly loaded the model for the channel sensor_id1_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroX.pt
+2024-08-17 21:30:03,637 INFO normalized prediction error: 0.46
+2024-08-17 21:30:04,622 INFO Metrics for the channel sensor_id1_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:04,700 INFO Processing Stream # 36: sensor_id2_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:08,535 INFO Loading the model for the channel sensor_id2_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroX.pt
+2024-08-17 21:30:08,539 INFO Correctly loaded the model for the channel sensor_id2_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroX.pt
+2024-08-17 21:30:11,083 INFO normalized prediction error: 0.29
+2024-08-17 21:30:11,665 INFO Metrics for the channel sensor_id2_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:11,752 INFO Processing Stream # 37: sensor_id4_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:14,252 INFO Loading the model for the channel sensor_id4_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroX.pt
+2024-08-17 21:30:14,255 INFO Correctly loaded the model for the channel sensor_id4_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroX.pt
+2024-08-17 21:30:16,777 INFO normalized prediction error: 0.44
+2024-08-17 21:30:17,343 INFO Metrics for the channel sensor_id4_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:17,435 INFO Processing Stream # 38: sensor_id3_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:21,310 INFO Loading the model for the channel sensor_id3_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroX.pt
+2024-08-17 21:30:21,314 INFO Correctly loaded the model for the channel sensor_id3_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroX.pt
+2024-08-17 21:30:23,878 INFO normalized prediction error: 0.36
+2024-08-17 21:30:24,870 INFO Metrics for the channel sensor_id3_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:24,958 INFO Processing Stream # 39: sensor_id5_GyroX , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:28,510 INFO Loading the model for the channel sensor_id5_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroX.pt
+2024-08-17 21:30:28,512 INFO Correctly loaded the model for the channel sensor_id5_GyroX in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroX.pt
+2024-08-17 21:30:31,029 INFO normalized prediction error: 0.48
+2024-08-17 21:30:31,662 INFO Metrics for the channel sensor_id5_GyroX found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:31,757 INFO Processing Stream # 40: sensor_id1_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:35,621 INFO Loading the model for the channel sensor_id1_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroY.pt
+2024-08-17 21:30:35,625 INFO Correctly loaded the model for the channel sensor_id1_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroY.pt
+2024-08-17 21:30:38,165 INFO normalized prediction error: 0.44
+2024-08-17 21:30:38,827 INFO Metrics for the channel sensor_id1_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:38,918 INFO Processing Stream # 41: sensor_id2_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:41,309 INFO Loading the model for the channel sensor_id2_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroY.pt
+2024-08-17 21:30:41,312 INFO Correctly loaded the model for the channel sensor_id2_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroY.pt
+2024-08-17 21:30:43,625 INFO normalized prediction error: nan
+2024-08-17 21:30:44,097 INFO Metrics for the channel sensor_id2_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:44,200 INFO Processing Stream # 42: sensor_id4_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:47,739 INFO Loading the model for the channel sensor_id4_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroY.pt
+2024-08-17 21:30:47,743 INFO Correctly loaded the model for the channel sensor_id4_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroY.pt
+2024-08-17 21:30:50,426 INFO normalized prediction error: 0.35
+2024-08-17 21:30:51,054 INFO Metrics for the channel sensor_id4_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:51,146 INFO Processing Stream # 43: sensor_id3_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:53,583 INFO Loading the model for the channel sensor_id3_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroY.pt
+2024-08-17 21:30:53,587 INFO Correctly loaded the model for the channel sensor_id3_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroY.pt
+2024-08-17 21:30:56,166 INFO normalized prediction error: 0.33
+2024-08-17 21:30:56,673 INFO Metrics for the channel sensor_id3_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:30:56,764 INFO Processing Stream # 44: sensor_id5_GyroY , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:30:59,453 INFO Loading the model for the channel sensor_id5_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroY.pt
+2024-08-17 21:30:59,457 INFO Correctly loaded the model for the channel sensor_id5_GyroY in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroY.pt
+2024-08-17 21:31:02,244 INFO normalized prediction error: 0.31
+2024-08-17 21:31:03,336 INFO Metrics for the channel sensor_id5_GyroY found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:31:03,438 INFO Processing Stream # 45: sensor_id1_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:05,867 INFO Loading the model for the channel sensor_id1_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroZ.pt
+2024-08-17 21:31:05,870 INFO Correctly loaded the model for the channel sensor_id1_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id1_GyroZ.pt
+2024-08-17 21:31:08,416 INFO normalized prediction error: 0.31
+2024-08-17 21:31:08,958 INFO Metrics for the channel sensor_id1_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:09,050 INFO Processing Stream # 46: sensor_id2_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:11,688 INFO Loading the model for the channel sensor_id2_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroZ.pt
+2024-08-17 21:31:11,691 INFO Correctly loaded the model for the channel sensor_id2_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id2_GyroZ.pt
+2024-08-17 21:31:14,362 INFO normalized prediction error: 0.27
+2024-08-17 21:31:15,167 INFO Metrics for the channel sensor_id2_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:15,235 INFO Processing Stream # 47: sensor_id4_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:18,328 INFO Loading the model for the channel sensor_id4_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroZ.pt
+2024-08-17 21:31:18,331 INFO Correctly loaded the model for the channel sensor_id4_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id4_GyroZ.pt
+2024-08-17 21:31:20,902 INFO normalized prediction error: 0.30
+2024-08-17 21:31:21,414 INFO Metrics for the channel sensor_id4_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:21,509 INFO Processing Stream # 48: sensor_id3_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:24,014 INFO Loading the model for the channel sensor_id3_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroZ.pt
+2024-08-17 21:31:24,017 INFO Correctly loaded the model for the channel sensor_id3_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id3_GyroZ.pt
+2024-08-17 21:31:26,562 INFO normalized prediction error: 0.33
+2024-08-17 21:31:27,041 INFO Metrics for the channel sensor_id3_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:27,134 INFO Processing Stream # 49: sensor_id5_GyroZ , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:31,128 INFO Loading the model for the channel sensor_id5_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroZ.pt
+2024-08-17 21:31:31,131 INFO Correctly loaded the model for the channel sensor_id5_GyroZ in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_GyroZ.pt
+2024-08-17 21:31:33,668 INFO normalized prediction error: 0.27
+2024-08-17 21:31:34,311 INFO Metrics for the channel sensor_id5_GyroZ found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:34,405 INFO Processing Stream # 50: machine_nameKuka Robot_power_factor , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:36,854 INFO Loading the model for the channel machine_nameKuka Robot_power_factor in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_power_factor.pt
+2024-08-17 21:31:36,857 INFO Correctly loaded the model for the channel machine_nameKuka Robot_power_factor in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_power_factor.pt
+2024-08-17 21:31:39,341 INFO normalized prediction error: 0.19
+2024-08-17 21:31:40,035 INFO Metrics for the channel machine_nameKuka Robot_power_factor found n 2 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:31:40,139 INFO Processing Stream # 51: machine_nameKuka Robot_reactive_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:43,811 INFO Loading the model for the channel machine_nameKuka Robot_reactive_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_reactive_power.pt
+2024-08-17 21:31:43,815 INFO Correctly loaded the model for the channel machine_nameKuka Robot_reactive_power in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_reactive_power.pt
+2024-08-17 21:31:46,345 INFO normalized prediction error: 1.43
+2024-08-17 21:31:47,082 INFO Metrics for the channel machine_nameKuka Robot_reactive_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 21:31:47,177 INFO Processing Stream # 52: sensor_id5_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:49,599 INFO Loading the model for the channel sensor_id5_Temperature in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_Temperature.pt
+2024-08-17 21:31:49,602 INFO Correctly loaded the model for the channel sensor_id5_Temperature in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/sensor_id5_Temperature.pt
+2024-08-17 21:31:52,025 INFO normalized prediction error: 0.34
+2024-08-17 21:31:52,556 INFO Metrics for the channel sensor_id5_Temperature found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:31:52,650 INFO Processing Stream # 53: machine_nameKuka Robot_phase_angle , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:31:55,592 INFO Loading the model for the channel machine_nameKuka Robot_phase_angle in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_phase_angle.pt
+2024-08-17 21:31:55,595 INFO Correctly loaded the model for the channel machine_nameKuka Robot_phase_angle in the path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/models/machine_nameKuka Robot_phase_angle.pt
+2024-08-17 21:31:58,327 INFO normalized prediction error: 0.18
+2024-08-17 21:31:59,282 INFO Metrics for the channel machine_nameKuka Robot_phase_angle found n 4 anomalies predicted
+Precision: 50.00%
+Recall: 100.00%
+F1-score: 66.67%
+AUROC: 99.11%
+AUPRC: 25.00%
+2024-08-17 21:31:59,396 INFO Processing Stream # 54: machine_nameKuka Robot_export_reactive_energy , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:32:03,371 INFO Starting calibration for the model ...
+2024-08-17 21:32:16,473 INFO Ended calibration for the model ...
+2024-08-17 21:32:40,012 INFO Epoch 0, Loss: 14122.580078125
+2024-08-17 21:33:26,373 INFO Epoch 2, Loss: 6306.9111328125
+2024-08-17 21:34:13,045 INFO Epoch 4, Loss: 6341.66845703125
+2024-08-17 21:34:59,871 INFO Epoch 6, Loss: 7357.63720703125
+2024-08-17 21:35:46,204 INFO Epoch 8, Loss: 6980.5712890625
+2024-08-17 21:36:32,748 INFO Epoch 10, Loss: 3485.58544921875
+2024-08-17 21:37:19,402 INFO Epoch 12, Loss: 6963.28125
+2024-08-17 21:38:06,015 INFO Epoch 14, Loss: 6930.89599609375
+2024-08-17 21:38:52,700 INFO Epoch 16, Loss: 6310.63427734375
+2024-08-17 21:39:39,426 INFO Epoch 18, Loss: 10789.361328125
+2024-08-17 21:40:26,044 INFO Early stopping triggered at epoch 20
+2024-08-17 21:40:28,698 INFO normalized prediction error: 10.72
+2024-08-17 21:40:29,574 INFO Metrics for the channel machine_nameKuka Robot_export_reactive_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:40:39,467 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameKuka Robot_export_reactive_energy.pdf
+2024-08-17 21:40:39,600 INFO Processing Stream # 55: sensor_id1_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:40:43,426 INFO Starting calibration for the model ...
+2024-08-17 21:40:55,945 INFO Ended calibration for the model ...
+2024-08-17 21:41:19,838 INFO Epoch 0, Loss: 1.6706793308258057
+2024-08-17 21:42:06,244 INFO Epoch 2, Loss: 1.755689024925232
+2024-08-17 21:42:50,991 INFO Epoch 4, Loss: 1.5778216123580933
+2024-08-17 21:43:36,251 INFO Epoch 6, Loss: 1.5587921142578125
+2024-08-17 21:44:22,692 INFO Epoch 8, Loss: 1.8103454113006592
+2024-08-17 21:45:09,363 INFO Epoch 10, Loss: 1.3643237352371216
+2024-08-17 21:45:56,008 INFO Epoch 12, Loss: 1.4544705152511597
+2024-08-17 21:46:42,864 INFO Epoch 14, Loss: 2.474680185317993
+2024-08-17 21:47:30,130 INFO Epoch 16, Loss: 1.619456171989441
+2024-08-17 21:48:17,628 INFO Epoch 18, Loss: 1.5515286922454834
+2024-08-17 21:49:04,965 INFO Epoch 20, Loss: 1.8386623859405518
+2024-08-17 21:49:07,601 INFO normalized prediction error: 0.35
+2024-08-17 21:49:08,137 INFO Metrics for the channel sensor_id1_Temperature found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:49:17,388 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/sensor_id1_Temperature.pdf
+2024-08-17 21:49:17,526 INFO Processing Stream # 56: machine_nameKuka Robot_frequency , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:49:21,410 INFO Starting calibration for the model ...
+2024-08-17 21:49:33,939 INFO Ended calibration for the model ...
+2024-08-17 21:49:57,969 INFO Epoch 0, Loss: 6.875411033630371
+2024-08-17 21:50:44,261 INFO Epoch 2, Loss: 4.303664684295654
+2024-08-17 21:51:29,805 INFO Epoch 4, Loss: 7.714854717254639
+2024-08-17 21:52:16,166 INFO Epoch 6, Loss: 4.7957048416137695
+2024-08-17 21:52:57,782 INFO Epoch 8, Loss: nan
+2024-08-17 21:53:39,008 INFO Epoch 10, Loss: nan
+2024-08-17 21:54:19,898 INFO Early stopping triggered at epoch 12
+2024-08-17 21:54:22,109 INFO normalized prediction error: nan
+2024-08-17 21:54:22,569 INFO Metrics for the channel machine_nameKuka Robot_frequency found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 21:54:33,249 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameKuka Robot_frequency.pdf
+2024-08-17 21:54:33,381 INFO Processing Stream # 57: machine_nameKuka Robot_import_active_energy , sample-rate : 0.1s, date : 20220811 
+2024-08-17 21:54:37,414 INFO Starting calibration for the model ...
+2024-08-17 21:54:49,588 INFO Ended calibration for the model ...
+2024-08-17 21:55:13,078 INFO Epoch 0, Loss: 31185.03125
+2024-08-17 21:55:59,388 INFO Epoch 2, Loss: 21746.5703125
+2024-08-17 21:56:45,745 INFO Epoch 4, Loss: 7728.869140625
+2024-08-17 21:57:32,111 INFO Epoch 6, Loss: 10067.6357421875
+2024-08-17 21:58:18,515 INFO Epoch 8, Loss: 12482.33984375
+2024-08-17 21:59:04,908 INFO Epoch 10, Loss: 12854.22265625
+2024-08-17 21:59:51,548 INFO Epoch 12, Loss: 11987.4150390625
+2024-08-17 22:00:14,909 INFO Early stopping triggered at epoch 13
+2024-08-17 22:00:17,479 INFO normalized prediction error: 0.87
+2024-08-17 22:00:17,971 INFO Metrics for the channel machine_nameKuka Robot_import_active_energy found n 1 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 22:00:27,503 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameKuka Robot_import_active_energy.pdf
+2024-08-17 22:00:27,632 INFO Processing Stream # 58: sensor_id2_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:00:31,165 INFO Starting calibration for the model ...
+2024-08-17 22:00:43,680 INFO Ended calibration for the model ...
+2024-08-17 22:01:07,647 INFO Epoch 0, Loss: 2.368976354598999
+2024-08-17 22:01:53,894 INFO Epoch 2, Loss: 2.246274709701538
+2024-08-17 22:02:38,337 INFO Epoch 4, Loss: 1.952663540840149
+2024-08-17 22:03:23,915 INFO Epoch 6, Loss: 1.7899646759033203
+2024-08-17 22:04:10,569 INFO Epoch 8, Loss: 1.8035154342651367
+2024-08-17 22:04:57,129 INFO Epoch 10, Loss: 0.7710710167884827
+2024-08-17 22:05:44,365 INFO Epoch 12, Loss: 2.0857858657836914
+2024-08-17 22:06:31,019 INFO Epoch 14, Loss: 1.9737976789474487
+2024-08-17 22:07:17,250 INFO Epoch 16, Loss: 2.3264687061309814
+2024-08-17 22:08:03,761 INFO Epoch 18, Loss: 1.5959126949310303
+2024-08-17 22:08:50,450 INFO Early stopping triggered at epoch 20
+2024-08-17 22:08:53,006 INFO normalized prediction error: 0.38
+2024-08-17 22:08:53,552 INFO Metrics for the channel sensor_id2_Temperature found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:09:02,930 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/sensor_id2_Temperature.pdf
+2024-08-17 22:09:03,068 INFO Processing Stream # 59: sensor_id4_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:09:06,873 INFO Starting calibration for the model ...
+2024-08-17 22:09:19,417 INFO Ended calibration for the model ...
+2024-08-17 22:09:43,196 INFO Epoch 0, Loss: 2.977447509765625
+2024-08-17 22:10:29,824 INFO Epoch 2, Loss: 1.815234661102295
+2024-08-17 22:11:14,688 INFO Epoch 4, Loss: 2.3973562717437744
+2024-08-17 22:11:59,936 INFO Epoch 6, Loss: 2.1025028228759766
+2024-08-17 22:12:46,494 INFO Epoch 8, Loss: 1.158624291419983
+2024-08-17 22:13:33,208 INFO Epoch 10, Loss: 1.7472285032272339
+2024-08-17 22:14:19,208 INFO Epoch 12, Loss: 1.8291563987731934
+2024-08-17 22:15:05,623 INFO Epoch 14, Loss: 1.2024515867233276
+2024-08-17 22:15:50,367 INFO Epoch 16, Loss: 1.165331244468689
+2024-08-17 22:16:36,774 INFO Early stopping triggered at epoch 18
+2024-08-17 22:16:39,146 INFO normalized prediction error: 0.34
+2024-08-17 22:16:39,729 INFO Metrics for the channel sensor_id4_Temperature found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 22:16:50,392 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/sensor_id4_Temperature.pdf
+2024-08-17 22:16:50,525 INFO Processing Stream # 60: sensor_id3_Temperature , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:16:53,164 INFO Starting calibration for the model ...
+2024-08-17 22:17:05,621 INFO Ended calibration for the model ...
+2024-08-17 22:17:28,793 INFO Epoch 0, Loss: 1.0987521409988403
+2024-08-17 22:18:13,486 INFO Epoch 2, Loss: 2.4734058380126953
+2024-08-17 22:18:58,078 INFO Epoch 4, Loss: 0.9428609013557434
+2024-08-17 22:19:44,646 INFO Epoch 6, Loss: 1.3037480115890503
+2024-08-17 22:20:31,436 INFO Epoch 8, Loss: 1.24479341506958
+2024-08-17 22:21:16,951 INFO Epoch 10, Loss: 1.2363959550857544
+2024-08-17 22:22:01,500 INFO Epoch 12, Loss: 1.4801385402679443
+2024-08-17 22:22:47,770 INFO Early stopping triggered at epoch 14
+2024-08-17 22:22:50,367 INFO normalized prediction error: 0.37
+2024-08-17 22:22:51,208 INFO Metrics for the channel sensor_id3_Temperature found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:23:00,498 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/sensor_id3_Temperature.pdf
+2024-08-17 22:23:00,631 INFO Processing Stream # 61: machine_nameAbb Robot_voltage , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:23:04,196 INFO Starting calibration for the model ...
+2024-08-17 22:23:16,541 INFO Ended calibration for the model ...
+2024-08-17 22:23:39,818 INFO Epoch 0, Loss: 274.9280700683594
+2024-08-17 22:24:26,562 INFO Epoch 2, Loss: 130.97235107421875
+2024-08-17 22:25:13,178 INFO Epoch 4, Loss: 159.23696899414062
+2024-08-17 22:26:00,030 INFO Epoch 6, Loss: 257.61102294921875
+2024-08-17 22:26:47,184 INFO Epoch 8, Loss: 85.26803588867188
+2024-08-17 22:27:33,670 INFO Epoch 10, Loss: 188.54396057128906
+2024-08-17 22:28:20,690 INFO Epoch 12, Loss: 96.13966369628906
+2024-08-17 22:29:07,910 INFO Epoch 14, Loss: 90.11212921142578
+2024-08-17 22:29:55,072 INFO Epoch 16, Loss: 135.68588256835938
+2024-08-17 22:30:39,554 INFO Early stopping triggered at epoch 18
+2024-08-17 22:30:41,858 INFO normalized prediction error: nan
+2024-08-17 22:30:42,657 INFO Metrics for the channel machine_nameAbb Robot_voltage found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:30:53,088 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_voltage.pdf
+2024-08-17 22:30:53,249 INFO Processing Stream # 62: machine_nameAbb Robot_current , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:30:56,365 INFO Starting calibration for the model ...
+2024-08-17 22:31:08,099 INFO Ended calibration for the model ...
+2024-08-17 22:31:29,568 INFO Epoch 0, Loss: 1.4303033822216094e-05
+2024-08-17 22:32:12,974 INFO Epoch 2, Loss: 1.4762278624402825e-05
+2024-08-17 22:32:56,734 INFO Epoch 4, Loss: 1.4714626558998134e-05
+2024-08-17 22:33:40,472 INFO Epoch 6, Loss: 1.4691718206449877e-05
+2024-08-17 22:34:24,395 INFO Epoch 8, Loss: 1.472804433433339e-05
+2024-08-17 22:35:08,126 INFO Early stopping triggered at epoch 10
+2024-08-17 22:35:10,506 INFO normalized prediction error: 0.38
+2024-08-17 22:35:11,029 INFO Metrics for the channel machine_nameAbb Robot_current found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:35:23,297 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_current.pdf
+2024-08-17 22:35:23,458 INFO Processing Stream # 63: machine_nameAbb Robot_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:35:26,068 INFO Starting calibration for the model ...
+2024-08-17 22:35:38,507 INFO Ended calibration for the model ...
+2024-08-17 22:35:59,274 INFO Epoch 0, Loss: nan
+2024-08-17 22:36:39,803 INFO Epoch 2, Loss: nan
+2024-08-17 22:37:20,578 INFO Epoch 4, Loss: nan
+2024-08-17 22:38:01,335 INFO Epoch 6, Loss: nan
+2024-08-17 22:38:42,166 INFO Epoch 8, Loss: nan
+2024-08-17 22:39:02,585 INFO Early stopping triggered at epoch 9
+2024-08-17 22:39:04,776 INFO normalized prediction error: nan
+2024-08-17 22:39:05,225 INFO Metrics for the channel machine_nameAbb Robot_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:39:16,162 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_power.pdf
+2024-08-17 22:39:16,307 INFO Processing Stream # 64: machine_nameAbb Robot_apparent_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:39:18,920 INFO Starting calibration for the model ...
+2024-08-17 22:39:31,284 INFO Ended calibration for the model ...
+2024-08-17 22:39:54,729 INFO Epoch 0, Loss: 24.535213470458984
+2024-08-17 22:40:41,134 INFO Epoch 2, Loss: 10.251276969909668
+2024-08-17 22:41:27,461 INFO Epoch 4, Loss: 20.77367401123047
+2024-08-17 22:42:13,605 INFO Epoch 6, Loss: 15.528059005737305
+2024-08-17 22:43:00,209 INFO Epoch 8, Loss: 18.464929580688477
+2024-08-17 22:43:46,019 INFO Epoch 10, Loss: 10.805685043334961
+2024-08-17 22:44:33,410 INFO Epoch 12, Loss: 14.145499229431152
+2024-08-17 22:45:20,711 INFO Epoch 14, Loss: 17.50905418395996
+2024-08-17 22:46:06,851 INFO Epoch 16, Loss: 12.542969703674316
+2024-08-17 22:46:52,884 INFO Epoch 18, Loss: 15.03127670288086
+2024-08-17 22:47:40,093 INFO Epoch 20, Loss: 18.674455642700195
+2024-08-17 22:47:42,536 INFO normalized prediction error: 0.16
+2024-08-17 22:47:43,209 INFO Metrics for the channel machine_nameAbb Robot_apparent_power found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 100.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 50.00%
+2024-08-17 22:47:53,952 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_apparent_power.pdf
+2024-08-17 22:47:54,104 INFO Processing Stream # 65: machine_nameAbb Robot_reactive_power , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:47:56,728 INFO Starting calibration for the model ...
+2024-08-17 22:48:09,108 INFO Ended calibration for the model ...
+2024-08-17 22:48:32,359 INFO Epoch 0, Loss: 480.76568603515625
+2024-08-17 22:49:18,218 INFO Epoch 2, Loss: 374.9127502441406
+2024-08-17 22:50:03,959 INFO Epoch 4, Loss: 368.56390380859375
+2024-08-17 22:50:49,880 INFO Epoch 6, Loss: 375.4453430175781
+2024-08-17 22:51:35,691 INFO Epoch 8, Loss: 374.02081298828125
+2024-08-17 22:52:21,728 INFO Epoch 10, Loss: 362.2950744628906
+2024-08-17 22:53:08,036 INFO Epoch 12, Loss: 379.3169860839844
+2024-08-17 22:53:31,025 INFO Early stopping triggered at epoch 13
+2024-08-17 22:53:33,407 INFO normalized prediction error: 15.54
+2024-08-17 22:53:34,012 INFO Metrics for the channel machine_nameAbb Robot_reactive_power found n 0 anomalies predicted
+Precision: 100.00%
+Recall: 100.00%
+F1-score: 100.00%
+AUROC: 100.00%
+AUPRC: 100.00%
+2024-08-17 22:53:44,646 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_reactive_power.pdf
+2024-08-17 22:53:44,807 INFO Processing Stream # 66: machine_nameAbb Robot_power_factor , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:53:47,444 INFO Starting calibration for the model ...
+2024-08-17 22:53:59,322 INFO Ended calibration for the model ...
+2024-08-17 22:54:20,881 INFO Epoch 0, Loss: 9.17283323360607e-05
+2024-08-17 22:55:04,039 INFO Epoch 2, Loss: 8.932196215027943e-05
+2024-08-17 22:55:47,727 INFO Epoch 4, Loss: 8.6014078988228e-05
+2024-08-17 22:56:31,365 INFO Epoch 6, Loss: 6.738960655638948e-05
+2024-08-17 22:57:15,300 INFO Epoch 8, Loss: 7.746095798211172e-05
+2024-08-17 22:57:59,136 INFO Early stopping triggered at epoch 10
+2024-08-17 22:58:01,697 INFO normalized prediction error: 1.44
+2024-08-17 22:58:02,760 INFO Metrics for the channel machine_nameAbb Robot_power_factor found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 22:58:14,108 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_power_factor.pdf
+2024-08-17 22:58:14,257 INFO Processing Stream # 67: machine_nameAbb Robot_frequency , sample-rate : 0.1s, date : 20220811 
+2024-08-17 22:58:16,949 INFO Starting calibration for the model ...
+2024-08-17 22:58:29,393 INFO Ended calibration for the model ...
+2024-08-17 22:58:52,538 INFO Epoch 0, Loss: 10.925881385803223
+2024-08-17 22:59:38,740 INFO Epoch 2, Loss: 3.354830503463745
+2024-08-17 23:00:23,706 INFO Epoch 4, Loss: 3.160463571548462
+2024-08-17 23:01:09,284 INFO Epoch 6, Loss: 4.947662353515625
+2024-08-17 23:01:55,811 INFO Epoch 8, Loss: 4.272439002990723
+2024-08-17 23:02:40,685 INFO Epoch 10, Loss: 4.649836540222168
+2024-08-17 23:03:25,565 INFO Epoch 12, Loss: 2.484118700027466
+2024-08-17 23:04:08,281 INFO Epoch 14, Loss: nan
+2024-08-17 23:04:49,116 INFO Epoch 16, Loss: nan
+2024-08-17 23:05:30,135 INFO Epoch 18, Loss: nan
+2024-08-17 23:06:10,908 INFO Epoch 20, Loss: nan
+2024-08-17 23:06:13,343 INFO normalized prediction error: nan
+2024-08-17 23:06:13,806 INFO Metrics for the channel machine_nameAbb Robot_frequency found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 23:06:24,513 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_frequency.pdf
+2024-08-17 23:06:24,731 INFO Processing Stream # 68: machine_nameAbb Robot_phase_angle , sample-rate : 0.1s, date : 20220811 
+2024-08-17 23:06:28,343 INFO Starting calibration for the model ...
+2024-08-17 23:06:40,673 INFO Ended calibration for the model ...
+2024-08-17 23:07:04,608 INFO Epoch 0, Loss: 420.9938049316406
+2024-08-17 23:07:51,931 INFO Epoch 2, Loss: 748.279052734375
+2024-08-17 23:08:38,900 INFO Epoch 4, Loss: 312.54827880859375
+2024-08-17 23:09:26,053 INFO Epoch 6, Loss: 238.67398071289062
+2024-08-17 23:10:12,862 INFO Epoch 8, Loss: 373.29998779296875
+2024-08-17 23:11:00,400 INFO Epoch 10, Loss: 317.85595703125
+2024-08-17 23:11:47,488 INFO Epoch 12, Loss: 306.7718811035156
+2024-08-17 23:12:34,720 INFO Epoch 14, Loss: 300.6983947753906
+2024-08-17 23:13:16,613 INFO Early stopping triggered at epoch 16
+2024-08-17 23:13:19,007 INFO normalized prediction error: nan
+2024-08-17 23:13:19,816 INFO Metrics for the channel machine_nameAbb Robot_phase_angle found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 23:13:30,970 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_phase_angle.pdf
+2024-08-17 23:13:31,132 INFO Processing Stream # 69: machine_nameAbb Robot_import_active_energy , sample-rate : 0.1s, date : 20220811 
+2024-08-17 23:13:33,751 INFO Starting calibration for the model ...
+2024-08-17 23:13:46,021 INFO Ended calibration for the model ...
+2024-08-17 23:14:09,414 INFO Epoch 0, Loss: 3869.972412109375
+2024-08-17 23:14:55,333 INFO Epoch 2, Loss: 1664.4219970703125
+2024-08-17 23:15:41,364 INFO Epoch 4, Loss: 3531.98681640625
+2024-08-17 23:16:27,975 INFO Epoch 6, Loss: 3124.334716796875
+2024-08-17 23:17:14,492 INFO Epoch 8, Loss: 1997.01171875
+2024-08-17 23:18:01,353 INFO Epoch 10, Loss: 6541.10791015625
+2024-08-17 23:18:48,314 INFO Early stopping triggered at epoch 12
+2024-08-17 23:18:50,989 INFO normalized prediction error: 12.50
+2024-08-17 23:18:51,490 INFO Metrics for the channel machine_nameAbb Robot_import_active_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 23:19:00,795 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_import_active_energy.pdf
+2024-08-17 23:19:00,971 INFO Processing Stream # 70: machine_nameAbb Robot_export_reactive_energy , sample-rate : 0.1s, date : 20220811 
+2024-08-17 23:19:04,957 INFO Starting calibration for the model ...
+2024-08-17 23:19:17,308 INFO Ended calibration for the model ...
+2024-08-17 23:19:41,080 INFO Epoch 0, Loss: 551.8842163085938
+2024-08-17 23:20:28,125 INFO Epoch 2, Loss: 646.154296875
+2024-08-17 23:21:14,945 INFO Epoch 4, Loss: 711.8203735351562
+2024-08-17 23:22:02,165 INFO Epoch 6, Loss: 474.0710144042969
+2024-08-17 23:22:49,266 INFO Epoch 8, Loss: 536.7457885742188
+2024-08-17 23:23:36,023 INFO Epoch 10, Loss: 834.1741943359375
+2024-08-17 23:24:22,994 INFO Epoch 12, Loss: 952.9588623046875
+2024-08-17 23:24:46,535 INFO Early stopping triggered at epoch 13
+2024-08-17 23:24:48,986 INFO normalized prediction error: 20.14
+2024-08-17 23:24:49,631 INFO Metrics for the channel machine_nameAbb Robot_export_reactive_energy found n 0 anomalies predicted
+Precision: 0.00%
+Recall: 0.00%
+F1-score: 0.00%
+AUROC: 0.00%
+AUPRC: 0.00%
+2024-08-17 23:25:00,448 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/0.1s/machine_nameAbb Robot_export_reactive_energy.pdf
+2024-08-17 23:25:00,809 INFO Applying pruning with dynamic threshold computed : 2.271078906204231
+2024-08-17 23:25:00,809 INFO Final Prediction for sample_rate 0.1s final list anomalies found : [{'start_idx': 1071, 'end_idx': 1111, 'score': 2.9093836282306667}, {'start_idx': 3116, 'end_idx': 3149, 'score': 3.220094404408709}, {'start_idx': 3244, 'end_idx': 3284, 'score': 2.2751433094143922}, {'start_idx': 3401, 'end_idx': 3435, 'score': 6.8840514779869695}, {'start_idx': 3483, 'end_idx': 3499, 'score': 3.5271650700030106}, {'start_idx': 5532, 'end_idx': 5547, 'score': 3.3852745225547247}, {'start_idx': 5807, 'end_idx': 5856, 'score': 3.618508799895913}, {'start_idx': 9082, 'end_idx': 9122, 'score': 6.876943403792127}, {'start_idx': 9853, 'end_idx': 9894, 'score': 2.732689135202934}, {'start_idx': 10178, 'end_idx': 10219, 'score': 2.6807941141469054}, {'start_idx': 10493, 'end_idx': 10537, 'score': 5.168430016931457}, {'start_idx': 10579, 'end_idx': 10603, 'score': 4.918048016705722}, {'start_idx': 10604, 'end_idx': 10616, 'score': 3.4471441509815044}, {'start_idx': 10624, 'end_idx': 10663, 'score': 2.5962653063916123}, {'start_idx': 10631, 'end_idx': 10667, 'score': 2.5158830894654445}, {'start_idx': 10796, 'end_idx': 10826, 'score': 2.742855489071517}, {'start_idx': 11892, 'end_idx': 11944, 'score': 3.0561120429669812}, {'start_idx': 12079, 'end_idx': 12109, 'score': 2.9118349862219413}, {'start_idx': 12334, 'end_idx': 12369, 'score': 3.358424517167893}, {'start_idx': 12489, 'end_idx': 12523, 'score': 4.1208263543753105}, {'start_idx': 12517, 'end_idx': 12523, 'score': 3.0145247353264195}, {'start_idx': 12524, 'end_idx': 12549, 'score': 2.72093766536249}, {'start_idx': 12524, 'end_idx': 12552, 'score': 3.9558835782559725}, {'start_idx': 12741, 'end_idx': 12779, 'score': 7.820407541651008}, {'start_idx': 13144, 'end_idx': 13163, 'score': 5.010379720920914}, {'start_idx': 14673, 'end_idx': 14699, 'score': 2.7433101471423473}, {'start_idx': 14720, 'end_idx': 14763, 'score': 6.6956816711022515}, {'start_idx': 14781, 'end_idx': 14812, 'score': 2.4534759752767905}, {'start_idx': 14790, 'end_idx': 14818, 'score': 2.8585266329512886}, {'start_idx': 14803, 'end_idx': 14827, 'score': 3.653745599229974}, {'start_idx': 14809, 'end_idx': 14827, 'score': 5.740295240845499}, {'start_idx': 14828, 'end_idx': 14842, 'score': 3.9695826799635268}, {'start_idx': 14937, 'end_idx': 14955, 'score': 5.436349948020556}, {'start_idx': 14956, 'end_idx': 14971, 'score': 4.100462211877754}, {'start_idx': 15020, 'end_idx': 15060, 'score': 2.6461282233237524}, {'start_idx': 15020, 'end_idx': 15065, 'score': 3.887239894552969}, {'start_idx': 15084, 'end_idx': 15117, 'score': 4.509246971707654}, {'start_idx': 15158, 'end_idx': 15204, 'score': 3.3766973361530117}, {'start_idx': 15202, 'end_idx': 15211, 'score': 3.412312405364807}, {'start_idx': 15212, 'end_idx': 15240, 'score': 2.843963015508878}, {'start_idx': 15295, 'end_idx': 15339, 'score': 2.9702449122072405}, {'start_idx': 15301, 'end_idx': 15339, 'score': 2.918607558737104}, {'start_idx': 15340, 'end_idx': 15363, 'score': 2.7882037085875746}, {'start_idx': 15395, 'end_idx': 15403, 'score': 3.122341214486699}, {'start_idx': 15404, 'end_idx': 15424, 'score': 2.7448000002453323}, {'start_idx': 15512, 'end_idx': 15531, 'score': 2.774496792068233}, {'start_idx': 15621, 'end_idx': 15659, 'score': 3.1265512152794286}, {'start_idx': 17010, 'end_idx': 17051, 'score': 4.1463411509133286}, {'start_idx': 17147, 'end_idx': 17181, 'score': 2.956110017265833}, {'start_idx': 17858, 'end_idx': 17899, 'score': 2.29710853637947}, {'start_idx': 19718, 'end_idx': 19747, 'score': 3.2069317702854594}, {'start_idx': 21164, 'end_idx': 21224, 'score': 3.5385425591524378}, {'start_idx': 21176, 'end_idx': 21226, 'score': 3.8785184618904927}, {'start_idx': 21277, 'end_idx': 21291, 'score': 3.9090678799096117}, {'start_idx': 21892, 'end_idx': 21930, 'score': 2.3494028211357043}, {'start_idx': 23124, 'end_idx': 23147, 'score': 2.568208156178529}, {'start_idx': 23148, 'end_idx': 23178, 'score': 2.6755178619607913}, {'start_idx': 23468, 'end_idx': 23490, 'score': 2.5649322932476335}, {'start_idx': 24940, 'end_idx': 24940, 'score': 2.3265710033759395}, {'start_idx': 25045, 'end_idx': 25067, 'score': 3.6442703196012736}, {'start_idx': 25068, 'end_idx': 25095, 'score': 3.8245401594550685}, {'start_idx': 25181, 'end_idx': 25195, 'score': 3.274475555584616}, {'start_idx': 25196, 'end_idx': 25218, 'score': 2.967359258503778}, {'start_idx': 25524, 'end_idx': 25560, 'score': 3.114841588564165}, {'start_idx': 25781, 'end_idx': 25812, 'score': 2.9359412513089937}, {'start_idx': 25968, 'end_idx': 26021, 'score': 2.7024900801226406}, {'start_idx': 27402, 'end_idx': 27435, 'score': 2.745833211776429}, {'start_idx': 27436, 'end_idx': 27461, 'score': 2.723394976024302}, {'start_idx': 27828, 'end_idx': 27860, 'score': 2.880616832376322}, {'start_idx': 28344, 'end_idx': 28390, 'score': 2.724767570646205}, {'start_idx': 28908, 'end_idx': 28941, 'score': 3.7144256919034095}, {'start_idx': 29059, 'end_idx': 29099, 'score': 3.836407533913325}, {'start_idx': 30134, 'end_idx': 30187, 'score': 3.504355446881286}]
+2024-08-17 23:25:00,974 INFO Final Metrics for sample rate 0.1s with 70 different channels
+Precision: 26.42%
+Recall: 52.35%
+F1-score: 40.00%
+AUROC: 58.61%
+AUPRC: 22.27%
+
+2024-08-17 23:25:10,058 INFO Graphical output saved on path : /content/OurProject/trained_models/telemanom/2024-08-16_12.55.17/plot_predictions/final_anomalies_prediction_sample_rate_0.1s.pdf
