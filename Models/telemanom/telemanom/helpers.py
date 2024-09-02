@@ -267,76 +267,51 @@ def segment_data(data, channel_id = None,min_gap_minutes=120):
     return segments
 
 def calculate_metrics(real_anomalies, predicted_anomalies,df_timestamp_data_channel_test=None):
+    if len(predicted_anomalies) == 0:
+        return 0, 0, 0, 0, 0, None
 
     real_intervals = [(pd.to_datetime(row['Timestamp-Start']).tz_localize(None), pd.to_datetime(row['Timestamp-End']).tz_localize(None)) for idx, row in real_anomalies.iterrows()]
     predicted_intervals = []
 
-    #if last:
-        #print(f"Last predicted_intervals : {predicted_intervals}")
+    all_scores = [anomaly['score'] for anomaly in predicted_anomalies]
+    min_score = min(all_scores)
+    max_score = max(all_scores)
+    score_range = max_score - min_score if max_score > min_score else 1
+
     for anomaly in predicted_anomalies:
         start_idx = anomaly['start_idx']
         end_idx = anomaly['end_idx']
         score = anomaly['score']
-        if start_idx < len(df_timestamp_data_channel_test) and end_idx < len(df_timestamp_data_channel_test):
-            #if last:
-                #print(f"Last start_idx : {start_idx} -- end_idx : {end_idx} -- len(df_timestamp_data_channel_test) : {len(df_timestamp_data_channel_test)}")
-                #print(f"Last df_timestamp_data_channel_test['timestamp']: {df_timestamp_data_channel_test['timestamp']}")
-                #print(f"Last df_timestamp_data_channel_test['timestamp'].iloc[start_idx]): {df_timestamp_data_channel_test['timestamp'].iloc[start_idx]}")
-            start_timestamp =pd.to_datetime(df_timestamp_data_channel_test['timestamp'].iloc[start_idx]).tz_localize(None)
-            end_timestamp = pd.to_datetime(df_timestamp_data_channel_test['timestamp'].iloc[end_idx]).tz_localize(None)
-            predicted_intervals.append({"start" : start_timestamp, "end" : end_timestamp , "score" : score})
-        else:
-            print(f"Out of bounds: start_idx={start_idx}, end_idx={end_idx}, df_length={len(df_timestamp_data_channel_test)}")
+        normalized_score = (score - min_score) / score_range
+        start_timestamp =pd.to_datetime(df_timestamp_data_channel_test['timestamp'].iloc[start_idx]).tz_localize(None)
+        end_timestamp = pd.to_datetime(df_timestamp_data_channel_test['timestamp'].iloc[end_idx]).tz_localize(None)
+        predicted_intervals.append({"start" : start_timestamp, "end" : end_timestamp , "score" : normalized_score})
 
-    true_labels = []
-    pred_scores = []
-    optimal_threshold = None
+    normalized_scores = np.zeros(len(df_timestamp_data_channel_test))
+    true_labels = np.zeros(len(df_timestamp_data_channel_test))
 
-    # Contare i veri positivi e i falsi negativi
-    for real_start, real_end in real_intervals:
-        found = False
-        for anomaly in predicted_intervals:
-            pred_start = anomaly['start']
-            pred_end = anomaly['end']
-            score = anomaly['score']
-
-            if pred_start <= real_end and pred_end >= real_start:
-                true_labels.append(1)  # True Positive
-                pred_scores.append(score)
-                found = True
-                #print(f"True Positive: Predicted anomaly from {pred_start} to {pred_end} overlaps with real anomaly from {real_start} to {real_end}")
+    for idx, row in df_timestamp_data_channel_test.iterrows():
+        timestamp = pd.to_datetime(row['timestamp']).tz_localize(None)
+        for interval in predicted_intervals:
+            if interval['start'] <= timestamp <= interval['end']:
+                normalized_scores[idx] = interval['score']
                 break
+        if any(real_start <= timestamp <= real_end for real_start, real_end in real_intervals):
+            true_labels[idx] = 1
 
-        if not found:
-            true_labels.append(0)  # False Negative
-            pred_scores.append(0)  # No score since it's a miss
-            #print(f"False Negative: No predicted anomaly overlaps with real anomaly from {real_start} to {real_end}")
-
-    for anomaly in predicted_intervals:
-        pred_start = anomaly['start']
-        pred_end = anomaly['end']
-        score = anomaly['score']
-        if not any(real_start <= pred_end and real_end >= pred_start for real_start, real_end in real_intervals):
-            true_labels.append(0)
-            pred_scores.append(score)
-            #print(f"False Positive: Predicted anomaly from {pred_start} to {pred_end} does not overlap with any real anomaly")
-
-    if any(pred_scores) and len(predicted_intervals)>0: # Check if there are any non-zero scores
-        precision, recall, thresholds = precision_recall_curve(true_labels, pred_scores)
-        fpr, tpr, roc_thresholds = roc_curve(true_labels, pred_scores)
-        auroc = auc(fpr, tpr)
-        if math.isnan(auroc):
-            auroc = 0.0
-        auprc = auc(recall, precision)
-        if math.isnan(auroc):
-            auprc = 0.0
-        optimal_idx = np.argmax(2 * precision * recall / (precision + recall + 1e-8))
-        precision = precision[optimal_idx]
-        recall = recall[optimal_idx]
-        optimal_threshold = thresholds[optimal_idx]
-        f1_score = 2 * precision* recall / (precision + recall + 1e-8)
-    else:
-        precision = recall = f1_score = auroc = auprc = 0.0
+    precision, recall, thresholds = precision_recall_curve(true_labels, normalized_scores)
+    fpr, tpr, roc_thresholds = roc_curve(true_labels, normalized_scores)
+    auroc = auc(fpr, tpr)
+    if math.isnan(auroc):
+        auroc = 0.0
+    auprc = auc(recall, precision)
+    if math.isnan(auroc):
+        auprc = 0.0
+    optimal_idx = np.argmax(2 * precision * recall / (precision + recall + 1e-8))
+    precision = precision[optimal_idx]
+    recall = recall[optimal_idx]
+    optimal_threshold = thresholds[optimal_idx]
+    f1_score = 2 * precision* recall / (precision + recall + 1e-8)
 
     return precision, recall, f1_score, auroc, auprc,optimal_threshold
 

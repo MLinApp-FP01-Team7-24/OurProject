@@ -1,3 +1,5 @@
+import math
+
 import numpy as np
 import pandas as pd
 import more_itertools as mit
@@ -78,9 +80,11 @@ class Errors:
 
         # Normalizzazione degli errori di predizione rispetto all'intervallo dei valori del canale
         self.normalized = np.mean(self.e / np.ptp(channel.y_test))
+        if math.isnan(self.normalized):
+            self.normalized =0.0
+
         logger.info("normalized prediction error: {0:.2f}"
                     .format(self.normalized))
-
 
     def adjust_window_size(self, channel):
         """
